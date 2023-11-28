@@ -6,11 +6,24 @@ var jump = -450
 #상태 변수
 var health = 3
 var point = 0
+
+#상호작용 애니메이션 직후 처리
+var whatAnimation = "None"
 #대쉬 관련
-const dashSpeed = 600
+const dashSpeed = 550
 const dashDuration = 0.6
 @onready var dash = $Dash
 var saveDirection = 1
+#bloodSword
+const bloodSwordMove = 30
+const bloodSwordDuration = 1
+@onready var bloodSword = $BloodSword
+#bloodDagg
+const bloodDaggMove = 30
+const bloodDaggDuration = 1.1
+@onready var bloodDagg = $BloodDagg
+#Wall Jump
+@onready var wallCheck = $WallCheck
 
 #애니메이션
 @onready var ap = $AnimationPlayer
@@ -18,16 +31,20 @@ var saveDirection = 1
 var isFall = false
 
 func _physics_process(delta):
-	if not dash.isDashing():
+	if not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg():
 	#중력
-		if not is_on_floor():
+		if not is_on_floor() and not wallCheck.is_colliding():
 			velocity.y += gravity * delta
 			#fall animation
 			if velocity.y > 0:
 				ap.play("Fall")
+				whatAnimation = "Fall"
+				wallCheck.enabled = true
 	#			isFall = true
 			elif velocity.y <= 0:
 				ap.play("Jump")
+				whatAnimation = "Jump"
+				wallCheck.enabled = true
 	#	if is_on_floor() and isFall:
 	#		print("wkrehd")
 	#		print(isFall)
@@ -35,7 +52,6 @@ func _physics_process(delta):
 	#		if ap.animation_finished:
 	#			isFall = false
 	#			print(isFall)
-			
 		#점프
 		if Input.is_action_pressed("Jump") and is_on_floor():
 			velocity.y = jump
@@ -46,27 +62,64 @@ func _physics_process(delta):
 			velocity.x = direction * speed
 			if is_on_floor():
 				ap.play("Run")
+				whatAnimation = "Run"
+				wallCheck.enabled = false
 		else: 
 			velocity.x = move_toward(velocity.x, 0, speed)
 			if is_on_floor():
 				ap.play("Idle")
+				whatAnimation = "Idle"
+				wallCheck.enabled = false
 		
 		#rotate
 		if Input.is_action_pressed("Left"):
 			sprite.scale.x = abs(sprite.scale.x) * -1
+			wallCheck.scale.x = abs(wallCheck.scale.x) * -1
 		if Input.is_action_pressed("Right"):
 			sprite.scale.x = abs(sprite.scale.x)
-			
+			wallCheck.scale.x = abs(wallCheck.scale.x)
+		
+		#상호작용 이후 처리
+		if whatAnimation == "Dash":
+			whatAnimation = "None"
+		elif whatAnimation == "BloodSword":
+			whatAnimation = "None"
+		elif whatAnimation == "BloodDagg":
+			whatAnimation = "None"
+
+		#상호작용 애니메이션	
 		#dash
 		if Input.is_action_just_pressed("Dash"):
 			velocity.y = 0
-			velocity.x = 0
 			velocity.x = saveDirection * dashSpeed
 			dash.startDash(dashDuration)
+			whatAnimation = "Dash"
 			if saveDirection == 1:
 				ap.play("Dash")
 			elif saveDirection == -1:
 				ap.play("Dash_Left")
+		#bloodSword
+		if Input.is_action_just_pressed("BloodSword") and is_on_floor():
+			velocity.y = 0
+			velocity.x = 40 * saveDirection
+			whatAnimation = "BloodSword"
+			bloodSword.startBloodSword(bloodSwordDuration)
+			ap.play("BloodSword")
+		#bloodDagg
+		if Input.is_action_just_pressed("BloodDagg"):
+			velocity.y = 0
+			velocity.x = 0
+			whatAnimation = "BloodDagg"
+			bloodSword.startBloodSword(bloodDaggDuration)
+			ap.play("BloodDagg")
+		#Wall Jump
+		if wallCheck.is_colliding() and (whatAnimation == "Fall" or "Jump"):
+			velocity.y = 100
+			velocity.x = 100 * saveDirection
+			ap.play("WallJump")
+			whatAnimation = "WallJump"
+		if wallCheck.is_colliding() and Input.is_action_pressed("Jump"):
+			velocity.y = jump
 		
 	move_and_slide()
 
