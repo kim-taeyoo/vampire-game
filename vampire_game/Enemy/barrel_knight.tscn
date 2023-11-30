@@ -8,9 +8,8 @@ radius = 8.06226
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwmxb"]
 
-[sub_resource type="Animation" id="Animation_n0num"]
-resource_name = "Run"
-step = 0.02
+[sub_resource type="Animation" id="Animation_r74vv"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,10 +17,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.02, 0.08, 0.18, 0.28, 0.38, 0.48, 0.58),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,8 +83,9 @@ tracks/5/keys = {
 "values": [Vector2(0, 4)]
 }
 
-[sub_resource type="Animation" id="Animation_r74vv"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_n0num"]
+resource_name = "Run"
+step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -93,10 +93,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(-0.02, 0.08, 0.18, 0.28, 0.38, 0.48, 0.58),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0]
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false

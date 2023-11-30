@@ -30,6 +30,9 @@ const bloodDaggDuration = 1.1
 @onready var sprite = $Sprite2D
 var isFall = false
 
+#공격 관련
+@onready var hurtBox = $HurtBox
+
 func _physics_process(delta):
 	if not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg():
 	#중력
@@ -104,6 +107,7 @@ func _physics_process(delta):
 			velocity.x = 40 * saveDirection
 			whatAnimation = "BloodSword"
 			bloodSword.startBloodSword(bloodSwordDuration)
+			hurtBox.scale.x = saveDirection
 			ap.play("BloodSword")
 		#bloodDagg
 		if Input.is_action_just_pressed("BloodDagg"):
@@ -111,6 +115,7 @@ func _physics_process(delta):
 			velocity.x = 0
 			whatAnimation = "BloodDagg"
 			bloodSword.startBloodSword(bloodDaggDuration)
+			hurtBox.scale.x = saveDirection
 			ap.play("BloodDagg")
 		#Wall Jump
 		if wallCheck.is_colliding() and (whatAnimation == "Fall" or "Jump"):
