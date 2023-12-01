@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://b00jxpy5etudc"]
+[gd_scene load_steps=26 format=3 uid="uid://b00jxpy5etudc"]
 
 [ext_resource type="Texture2D" uid="uid://5tnga7sfvo71" path="res://Enemy/Barrel knight/run.png" id="1_spftf"]
-[ext_resource type="Script" path="res://New enemy/Enemy.gd" id="1_tx4bx"]
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_tx4bx"]
 [ext_resource type="Texture2D" uid="uid://7a3pchspop78" path="res://Enemy/Barrel knight/attacks.png" id="2_pe4oj"]
+[ext_resource type="Texture2D" uid="uid://bm1bnawayhrd8" path="res://Enemy/Barrel knight/idle.png" id="3_u0vl8"]
+[ext_resource type="Script" path="res://Enemy/AlertTimer.gd" id="5_ithra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wml6s"]
 atlas = ExtResource("2_pe4oj")
@@ -27,6 +29,22 @@ region = Rect2(624, 0, 156, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_swbqh"]
 atlas = ExtResource("2_pe4oj")
 region = Rect2(780, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqtgp"]
+atlas = ExtResource("3_u0vl8")
+region = Rect2(0, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y63p"]
+atlas = ExtResource("3_u0vl8")
+region = Rect2(156, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_017ft"]
+atlas = ExtResource("3_u0vl8")
+region = Rect2(312, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crp5c"]
+atlas = ExtResource("3_u0vl8")
+region = Rect2(468, 0, 156, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5hbvd"]
 atlas = ExtResource("1_spftf")
@@ -63,23 +81,40 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wml6s")
 }, {
-"duration": 1.0,
+"duration": 1.2,
 "texture": SubResource("AtlasTexture_x6bjs")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_3662q")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_hxcph")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v1m8c")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_swbqh")
 }],
 "loop": true,
 "name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqtgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y63p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_017ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crp5c")
+}],
+"loop": true,
+"name": &"Idle",
 "speed": 10.0
 }, {
 "frames": [{
@@ -131,8 +166,7 @@ script = ExtResource("1_tx4bx")
 position = Vector2(30, -16)
 sprite_frames = SubResource("SpriteFrames_4lxh0")
 animation = &"Attack"
-autoplay = "Run"
-frame_progress = 0.372028
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -12)
@@ -150,3 +184,21 @@ shape = SubResource("RectangleShape2D_ueyjw")
 position = Vector2(11, -25)
 scale = Vector2(1, 0.520001)
 collision_mask = 6
+
+[node name="PlayerDetectSensor" type="RayCast2D" parent="."]
+position = Vector2(-6, -4)
+target_position = Vector2(100, 0)
+hit_from_inside = true
+
+[node name="PlayerAttackSensor" type="RayCast2D" parent="."]
+position = Vector2(6.5, -4.5)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+
+[node name="AlertTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+script = ExtResource("5_ithra")
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]
