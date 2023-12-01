@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cftqnuiopntwe"]
+[gd_scene load_steps=9 format=3 uid="uid://cftqnuiopntwe"]
 
 [ext_resource type="Texture2D" uid="uid://bdas6snh0wl57" path="res://background/map_preview.png" id="3_18lmt"]
 [ext_resource type="PackedScene" uid="uid://bsgjp6thehajm" path="res://Enemy/barrel_knight.tscn" id="4_8sphk"]
 [ext_resource type="Texture2D" uid="uid://cfmax8b1l5vsh" path="res://background/tiles.png" id="4_b05ia"]
+[ext_resource type="PackedScene" uid="uid://b00jxpy5etudc" path="res://New enemy/Enemy.tscn" id="5_r7812"]
 [ext_resource type="PackedScene" uid="uid://rqkig2xuvbko" path="res://Player/player.tscn" id="5_uvu64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqqy5"]
@@ -31295,3 +31296,6 @@ position = Vector2(282, 189)
 
 [node name="BarrelKnight" parent="Enemy" instance=ExtResource("4_8sphk")]
 position = Vector2(1455, 285)
+
+[node name="Enemy2" parent="Enemy" instance=ExtResource("5_r7812")]
+position = Vector2(76, 137)

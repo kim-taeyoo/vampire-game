@@ -7,7 +7,6 @@ var facing_right = true
 
 #좌우이동 알고리즘 관련
 @onready var moveSensor = $MoveSensor
-@onready var ap = $AnimationPlayer
 
 
 func _physics_process(delta):
@@ -19,7 +18,6 @@ func _physics_process(delta):
 		flip()
 
 	velocity.x = speed
-	ap.play("Run")
 	move_and_slide()
 	
 func flip():

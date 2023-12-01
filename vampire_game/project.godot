@@ -12,7 +12,7 @@ config_version=5
 
 config/name="vampire_game"
 run/main_scene="res://cave_stage.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -61,3 +61,8 @@ BloodDagg={
 2d_physics/layer_2="Ground"
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Ceiling"
+2d_physics/layer_5="Enemy"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

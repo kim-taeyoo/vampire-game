@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://b00jxpy5etudc"]
+
+[ext_resource type="Texture2D" uid="uid://5tnga7sfvo71" path="res://Enemy/Barrel knight/run.png" id="1_spftf"]
+[ext_resource type="Script" path="res://New enemy/Enemy.gd" id="1_tx4bx"]
+[ext_resource type="Texture2D" uid="uid://7a3pchspop78" path="res://Enemy/Barrel knight/attacks.png" id="2_pe4oj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wml6s"]
+atlas = ExtResource("2_pe4oj")
+region = Rect2(0, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6bjs"]
+atlas = ExtResource("2_pe4oj")
+region = Rect2(156, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3662q"]
+atlas = ExtResource("2_pe4oj")
+region = Rect2(312, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxcph"]
+atlas = ExtResource("2_pe4oj")
+region = Rect2(468, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1m8c"]
+atlas = ExtResource("2_pe4oj")
+region = Rect2(624, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swbqh"]
+atlas = ExtResource("2_pe4oj")
+region = Rect2(780, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hbvd"]
+atlas = ExtResource("1_spftf")
+region = Rect2(0, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpr7r"]
+atlas = ExtResource("1_spftf")
+region = Rect2(156, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hail"]
+atlas = ExtResource("1_spftf")
+region = Rect2(312, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23xte"]
+atlas = ExtResource("1_spftf")
+region = Rect2(468, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to0sb"]
+atlas = ExtResource("1_spftf")
+region = Rect2(624, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt21g"]
+atlas = ExtResource("1_spftf")
+region = Rect2(780, 0, 156, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_117vp"]
+atlas = ExtResource("1_spftf")
+region = Rect2(936, 0, 156, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lxh0"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wml6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6bjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3662q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxcph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1m8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swbqh")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hbvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpr7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hail")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23xte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_to0sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt21g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_117vp")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sietr"]
+size = Vector2(21.7391, 16.2162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueyjw"]
+size = Vector2(27.4999, 20.1613)
+
+[node name="Enemy" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_tx4bx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(30, -16)
+sprite_frames = SubResource("SpriteFrames_4lxh0")
+animation = &"Attack"
+autoplay = "Run"
+frame_progress = 0.372028
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -12)
+scale = Vector2(0.920001, 1.48)
+shape = SubResource("RectangleShape2D_sietr")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(3, -12.5)
+scale = Vector2(0.800002, 1.24)
+shape = SubResource("RectangleShape2D_ueyjw")
+
+[node name="MoveSensor" type="RayCast2D" parent="."]
+position = Vector2(11, -25)
+scale = Vector2(1, 0.520001)
+collision_mask = 6
