@@ -11,11 +11,10 @@
 [ext_resource type="Script" path="res://Player/BloodSword.gd" id="7_52j7b"]
 [ext_resource type="Script" path="res://Player/BloodDagg.gd" id="9_alny3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f4j6w"]
-radius = 6.5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5dkn"]
+size = Vector2(13.5, 13.25)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l11ft"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c8tp"]
 
 [sub_resource type="Animation" id="Animation_fsx88"]
 resource_name = "BloodDagg"
@@ -120,6 +119,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_mtsn2"]
 resource_name = "BloodSword"
+length = 1.05
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -224,7 +224,7 @@ tracks/8/path = NodePath("HurtBox/CollisionPolygon2D:polygon")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63, 0.7, 0.77, 0.84, 0.91, 1),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.63, 0.7, 0.77, 0.84, 0.91, 1.02),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [PackedVector2Array(-1, -2.5, -7.5, -8, -7, -9, 0, -4), PackedVector2Array(-1.5, -4.5, -9.5, -15.5, -12, -13.5, -3.5, -2), PackedVector2Array(-1.48522, -5.00441, -5.94827, -17.5176, -8.95269, -16.0265, -3.99112, -3.0118), PackedVector2Array(-1.43795, -21.0043, -6.47043, -10.0192, -6.48815, -4.01919, -2.98817, -4.00885, 1.55908, -19.9955), PackedVector2Array(24.5, -10, 12, -5.5, -3.5, -5, -8.5, -10.5, -5, -17, -5, -22, -9, -22, -16, -14, -14.5, -6.5, -12.5, -4, -22.5, -3.5, -23, -7.5, -24.5, -10, -29.5, -9.5, -29.5, -4, -25.5, 0, 13, 0, 26.5, -6.5, 26.5, -9), PackedVector2Array(7.01917, -6.47929, 22.0368, -12.435, 24.0294, -9.92905, 8.5103, -3.47487), PackedVector2Array(7.51474, -4.97782, 21.5398, -13.4364, 19.5472, -15.9423, 5.02066, -6.9852), PackedVector2Array(8.53837, -12.9748, -3.92465, -25.5117, -5.42907, -24.0161, 7.03247, -10.9793), PackedVector2Array(6.54429, -14.9807, -13.929, -24.0413, -14.4379, -21.0427, 5.53543, -11.9837), PackedVector2Array(4.5502, -16.9866, -16.9438, -19.0501, -16.9556, -15.0502, 5.53986, -13.4837), PackedVector2Array(62.5, -7.5, 62.5, -2.5, 55, 0, -3.5, 0, -24.5, -19.5, -15, -27.5, 4, -27.5, 14, -24, 20, -19, 27.5, -6.5, 35, -5.5, 44.5, -11, 57, -11.5), PackedVector2Array(8.51769, -5.97486, 29.0073, -2.41431, 46.0057, -1.86409, 43.5294, -9.87144, 49.0382, -12.8552, 65.0322, -10.8079, 66.5219, -7.30351, 61.5056, -1.8183, 48.9983, 0.644758, 20.0014, -0.440912, 6.51031, -3.48078), PackedVector2Array(8.01178, -3.97635, 29.0073, -2.41431, 46.0057, -1.86409, 43.5294, -9.87144, 49.0382, -12.8552, 65.0322, -10.8079, 66.5219, -7.30351, 61.5056, -1.8183, 48.9983, 0.644758, 20.0014, -0.440912, 6.50588, -1.98079), PackedVector2Array(8.01178, -3.97635, 29.0073, -2.41431, 46.0057, -1.86409, 43.5294, -9.87144, 49.0382, -12.8552, 65.0322, -10.8079, 66.5219, -7.30351, 61.5056, -1.8183, 48.9983, 0.644758, 20.0014, -0.440912, 6.50588, -1.98079), PackedVector2Array()]
@@ -531,30 +531,6 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(0, -12)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("WallCheck:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WallCheck:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
 
 [sub_resource type="Animation" id="Animation_n3h5o"]
 resource_name = "Idle"
@@ -654,6 +630,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(35.5, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HurtBox/CollisionPolygon2D:polygon")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array()]
 }
 
 [sub_resource type="Animation" id="Animation_3oaqe"]
@@ -755,30 +743,6 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -12)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("WallCheck:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WallCheck:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
 }
 
 [sub_resource type="Animation" id="Animation_jtkxr"]
@@ -958,46 +922,10 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("WallCheck:position")
+tracks/8/path = NodePath("HurtBox/CollisionPolygon2D:polygon")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -12)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WallCheck:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.14, 0.539)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("WallCheck:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("HurtBox/CollisionPolygon2D:polygon")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1231,17 +1159,16 @@ offset = Vector2(35.5, 0)
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1, -7)
-shape = SubResource("CircleShape2D_f4j6w")
+shape = SubResource("RectangleShape2D_w5dkn")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-1, -7)
-shape = SubResource("CircleShape2D_l11ft")
+scale = Vector2(0.72, 0.72)
+shape = SubResource("RectangleShape2D_7c8tp")
 
 [node name="Marker2D" type="Marker2D" parent="HitBox/CollisionShape2D"]
 

@@ -16,7 +16,7 @@ const dashDuration = 0.6
 var saveDirection = 1
 #bloodSword
 const bloodSwordMove = 30
-const bloodSwordDuration = 1
+const bloodSwordDuration = 1.05
 @onready var bloodSword = $BloodSword
 #bloodDagg
 const bloodDaggMove = 30
