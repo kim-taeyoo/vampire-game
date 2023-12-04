@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn414emop5xc6"]
+[gd_scene load_steps=8 format=3 uid="uid://bsgjp6thehajm"]
 
 [ext_resource type="Script" path="res://Enemy/barrel_knight.gd" id="1_ho4da"]
 [ext_resource type="Texture2D" uid="uid://5tnga7sfvo71" path="res://Enemy/Barrel knight/run.png" id="1_is0ew"]

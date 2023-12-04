@@ -9,21 +9,26 @@ var point = 0
 
 #상호작용 애니메이션 직후 처리
 var whatAnimation = "None"
+
 #대쉬 관련
 const dashSpeed = 550
 const dashDuration = 0.6
 @onready var dash = $Dash
 var saveDirection = 1
+
 #bloodSword
 const bloodSwordMove = 30
 const bloodSwordDuration = 1.05
 @onready var bloodSword = $BloodSword
+
 #bloodDagg
 const bloodDaggMove = 30
 const bloodDaggDuration = 1.1
 @onready var bloodDagg = $BloodDagg
+
 #Wall Jump
 @onready var wallCheck = $WallCheck
+var posibleWallJump = false
 
 #애니메이션
 @onready var ap = $AnimationPlayer
@@ -34,10 +39,12 @@ var isFall = false
 @onready var hurtBox = $HurtBox
 
 func _physics_process(delta):
+	if not is_on_floor() and not posibleWallJump:
+			velocity.y += gravity * delta
 	if not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg():
 	#중력
 		if not is_on_floor() and not wallCheck.is_colliding():
-			velocity.y += gravity * delta
+#			velocity.y += gravity * delta
 			#fall animation
 			if velocity.y > 0:
 				ap.play("Fall")
@@ -101,6 +108,7 @@ func _physics_process(delta):
 				ap.play("Dash")
 			elif saveDirection == -1:
 				ap.play("Dash_Left")
+				
 		#bloodSword
 		if Input.is_action_just_pressed("BloodSword") and is_on_floor():
 			velocity.y = 0
@@ -109,6 +117,7 @@ func _physics_process(delta):
 			bloodSword.startBloodSword(bloodSwordDuration)
 			hurtBox.scale.x = saveDirection
 			ap.play("BloodSword")
+			
 		#bloodDagg
 		if Input.is_action_just_pressed("BloodDagg"):
 			velocity.y = 0
@@ -117,15 +126,25 @@ func _physics_process(delta):
 			bloodSword.startBloodSword(bloodDaggDuration)
 			hurtBox.scale.x = saveDirection
 			ap.play("BloodDagg")
+			
 		#Wall Jump
-		if wallCheck.is_colliding() and (whatAnimation == "Fall" or "Jump"):
+		if wallCheck.is_colliding() and (whatAnimation == "Fall" or whatAnimation == "Jump") and not posibleWallJump:
 			velocity.y = 100
-			velocity.x = 100 * saveDirection
+			posibleWallJump = true
+#			wallCheck.startHangWall(1)
 			ap.play("WallJump")
 			whatAnimation = "WallJump"
-		if wallCheck.is_colliding() and Input.is_action_pressed("Jump"):
+		elif not wallCheck.is_colliding():
+			posibleWallJump = false
+		if wallCheck.is_colliding() and Input.is_action_pressed("Jump") and posibleWallJump:
 			velocity.y = jump
-		
+			posibleWallJump = false
+			ap.play("Jump")
+			whatAnimation = "WallJump"
+		if wallCheck.is_colliding() and not is_on_floor() and velocity.y == 0:
+			posibleWallJump = true
+			whatAnimation = "Jump"
+			print(whatAnimation)
 	move_and_slide()
 
 

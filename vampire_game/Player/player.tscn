@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://rqkig2xuvbko"]
+[gd_scene load_steps=26 format=3 uid="uid://rqkig2xuvbko"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0w4vw"]
 [ext_resource type="Texture2D" uid="uid://cp5iw0it2jfkk" path="res://Player/run.png" id="1_1ln5s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bgn31cgabmcr5" path="res://Player/Wall Jump.png" id="7_3g00i"]
 [ext_resource type="Script" path="res://Player/BloodSword.gd" id="7_52j7b"]
 [ext_resource type="Script" path="res://Player/BloodDagg.gd" id="9_alny3"]
+[ext_resource type="Script" path="res://Player/WallCheck.gd" id="11_mfo1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5dkn"]
 size = Vector2(13.5, 13.25)
@@ -1210,6 +1211,7 @@ position = Vector2(0, -12)
 scale = Vector2(0.14, 0.539)
 target_position = Vector2(53.5714, -1.90735e-06)
 collision_mask = 4
+script = ExtResource("11_mfo1d")
 
 [node name="CheckTime" type="Timer" parent="WallCheck"]
 
