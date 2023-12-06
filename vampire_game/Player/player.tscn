@@ -1287,6 +1287,8 @@ collision_mask = 4
 [node name="CheckTime" type="Timer" parent="WallCheck"]
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 16
+monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
 rotation = -0.0029543

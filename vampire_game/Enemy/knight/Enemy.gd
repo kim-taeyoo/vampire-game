@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-#상태 Idle, Run, Attack, Death
+#상태 Idle, Run, Attack, Dead
 var condition = "Idle" #default
 var findPlayer = false
 var displacement = 0
@@ -10,12 +10,8 @@ var speed = 60.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_right = true
 
-#좌우이동 알고리즘 관련
-@onready var moveSensor = $Sensor/MoveSensor
-@onready var playerDetectSensor = $Sensor/PlayerDetectSensor
-@onready var playerAttackSensor = $Sensor/PlayerAttackSensor
 
-@onready var AS = $AnimatedSprite2D
+@onready var AS = $knightSprite
 @onready var emote = $Emote/EmoteAnimation
 
 @onready var emoteTimer = $Emote/EmoteTimer
@@ -27,17 +23,6 @@ func _physics_process(delta):
 	# 중력추가
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
-	if not moveSensor.is_colliding() and is_on_floor():
-		flip()
-		
-	if playerDetectSensor.is_colliding():
-		find_Player()
-		alertTimer.resetTimer()
-		emoteTimer.resetTimer()
-		
-	if playerAttackSensor.is_colliding():
-		condition = "Attack"
 		
 	if condition == "Idle":
 		AS.animation = "Idle"
@@ -61,34 +46,47 @@ func _physics_process(delta):
 			hurtBox.disabled = false
 		velocity.x = 0
 	
+	if condition == "Dead":
+		AS.animation = "Dead"
+		emote.visible = false
+		await get_tree().create_timer(5.0).timeout
+		queue_free()
+	
 	move_and_slide()
 
 func flip():
-	facing_right =! facing_right
+	facing_right = !facing_right
 	
 	scale.x = abs(scale.x) * -1
+	emote.scale.x = emote.scale.x * -1
+	
 	if facing_right:
 		speed = abs(speed)
 	else:
 		speed = abs(speed) * -1
+	
 
 func change_condition_to_Run():
 	await get_tree().create_timer(3.0).timeout
-	condition = "Run"
+	if condition != "Dead":
+		condition = "Run"
 
 func change_condition_to_Idle():
-	condition = "Idle"
-	displacement = 0
+	if condition != "Dead":
+		condition = "Idle"
+		displacement = 0
 
 func find_Player():
 	findPlayer = true
-	emote.animation = "Find"
+	emote.play("Find")
+	emoteTimer.resetTimer()
 	if condition != "Attack":
 		condition = "Run"
 
 func cant_find_Player():
 	findPlayer = false
-	emote.animation = "Lost"
+	emote.play("Lost")
+	emoteTimer.resetTimer()
 	condition = "Idle"
 
 func _on_animated_sprite_2d_animation_looped():
@@ -98,4 +96,11 @@ func _on_animated_sprite_2d_animation_looped():
 
 
 func _on_hurt_box_body_entered(body):
-	print("hit")
+	if body.name == "Player":
+		print("hit" + body.name)
+
+
+func _on_hit_box_area_entered(area):
+	if area.get_parent().name == "Player" and area.name == "HurtBox":
+		print("hit by" + area.get_parent().name + area.name)
+		condition = "Dead"

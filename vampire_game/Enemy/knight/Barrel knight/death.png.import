@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7a3pchspop78"
-path="res://.godot/imported/attacks.png-1d629ddd60e03813f48409c86f7f18dc.ctex"
+uid="uid://gypkbfsq21f3"
+path="res://.godot/imported/death.png-42e8ac2b8a5d04af8fb7f29e22a3cec4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Barrel knight/attacks.png"
-dest_files=["res://.godot/imported/attacks.png-1d629ddd60e03813f48409c86f7f18dc.ctex"]
+source_file="res://Enemy/knight/Barrel knight/death.png"
+dest_files=["res://.godot/imported/death.png-42e8ac2b8a5d04af8fb7f29e22a3cec4.ctex"]
 
 [params]
 

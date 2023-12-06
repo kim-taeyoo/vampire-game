@@ -87,6 +87,7 @@ func _physics_process(delta):
 			whatAnimation = "None"
 		elif whatAnimation == "BloodSword":
 			whatAnimation = "None"
+			hurtBox.monitorable = false
 		elif whatAnimation == "BloodDagg":
 			whatAnimation = "None"
 
@@ -107,6 +108,7 @@ func _physics_process(delta):
 			velocity.x = 40 * saveDirection
 			whatAnimation = "BloodSword"
 			bloodSword.startBloodSword(bloodSwordDuration)
+			hurtBox.monitorable = true
 			hurtBox.scale.x = saveDirection
 			ap.play("BloodSword")
 		#bloodDagg

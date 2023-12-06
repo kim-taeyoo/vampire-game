@@ -9,5 +9,6 @@ func resetTimer():
 	#print("enemy find player")
 
 func _on_timeout():
-	enemy.cant_find_Player()
-	print("enemy alert off")
+	if enemy.condition != "Dead":
+		enemy.cant_find_Player()
+		print("enemy alert off")
