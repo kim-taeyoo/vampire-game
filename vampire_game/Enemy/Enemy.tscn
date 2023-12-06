@@ -1,10 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://b00jxpy5etudc"]
+[gd_scene load_steps=36 format=3 uid="uid://b00jxpy5etudc"]
 
 [ext_resource type="Texture2D" uid="uid://5tnga7sfvo71" path="res://Enemy/Barrel knight/run.png" id="1_spftf"]
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_tx4bx"]
 [ext_resource type="Texture2D" uid="uid://7a3pchspop78" path="res://Enemy/Barrel knight/attacks.png" id="2_pe4oj"]
 [ext_resource type="Texture2D" uid="uid://bm1bnawayhrd8" path="res://Enemy/Barrel knight/idle.png" id="3_u0vl8"]
 [ext_resource type="Script" path="res://Enemy/AlertTimer.gd" id="5_ithra"]
+[ext_resource type="Texture2D" uid="uid://caa3ho5vukg4" path="res://Emote/Exclamation.png" id="6_d3rug"]
+[ext_resource type="Script" path="res://Enemy/EmoteTimer.gd" id="7_4nowv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wml6s"]
 atlas = ExtResource("2_pe4oj")
@@ -155,6 +157,64 @@ size = Vector2(21.7391, 16.2162)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ueyjw"]
 size = Vector2(27.4999, 20.1613)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxwrr"]
+size = Vector2(22, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yid0"]
+atlas = ExtResource("6_d3rug")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_723kt"]
+atlas = ExtResource("6_d3rug")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e3gs"]
+atlas = ExtResource("6_d3rug")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bur3x"]
+atlas = ExtResource("6_d3rug")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsy00"]
+atlas = ExtResource("6_d3rug")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rlrx"]
+atlas = ExtResource("6_d3rug")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vb1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yid0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_723kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e3gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bur3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsy00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rlrx")
+}],
+"loop": true,
+"name": &"Find",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Lost",
+"speed": 5.0
+}]
+
 [node name="Enemy" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
@@ -163,7 +223,7 @@ collision_mask = 6
 script = ExtResource("1_tx4bx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(30, -16)
+position = Vector2(29.5, -15)
 sprite_frames = SubResource("SpriteFrames_4lxh0")
 animation = &"Attack"
 autoplay = "Idle"
@@ -173,6 +233,26 @@ position = Vector2(3, -12)
 scale = Vector2(0.920001, 1.48)
 shape = SubResource("RectangleShape2D_sietr")
 
+[node name="Sensor" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="MoveSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(22, -50)
+scale = Vector2(2, 1.04)
+collision_mask = 6
+
+[node name="PlayerDetectSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(-12, -8)
+scale = Vector2(2, 2)
+target_position = Vector2(100, 0)
+hit_from_inside = true
+
+[node name="PlayerAttackSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(13, -9)
+scale = Vector2(2, 2)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
@@ -180,25 +260,32 @@ position = Vector2(3, -12.5)
 scale = Vector2(0.800002, 1.24)
 shape = SubResource("RectangleShape2D_ueyjw")
 
-[node name="MoveSensor" type="RayCast2D" parent="."]
-position = Vector2(11, -25)
-scale = Vector2(1, 0.520001)
-collision_mask = 6
-
-[node name="PlayerDetectSensor" type="RayCast2D" parent="."]
-position = Vector2(-6, -4)
-target_position = Vector2(100, 0)
-hit_from_inside = true
-
-[node name="PlayerAttackSensor" type="RayCast2D" parent="."]
-position = Vector2(6.5, -4.5)
-target_position = Vector2(20, 0)
-hit_from_inside = true
-
 [node name="AlertTimer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
 script = ExtResource("5_ithra")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(16, -3.5)
+shape = SubResource("RectangleShape2D_rxwrr")
+disabled = true
+
+[node name="Emote" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="EmoteAnimation" type="AnimatedSprite2D" parent="Emote"]
+visible = false
+position = Vector2(0, -72)
+sprite_frames = SubResource("SpriteFrames_5vb1x")
+animation = &"Find"
+
+[node name="EmoteTimer" type="Timer" parent="Emote"]
+script = ExtResource("7_4nowv")
+
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="Emote/EmoteTimer" to="Emote/EmoteTimer" method="_on_timeout"]

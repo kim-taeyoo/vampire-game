@@ -11,11 +11,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_right = true
 
 #좌우이동 알고리즘 관련
-@onready var moveSensor = $MoveSensor
-@onready var playerDetectSensor = $PlayerDetectSensor
-@onready var playerAttackSensor = $PlayerAttackSensor
+@onready var moveSensor = $Sensor/MoveSensor
+@onready var playerDetectSensor = $Sensor/PlayerDetectSensor
+@onready var playerAttackSensor = $Sensor/PlayerAttackSensor
+
 @onready var AS = $AnimatedSprite2D
-@onready var timer = $AlertTimer
+@onready var emote = $Emote/EmoteAnimation
+
+@onready var emoteTimer = $Emote/EmoteTimer
+@onready var alertTimer = $AlertTimer
+
+@onready var hurtBox = $HurtBox/CollisionShape2D
 
 func _physics_process(delta):
 	# 중력추가
@@ -27,7 +33,8 @@ func _physics_process(delta):
 		
 	if playerDetectSensor.is_colliding():
 		find_Player()
-		timer.resetTimer()
+		alertTimer.resetTimer()
+		emoteTimer.resetTimer()
 		
 	if playerAttackSensor.is_colliding():
 		condition = "Attack"
@@ -49,6 +56,9 @@ func _physics_process(delta):
 	
 	if condition == "Attack":
 		AS.animation = "Attack"
+		hurtBox.disabled = true
+		if AS.frame == 4:
+			hurtBox.disabled = false
 		velocity.x = 0
 	
 	move_and_slide()
@@ -72,14 +82,20 @@ func change_condition_to_Idle():
 
 func find_Player():
 	findPlayer = true
+	emote.animation = "Find"
 	if condition != "Attack":
 		condition = "Run"
 
 func cant_find_Player():
 	findPlayer = false
+	emote.animation = "Lost"
 	condition = "Idle"
 
 func _on_animated_sprite_2d_animation_looped():
-	print("loop")
+	#print("loop")
 	if condition == "Attack":
 		condition = "Run"
+
+
+func _on_hurt_box_body_entered(body):
+	print("hit")
