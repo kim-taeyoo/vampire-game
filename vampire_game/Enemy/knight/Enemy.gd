@@ -40,6 +40,8 @@ func _physics_process(delta):
 			change_condition_to_Idle()
 	
 	if condition == "Attack":
+		#print("Now attacking")
+		#print("current AS : " + AS.animation)
 		AS.animation = "Attack"
 		hurtBox.disabled = true
 		if AS.frame == 4:
@@ -49,6 +51,7 @@ func _physics_process(delta):
 	if condition == "Dead":
 		AS.animation = "Dead"
 		emote.visible = false
+		velocity.x = 0
 		await get_tree().create_timer(5.0).timeout
 		queue_free()
 	
@@ -68,7 +71,7 @@ func flip():
 
 func change_condition_to_Run():
 	await get_tree().create_timer(3.0).timeout
-	if condition != "Dead":
+	if condition != "Dead" and condition != "Attack":
 		condition = "Run"
 
 func change_condition_to_Idle():
@@ -80,8 +83,7 @@ func find_Player():
 	findPlayer = true
 	emote.play("Find")
 	emoteTimer.resetTimer()
-	if condition != "Attack":
-		condition = "Run"
+	condition = "Run"
 
 func cant_find_Player():
 	findPlayer = false
@@ -91,8 +93,9 @@ func cant_find_Player():
 
 func _on_animated_sprite_2d_animation_looped():
 	#print("loop")
-	if condition == "Attack":
+	if AS.animation == "Attack" and condition == "Attack":
 		condition = "Run"
+		#print("check")
 
 
 func _on_hurt_box_body_entered(body):
