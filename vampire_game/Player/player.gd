@@ -141,11 +141,23 @@ func _physics_process(delta):
 			posibleWallJump = false
 			ap.play("Jump")
 			whatAnimation = "WallJump"
-		if wallCheck.is_colliding() and not is_on_floor() and velocity.y == 0:
-			posibleWallJump = true
+		if wallCheck.is_colliding() and not is_on_floor() and velocity.y >= -1 and velocity.y <= 1:
+			posibleWallJump = false
 			whatAnimation = "Jump"
-			print(whatAnimation)
+			
 	move_and_slide()
+	
+#테스트용
+const lines: Array[String] = [
+	"Hi, friend.",
+	"This is test message.",
+	"Wait.."
+]
+
+func _unhandled_input(event):
+	if event.is_action_pressed("Interact"):
+		DialogManager.start_dialog(global_position, lines)
+	
 
 
 func _on_area_2d_body_entered(body):
