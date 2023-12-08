@@ -1,0 +1,228 @@
+[gd_scene load_steps=28 format=3 uid="uid://cbhra0nmhwmg3"]
+
+[ext_resource type="Script" path="res://Enemy/Angry_Civilian/A_Civil.gd" id="1_po6xw"]
+[ext_resource type="Texture2D" uid="uid://dq24me4mpn1ne" path="res://Enemy/Angry_Civilian/Civilian/Hobbit - attack1.png" id="2_b6mwd"]
+[ext_resource type="Texture2D" uid="uid://bumjhdnndtvpw" path="res://Enemy/Angry_Civilian/Civilian/Hobbit - death4.png" id="3_ldhoy"]
+[ext_resource type="Texture2D" uid="uid://bm24nvhkhp85f" path="res://Enemy/Angry_Civilian/Civilian/Hobbit - Idle1.png" id="5_c0yel"]
+[ext_resource type="Texture2D" uid="uid://cejjnyv46i4du" path="res://Enemy/Angry_Civilian/Civilian/Hobbit - run5.png" id="5_i2p7y"]
+[ext_resource type="Script" path="res://Enemy/Angry_Civilian/MoveSensor.gd" id="7_7m7ks"]
+[ext_resource type="Script" path="res://Enemy/Angry_Civilian/PlayerDetectSensor.gd" id="8_jcbbt"]
+[ext_resource type="Script" path="res://Enemy/Angry_Civilian/PlayerAttackSensor.gd" id="9_jo8vd"]
+[ext_resource type="Script" path="res://Enemy/Angry_Civilian/AlertTimer.gd" id="10_hvdkw"]
+[ext_resource type="Texture2D" uid="uid://caa3ho5vukg4" path="res://Emote/Exclamation.png" id="11_wr65n"]
+[ext_resource type="Texture2D" uid="uid://bssx0pl4lnrx8" path="res://Emote/Question.png" id="12_f2jil"]
+[ext_resource type="Script" path="res://Enemy/Angry_Civilian/EmoteTimer.gd" id="13_5py1b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lxh0"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b6mwd")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ldhoy")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c0yel")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_i2p7y")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sietr"]
+size = Vector2(19.0217, 16.2162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ueyjw"]
+size = Vector2(24.3749, 20.1613)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxwrr"]
+size = Vector2(22, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yid0"]
+atlas = ExtResource("11_wr65n")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_723kt"]
+atlas = ExtResource("11_wr65n")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e3gs"]
+atlas = ExtResource("11_wr65n")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bur3x"]
+atlas = ExtResource("11_wr65n")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsy00"]
+atlas = ExtResource("11_wr65n")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rlrx"]
+atlas = ExtResource("11_wr65n")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3321"]
+atlas = ExtResource("12_f2jil")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx8iw"]
+atlas = ExtResource("12_f2jil")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb3v6"]
+atlas = ExtResource("12_f2jil")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mat7j"]
+atlas = ExtResource("12_f2jil")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vb1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yid0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_723kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e3gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bur3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsy00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rlrx")
+}],
+"loop": true,
+"name": &"Find",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3321")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx8iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb3v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mat7j")
+}],
+"loop": true,
+"name": &"Lost",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Angry_Civilian" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_po6xw")
+
+[node name="ACivilSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_4lxh0")
+animation = &"Attack"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.75, -12)
+scale = Vector2(0.920001, 1.48)
+shape = SubResource("RectangleShape2D_sietr")
+
+[node name="Sensor" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="MoveSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(22, -50)
+scale = Vector2(2, 1.04)
+collision_mask = 6
+script = ExtResource("7_7m7ks")
+
+[node name="PlayerDetectSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(-12, -8)
+scale = Vector2(2, 2)
+target_position = Vector2(100, 0)
+hit_from_inside = true
+script = ExtResource("8_jcbbt")
+
+[node name="PlayerAttackSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(13, -9)
+scale = Vector2(2, 2)
+target_position = Vector2(20, 0)
+hit_from_inside = true
+script = ExtResource("9_jo8vd")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1.75001, -12.5)
+scale = Vector2(0.800002, 1.24)
+shape = SubResource("RectangleShape2D_ueyjw")
+
+[node name="AlertTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+script = ExtResource("10_hvdkw")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(16, -3.5)
+shape = SubResource("RectangleShape2D_rxwrr")
+disabled = true
+
+[node name="Emote" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="EmoteAnimation" type="AnimatedSprite2D" parent="Emote"]
+visible = false
+position = Vector2(0, -72)
+sprite_frames = SubResource("SpriteFrames_5vb1x")
+
+[node name="EmoteTimer" type="Timer" parent="Emote"]
+wait_time = 3.0
+one_shot = true
+script = ExtResource("13_5py1b")
+
+[connection signal="animation_looped" from="ACivilSprite" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="Emote/EmoteTimer" to="Emote/EmoteTimer" method="_on_timeout"]
