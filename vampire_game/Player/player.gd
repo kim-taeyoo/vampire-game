@@ -39,7 +39,7 @@ var isFall = false
 @onready var hurtBox = $HurtBox
 
 func _physics_process(delta):
-	if not is_on_floor() and not posibleWallJump:
+	if not is_on_floor() and not posibleWallJump and not dash.isDashing():
 			velocity.y += gravity * delta
 	if not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg():
 	#중력
@@ -146,19 +146,6 @@ func _physics_process(delta):
 			whatAnimation = "Jump"
 			
 	move_and_slide()
-	
-#테스트용
-const lines: Array[String] = [
-	"Hi, friend.",
-	"This is test message.",
-	"Wait.."
-]
-
-func _unhandled_input(event):
-	if event.is_action_pressed("Interact"):
-		DialogManager.start_dialog(global_position, lines)
-	
-
 
 func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
