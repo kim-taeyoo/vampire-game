@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bumjhdnndtvpw"
-path="res://.godot/imported/Hobbit - death4.png-0239a62ee3a2b0750447656889af25b3.ctex"
+path="res://.godot/imported/Hobbit - death4.png-c22af246c3a652491d13819a5c119a0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Angry_Civilian/Civilian/Hobbit - death4.png"
-dest_files=["res://.godot/imported/Hobbit - death4.png-0239a62ee3a2b0750447656889af25b3.ctex"]
+source_file="res://Enemy/Civilian/CivilianSprite/Hobbit - death4.png"
+dest_files=["res://.godot/imported/Hobbit - death4.png-c22af246c3a652491d13819a5c119a0a.ctex"]
 
 [params]
 

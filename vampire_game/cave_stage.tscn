@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cftqnuiopntwe"]
+[gd_scene load_steps=10 format=3 uid="uid://cftqnuiopntwe"]
 
 [ext_resource type="Texture2D" uid="uid://bdas6snh0wl57" path="res://background/map_preview.png" id="3_18lmt"]
 [ext_resource type="Texture2D" uid="uid://cfmax8b1l5vsh" path="res://background/tiles.png" id="4_b05ia"]
-[ext_resource type="PackedScene" uid="uid://cbhra0nmhwmg3" path="res://Enemy/Angry_Civilian/A_Civil.tscn" id="5_36gj7"]
+[ext_resource type="PackedScene" uid="uid://cbhra0nmhwmg3" path="res://Enemy/Civilian/Angry_Civilian/A_Civil.tscn" id="5_274p6"]
 [ext_resource type="PackedScene" uid="uid://b00jxpy5etudc" path="res://Enemy/knight/Knight.tscn" id="5_r7812"]
 [ext_resource type="PackedScene" uid="uid://rqkig2xuvbko" path="res://Player/player.tscn" id="5_uvu64"]
+[ext_resource type="PackedScene" uid="uid://cspp4uo4ldpjc" path="res://Enemy/Civilian/Coward/Coward.tscn" id="6_1ff2l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqqy5"]
 texture = ExtResource("3_18lmt")
@@ -31297,5 +31298,8 @@ position = Vector2(310, 177)
 [node name="Knight" parent="Enemy" instance=ExtResource("5_r7812")]
 position = Vector2(1209, 473)
 
-[node name="Angry_Civilian" parent="Enemy" instance=ExtResource("5_36gj7")]
-position = Vector2(413, 143)
+[node name="Angry_Civilian" parent="Enemy" instance=ExtResource("5_274p6")]
+position = Vector2(77, 30)
+
+[node name="Coward" parent="Enemy" instance=ExtResource("6_1ff2l")]
+position = Vector2(407, 17)

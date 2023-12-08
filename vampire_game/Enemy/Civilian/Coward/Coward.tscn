@@ -1,0 +1,206 @@
+[gd_scene load_steps=26 format=3 uid="uid://cspp4uo4ldpjc"]
+
+[ext_resource type="Script" path="res://Enemy/Civilian/Coward/Coward.gd" id="1_04xq1"]
+[ext_resource type="Texture2D" uid="uid://dq24me4mpn1ne" path="res://Enemy/Civilian/CivilianSprite/Hobbit - attack1.png" id="1_kjtay"]
+[ext_resource type="Texture2D" uid="uid://bumjhdnndtvpw" path="res://Enemy/Civilian/CivilianSprite/Hobbit - death4.png" id="2_1lvss"]
+[ext_resource type="Texture2D" uid="uid://bm24nvhkhp85f" path="res://Enemy/Civilian/CivilianSprite/Hobbit - Idle1.png" id="3_cw1os"]
+[ext_resource type="Texture2D" uid="uid://cejjnyv46i4du" path="res://Enemy/Civilian/CivilianSprite/Hobbit - run5.png" id="4_oytmd"]
+[ext_resource type="Script" path="res://Enemy/Civilian/Coward/MoveSensor.gd" id="5_1gtb8"]
+[ext_resource type="Script" path="res://Enemy/Civilian/Coward/PlayerDetectSensor.gd" id="6_bbkbv"]
+[ext_resource type="Script" path="res://Enemy/Civilian/Coward/AlertTimer.gd" id="7_nq47i"]
+[ext_resource type="Texture2D" uid="uid://caa3ho5vukg4" path="res://Emote/Exclamation.png" id="8_nec4h"]
+[ext_resource type="Texture2D" uid="uid://bssx0pl4lnrx8" path="res://Emote/Question.png" id="9_k45mb"]
+[ext_resource type="Script" path="res://Enemy/Civilian/Coward/EmoteTimer.gd" id="10_fhga6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvfuq"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1lvss")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cw1os")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oytmd")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kjtay")
+}],
+"loop": true,
+"name": &"Stop",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0galp"]
+size = Vector2(19.0217, 16.2162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve7jr"]
+size = Vector2(24.3749, 20.1613)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yid0"]
+atlas = ExtResource("8_nec4h")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_723kt"]
+atlas = ExtResource("8_nec4h")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e3gs"]
+atlas = ExtResource("8_nec4h")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bur3x"]
+atlas = ExtResource("8_nec4h")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsy00"]
+atlas = ExtResource("8_nec4h")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rlrx"]
+atlas = ExtResource("8_nec4h")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3321"]
+atlas = ExtResource("9_k45mb")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx8iw"]
+atlas = ExtResource("9_k45mb")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb3v6"]
+atlas = ExtResource("9_k45mb")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mat7j"]
+atlas = ExtResource("9_k45mb")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_am7b3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yid0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_723kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e3gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bur3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsy00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rlrx")
+}],
+"loop": true,
+"name": &"Find",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3321")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx8iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb3v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mat7j")
+}],
+"loop": true,
+"name": &"Lost",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Coward" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_04xq1")
+
+[node name="CowardSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_nvfuq")
+animation = &"Stop"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.75, -12)
+scale = Vector2(0.920001, 1.48)
+shape = SubResource("RectangleShape2D_0galp")
+
+[node name="Sensor" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="MoveSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(22, -50)
+scale = Vector2(2, 1.04)
+collision_mask = 6
+script = ExtResource("5_1gtb8")
+
+[node name="PlayerDetectSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(0, -8)
+scale = Vector2(2, 2)
+target_position = Vector2(65, 0)
+hit_from_inside = true
+script = ExtResource("6_bbkbv")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1.75001, -12.5)
+scale = Vector2(0.800002, 1.24)
+shape = SubResource("RectangleShape2D_ve7jr")
+
+[node name="AlertTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+script = ExtResource("7_nq47i")
+
+[node name="Emote" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="EmoteAnimation" type="AnimatedSprite2D" parent="Emote"]
+visible = false
+position = Vector2(0, -72)
+sprite_frames = SubResource("SpriteFrames_am7b3")
+
+[node name="EmoteTimer" type="Timer" parent="Emote"]
+wait_time = 3.0
+one_shot = true
+script = ExtResource("10_fhga6")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]
+[connection signal="timeout" from="Emote/EmoteTimer" to="Emote/EmoteTimer" method="_on_timeout"]
