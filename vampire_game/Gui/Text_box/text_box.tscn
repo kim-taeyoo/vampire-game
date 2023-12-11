@@ -1,23 +1,98 @@
-[gd_scene load_steps=4 format=3 uid="uid://lrgjdo7la10m"]
+[gd_scene load_steps=11 format=3 uid="uid://lrgjdo7la10m"]
 
 [ext_resource type="Script" path="res://Gui/Text_box/text_box.gd" id="1_dvteq"]
-[ext_resource type="Texture2D" uid="uid://byhjkyn0dfp1g" path="res://Gui/speech bubble.png" id="2_2jfot"]
-[ext_resource type="FontFile" uid="uid://dryx13n35d08b" path="res://Gui/Pixel12x10.ttf" id="3_g4ujb"]
+[ext_resource type="Texture2D" uid="uid://byhjkyn0dfp1g" path="res://Gui/Text_box/speech bubble.png" id="2_kpdlg"]
+[ext_resource type="Texture2D" uid="uid://vtq2rmwh2lyl" path="res://Gui/Text_box/tail.png" id="3_udb3c"]
+[ext_resource type="Texture2D" uid="uid://24okmtyql0ha" path="res://Gui/Text_box/next_arrow.png" id="4_iuyaa"]
+[ext_resource type="FontFile" uid="uid://dryx13n35d08b" path="res://Gui/Text_box/Pixel12x10.ttf" id="5_f8yh8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d08jm"]
+atlas = ExtResource("4_iuyaa")
+region = Rect2(0, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfimu"]
+atlas = ExtResource("4_iuyaa")
+region = Rect2(12, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xha15"]
+atlas = ExtResource("4_iuyaa")
+region = Rect2(24, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n8jk"]
+atlas = ExtResource("4_iuyaa")
+region = Rect2(36, 0, 12, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08niy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d08jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfimu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xha15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n8jk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [node name="TextBox" type="MarginContainer"]
 texture_filter = 1
-offset_right = 111.0
-offset_bottom = 41.0
+offset_right = 38.0
+offset_bottom = 35.0
 script = ExtResource("1_dvteq")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_2jfot")
+texture = ExtResource("2_kpdlg")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
+
+[node name="Control" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/Control"]
+position = Vector2(19.5, 41)
+texture = ExtResource("3_udb3c")
+
+[node name="Control2" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="NextIndicator" type="AnimatedSprite2D" parent="NinePatchRect/Control2"]
+visible = false
+position = Vector2(-2, -5)
+sprite_frames = SubResource("SpriteFrames_08niy")
+autoplay = "default"
+frame = 1
+frame_progress = 0.342616
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -30,13 +105,14 @@ theme_override_constants/margin_bottom = 8
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_g4ujb")
-text = "Some Text"
+theme_override_fonts/font = ExtResource("5_f8yh8")
 vertical_alignment = 1
 
 [node name="LetterDisplayTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+bus = &"speech"
 
 [connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]
