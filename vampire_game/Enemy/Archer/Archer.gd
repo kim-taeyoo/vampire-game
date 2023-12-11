@@ -6,6 +6,7 @@ extends CharacterBody2D
 var condition = "Idle" #default
 var findPlayer = false
 var displacement = 0
+var shootable = true
 
 #이동 관련
 var speed = 80.0
@@ -43,8 +44,9 @@ func _physics_process(delta):
 		#print("Now attacking")
 		#print("current AS : " + AS.animation)
 		AS.animation = "Attack"
-		if AS.frame == 5:
+		if AS.frame == 5 and shootable:
 			shoot()
+			shootable = false
 		velocity.x = 0
 	
 	if condition == "Dead":
@@ -99,13 +101,13 @@ func shoot():
 	var s = Arrow.instantiate()
 
 	$"../..".add_child(s)
-
 	s.transform = $Marker2D.global_transform
 
 func _on_animated_sprite_2d_animation_looped():
 	#print("loop")
 	if AS.animation == "Attack" and condition == "Attack":
 		condition = "Run"
+		shootable = true
 		#print("check")
 
 func _on_hit_box_area_entered(area):

@@ -333,7 +333,7 @@ script = ExtResource("1_tx4bx")
 [node name="knightSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(29.5, -15)
 sprite_frames = SubResource("SpriteFrames_4lxh0")
-animation = &"Idle"
+animation = &"Dead"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

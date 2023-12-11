@@ -1,9 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://cvnpcnsfb2xqb"]
+[gd_scene load_steps=58 format=3 uid="uid://cvnpcnsfb2xqb"]
 
 [ext_resource type="Script" path="res://Enemy/Archer/Archer.gd" id="1_ty73h"]
 [ext_resource type="PackedScene" uid="uid://3byw86b7y12n" path="res://Enemy/Archer/Arrow/Arrow.tscn" id="2_jikmj"]
 [ext_resource type="Texture2D" uid="uid://c3vmahmlum0oq" path="res://Enemy/Archer/Archer Sprite/Ranger Shoot.png" id="2_tahbr"]
-[ext_resource type="Texture2D" uid="uid://bpqix41ti0lq3" path="res://Enemy/Archer/Archer Sprite/Ranger Jump.png" id="3_ognuk"]
+[ext_resource type="Texture2D" uid="uid://bpqix41ti0lq3" path="res://Enemy/Archer/Archer Sprite/Ranger Dead.png" id="3_ognuk"]
 [ext_resource type="Texture2D" uid="uid://dsvi0n65g060m" path="res://Enemy/Archer/Archer Sprite/Ranger Idle.png" id="5_1ado8"]
 [ext_resource type="Texture2D" uid="uid://c4rveodgtuo1k" path="res://Enemy/Archer/Archer Sprite/Ranger Run.png" id="6_shoso"]
 [ext_resource type="Script" path="res://Enemy/Archer/MoveSensor.gd" id="7_2n8vg"]
@@ -42,9 +42,41 @@ region = Rect2(240, 0, 48, 48)
 atlas = ExtResource("2_tahbr")
 region = Rect2(288, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_omjgd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4iq5"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fy4t"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_187s4"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wvfr"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8el1t"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0x8u"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar1ht"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr76r"]
 atlas = ExtResource("3_ognuk")
 region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tq3r"]
+atlas = ExtResource("3_ognuk")
+region = Rect2(384, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ekgo"]
 atlas = ExtResource("5_1ado8")
@@ -132,8 +164,32 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_d4iq5")
+}, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_omjgd")
+"texture": SubResource("AtlasTexture_0fy4t")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_187s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wvfr")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_8el1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0x8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar1ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr76r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tq3r")
 }],
 "loop": false,
 "name": &"Dead",
@@ -297,10 +353,8 @@ Arrow = ExtResource("2_jikmj")
 position = Vector2(2, -17)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_lmfd3")
-animation = &"Attack"
+animation = &"Run"
 autoplay = "Idle"
-frame = 4
-frame_progress = 0.75843
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.75, -12)
@@ -319,14 +373,14 @@ script = ExtResource("7_2n8vg")
 [node name="PlayerDetectSensor" type="RayCast2D" parent="Sensor"]
 position = Vector2(0, -8)
 scale = Vector2(2, 2)
-target_position = Vector2(80, 0)
+target_position = Vector2(120, 0)
 hit_from_inside = true
 script = ExtResource("8_kboeg")
 
 [node name="PlayerAttackSensor" type="RayCast2D" parent="Sensor"]
 position = Vector2(13, -9)
 scale = Vector2(2, 2)
-target_position = Vector2(73, 0)
+target_position = Vector2(110, 0)
 hit_from_inside = true
 script = ExtResource("9_xdub6")
 
@@ -361,5 +415,6 @@ position = Vector2(7, -13)
 gizmo_extents = 0.0
 
 [connection signal="animation_looped" from="ArcherSprite" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]
 [connection signal="timeout" from="Emote/EmoteTimer" to="Emote/EmoteTimer" method="_on_timeout"]
