@@ -1,23 +1,23 @@
 extends CharacterBody2D
 
+@export var Arrow : PackedScene
+
 #상태 Idle, Run, Attack, Dead
 var condition = "Idle" #default
 var findPlayer = false
 var displacement = 0
 
 #이동 관련
-var speed = 40.0
+var speed = 80.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_right = true
 
 
-@onready var AS = $knightSprite
+@onready var AS = $ArcherSprite
 @onready var emote = $Emote/EmoteAnimation
 
 @onready var emoteTimer = $Emote/EmoteTimer
 @onready var alertTimer = $AlertTimer
-
-@onready var hurtBox = $HurtBox/CollisionShape2D
 
 func _physics_process(delta):
 	# 중력추가
@@ -33,7 +33,7 @@ func _physics_process(delta):
 		AS.animation = "Run"
 		velocity.x = speed
 		if findPlayer:
-			velocity.x = speed * 3
+			velocity.x = speed * 2
 		displacement += 1
 		
 		if displacement > 150 and not findPlayer:
@@ -43,9 +43,8 @@ func _physics_process(delta):
 		#print("Now attacking")
 		#print("current AS : " + AS.animation)
 		AS.animation = "Attack"
-		hurtBox.disabled = true
-		if AS.frame == 4:
-			hurtBox.disabled = false
+		if AS.frame == 5:
+			shoot()
 		velocity.x = 0
 	
 	if condition == "Dead":
@@ -90,18 +89,24 @@ func cant_find_Player():
 	emote.play("Lost")
 	emoteTimer.resetTimer()
 	condition = "Idle"
+	
+func shoot():
+	# instantiate a bullet if it has been assigned in the Inspector
+	if !Arrow:
+		print("ERROR: Arrow scene hasn't been assigned!")
+		return
+	
+	var s = Arrow.instantiate()
+
+	$"../..".add_child(s)
+
+	s.transform = $Marker2D.global_transform
 
 func _on_animated_sprite_2d_animation_looped():
 	#print("loop")
 	if AS.animation == "Attack" and condition == "Attack":
 		condition = "Run"
 		#print("check")
-
-
-func _on_hurt_box_body_entered(body):
-	if body.name == "Player":
-		print("hit" + body.name)
-
 
 func _on_hit_box_area_entered(area):
 	if area.get_parent().name == "Player" and area.name == "HurtBox":

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://3byw86b7y12n"]
+
+[ext_resource type="Script" path="res://Enemy/Archer/Arrow/Arrow.gd" id="1_pfhb4"]
+[ext_resource type="Texture2D" uid="uid://dhu3auqigqw8e" path="res://Enemy/Archer/Arrow/ArrowSprite/Basic Arrow.png" id="2_s7cw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am6sr"]
+size = Vector2(19, 5)
+
+[node name="Arrow" type="Area2D"]
+collision_layer = 32
+collision_mask = 15
+script = ExtResource("1_pfhb4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s7cw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_am6sr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

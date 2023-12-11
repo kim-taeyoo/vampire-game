@@ -60,6 +60,7 @@ BloodDagg={
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Ceiling"
 2d_physics/layer_5="Enemy"
+2d_physics/layer_6="Arrow"
 
 [rendering]
 
