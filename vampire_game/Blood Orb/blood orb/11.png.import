@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm24nvhkhp85f"
-path="res://.godot/imported/Hobbit - Idle1.png-b21d3417bd99a250f9aad33b13ee6235.ctex"
+uid="uid://bmcbd5rkl815y"
+path="res://.godot/imported/11.png-a1dc2ec1580cc9225513304aaf8f4bfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Civilian/CivilianSprite/Hobbit - Idle1.png"
-dest_files=["res://.godot/imported/Hobbit - Idle1.png-b21d3417bd99a250f9aad33b13ee6235.ctex"]
+source_file="res://Blood Orb/blood orb/11.png"
+dest_files=["res://.godot/imported/11.png-a1dc2ec1580cc9225513304aaf8f4bfb.ctex"]
 
 [params]
 

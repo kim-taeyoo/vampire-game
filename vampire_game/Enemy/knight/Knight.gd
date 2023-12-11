@@ -100,7 +100,7 @@ func _on_animated_sprite_2d_animation_looped():
 
 func _on_hurt_box_body_entered(body):
 	if body.name == "Player":
-		print("hit" + body.name)
+		print(name + " hit " + body.name)
 
 
 func _on_hit_box_area_entered(area):

@@ -9,6 +9,6 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		print("hit" + body.name)
+		print(name + " hit " + body.name)
 	queue_free()
 	

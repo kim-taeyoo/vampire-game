@@ -45,7 +45,7 @@ func _physics_process(delta):
 		#print("current AS : " + AS.animation)
 		AS.animation = "Attack"
 		hurtBox.disabled = true
-		if AS.frame == 4:
+		if AS.frame == 4 or AS.frame == 5:
 			hurtBox.disabled = false
 		velocity.x = 0
 	
@@ -101,7 +101,7 @@ func _on_animated_sprite_2d_animation_looped():
 
 func _on_hurt_box_body_entered(body):
 	if body.name == "Player":
-		print("hit" + body.name)
+		print(name + " hit " + body.name)
 
 
 func _on_hit_box_area_entered(area):

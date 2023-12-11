@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cejjnyv46i4du"
-path="res://.godot/imported/Hobbit - run5.png-14eaa16900956bc88ce237488638fb6b.ctex"
+uid="uid://csn7e3x2f3rcg"
+path="res://.godot/imported/18.png-5a5dd07cf807c2fdc9443bdeb65e2cfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Civilian/CivilianSprite/Hobbit - run5.png"
-dest_files=["res://.godot/imported/Hobbit - run5.png-14eaa16900956bc88ce237488638fb6b.ctex"]
+source_file="res://Blood Orb/blood orb/18.png"
+dest_files=["res://.godot/imported/18.png-5a5dd07cf807c2fdc9443bdeb65e2cfa.ctex"]
 
 [params]
 
