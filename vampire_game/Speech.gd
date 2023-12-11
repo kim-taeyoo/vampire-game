@@ -18,14 +18,14 @@ const startMessage: Array[String] = [
 
 #상호작용
 func _unhandled_input(event):
-	if event.is_action_pressed("Interact"):
+	if event.is_action_pressed("advance_dialog") and isStoryAnimation:
 		if storyNum == 0:
 			storyNum += 1
 			isStoryAnimation = false
 			storyPlayer.play("Place1_explain")
 			timer.start(2.5)
-				
-#		DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
+	if event.is_action_pressed("Interact"):	
+		DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
 	
 #장소1
 func _on_place_1_body_entered(body):

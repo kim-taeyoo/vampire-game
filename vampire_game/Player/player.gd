@@ -44,8 +44,8 @@ var isFall = false
 func _physics_process(delta):
 	#스토리 진행될때 움직임 멈춤
 	if story.isStoryAnimation:
+		velocity.x = 0
 		ap.play("Idle")
-		return
 	#다이어로그 나올때 움직임 멈춤
 	if DialogManager.is_dialog_active:
 		ap.play("Idle")
@@ -53,7 +53,7 @@ func _physics_process(delta):
 		
 	if not is_on_floor() and not posibleWallJump and not dash.isDashing():
 			velocity.y += gravity * delta
-	if not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg():
+	if not story.isStoryAnimation and not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg():
 	#중력
 		if not is_on_floor() and not wallCheck.is_colliding():
 #			velocity.y += gravity * delta
