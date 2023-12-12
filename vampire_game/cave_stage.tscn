@@ -31286,6 +31286,7 @@ sources/2 = SubResource("TileSetAtlasSource_e2o3g")
 [node name="CaveStage" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(1, 0)
 rotation = 0.00100752
 tile_set = SubResource("TileSet_pgd8i")
 format = 2
@@ -31312,5 +31313,10 @@ position = Vector2(407, 17)
 [node name="Orb" type="Node" parent="."]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.5
+rotation = 0.523599
+scale = Vector2(1, 1)
+energy = 0.8
 blend_mode = 1
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 2.0
