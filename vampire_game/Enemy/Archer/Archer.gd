@@ -27,40 +27,38 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-	if condition == "Idle":
-		AS.animation = "Idle"
-		velocity.x = 0
-		change_condition_to_Run()
+	match condition:
+		"Idle":
+			AS.animation = "Idle"
+			velocity.x = 0
+			change_condition_to_Run()
 		
-	if condition == "Run":
-		AS.animation = "Run"
-		velocity.x = speed
-		if findPlayer:
-			velocity.x = speed * 2
-		displacement += 1
+		"Run":
+			AS.animation = "Run"
+			velocity.x = speed
+			if findPlayer:
+				velocity.x = speed * 2
+			displacement += 1
+			if displacement > 150 and not findPlayer:
+				change_condition_to_Idle()
 		
-		if displacement > 150 and not findPlayer:
-			change_condition_to_Idle()
-	
-	if condition == "Attack":
-		#print("Now attacking")
-		#print("current AS : " + AS.animation)
-		AS.animation = "Attack"
-		if AS.frame == 5 and shootable:
-			shoot()
-			shootable = false
-		velocity.x = 0
-	
-	if condition == "Dead":
-		AS.animation = "Dead"
-		emote.visible = false
-		velocity.x = 0
-		if AS.frame == 4 and !DropOrb:
-			makeOrb()
-			DropOrb = true
-		await get_tree().create_timer(5.0).timeout
-		queue_free()
-	
+		"Attack":
+			AS.animation = "Attack"
+			if AS.frame == 5 and shootable:
+				shoot()
+				shootable = false
+			velocity.x = 0
+		
+		"Dead":
+			AS.animation = "Dead"
+			emote.visible = false
+			velocity.x = 0
+			if AS.frame == 4 and !DropOrb:
+				makeOrb()
+				DropOrb = true
+			await get_tree().create_timer(5.0).timeout
+			queue_free()
+			
 	move_and_slide()
 
 func flip():

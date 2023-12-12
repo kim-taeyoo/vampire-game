@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cspp4uo4ldpjc"]
+[gd_scene load_steps=58 format=3 uid="uid://cspp4uo4ldpjc"]
 
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/Coward.gd" id="1_04xq1"]
 [ext_resource type="Texture2D" uid="uid://cr747l2e6gfe4" path="res://Enemy/Civilian/CivilianSprite/Civil_Shiver.png" id="2_0onms"]
@@ -334,6 +334,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_0sltc"]
+offsets = PackedFloat32Array(0, 0.681818)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gfmvd"]
+gradient = SubResource("Gradient_0sltc")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Coward" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 collision_layer = 16
@@ -342,11 +353,10 @@ script = ExtResource("1_04xq1")
 Orb = ExtResource("2_grp1s")
 
 [node name="CowardSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16.5)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_nvfuq")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.416585
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -8.75001)
@@ -394,6 +404,12 @@ sprite_frames = SubResource("SpriteFrames_am7b3")
 wait_time = 3.0
 one_shot = true
 script = ExtResource("10_fhga6")
+
+[node name="Torch" type="PointLight2D" parent="."]
+position = Vector2(0.5, -15.5)
+color = Color(0.980392, 0.686275, 0.266667, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_gfmvd")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]

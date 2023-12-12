@@ -31310,3 +31310,7 @@ position = Vector2(407, 17)
 [node name="Projectile" type="Node" parent="."]
 
 [node name="Orb" type="Node" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.5
+blend_mode = 1

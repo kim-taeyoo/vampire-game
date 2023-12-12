@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cmxifb78w74h2"]
+[gd_scene load_steps=36 format=3 uid="uid://cmxifb78w74h2"]
 
 [ext_resource type="Script" path="res://Blood Orb/Orb.gd" id="1_3c1ww"]
 [ext_resource type="Texture2D" uid="uid://bom1dbwpt6ijv" path="res://Blood Orb/blood orb/1.png" id="1_ylm6c"]
@@ -133,6 +133,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_427uk"]
 radius = 4.0
 
+[sub_resource type="Gradient" id="Gradient_xkhii"]
+offsets = PackedFloat32Array(0, 0.681818)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dgpdn"]
+gradient = SubResource("Gradient_xkhii")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Orb" type="Area2D"]
 scale = Vector2(3, 3)
 collision_layer = 64
@@ -148,5 +157,11 @@ frame_progress = 0.107352
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_427uk")
+
+[node name="Torch" type="PointLight2D" parent="."]
+position = Vector2(0, -5)
+color = Color(1, 0, 0, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_dgpdn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

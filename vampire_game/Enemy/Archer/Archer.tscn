@@ -352,10 +352,10 @@ Arrow = ExtResource("2_jikmj")
 Orb = ExtResource("3_kogi4")
 
 [node name="ArcherSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -17)
+position = Vector2(2, -16.8)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_lmfd3")
-animation = &"Run"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

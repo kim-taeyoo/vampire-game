@@ -333,9 +333,9 @@ script = ExtResource("1_tx4bx")
 Orb = ExtResource("2_51rq8")
 
 [node name="knightSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(29.5, -15)
+position = Vector2(29.5, -16)
 sprite_frames = SubResource("SpriteFrames_4lxh0")
-animation = &"Dead"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
