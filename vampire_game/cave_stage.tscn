@@ -31306,3 +31306,7 @@ position = Vector2(77, 30)
 position = Vector2(407, 17)
 
 [node name="Archer" parent="Enemy" instance=ExtResource("7_mmp00")]
+
+[node name="Projectile" type="Node" parent="."]
+
+[node name="Orb" type="Node" parent="."]

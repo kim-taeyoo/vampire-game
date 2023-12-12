@@ -1,7 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://b00jxpy5etudc"]
+[gd_scene load_steps=56 format=3 uid="uid://b00jxpy5etudc"]
 
 [ext_resource type="Texture2D" uid="uid://5tnga7sfvo71" path="res://Enemy/knight/Barrel knight/run.png" id="1_spftf"]
 [ext_resource type="Script" path="res://Enemy/knight/Knight.gd" id="1_tx4bx"]
+[ext_resource type="PackedScene" uid="uid://cmxifb78w74h2" path="res://Blood Orb/Orb.tscn" id="2_51rq8"]
 [ext_resource type="Texture2D" uid="uid://7a3pchspop78" path="res://Enemy/knight/Barrel knight/attacks.png" id="2_pe4oj"]
 [ext_resource type="Texture2D" uid="uid://bm1bnawayhrd8" path="res://Enemy/knight/Barrel knight/idle.png" id="3_u0vl8"]
 [ext_resource type="Texture2D" uid="uid://dd7qr6war0w6o" path="res://Enemy/knight/Barrel knight/hit and to idle.png" id="5_68t6b"]
@@ -329,6 +330,7 @@ scale = Vector2(2, 2)
 collision_layer = 16
 collision_mask = 6
 script = ExtResource("1_tx4bx")
+Orb = ExtResource("2_51rq8")
 
 [node name="knightSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(29.5, -15)

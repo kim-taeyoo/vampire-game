@@ -1,7 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://cspp4uo4ldpjc"]
+[gd_scene load_steps=56 format=3 uid="uid://cspp4uo4ldpjc"]
 
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/Coward.gd" id="1_04xq1"]
 [ext_resource type="Texture2D" uid="uid://cr747l2e6gfe4" path="res://Enemy/Civilian/CivilianSprite/Civil_Shiver.png" id="2_0onms"]
+[ext_resource type="PackedScene" uid="uid://cmxifb78w74h2" path="res://Blood Orb/Orb.tscn" id="2_grp1s"]
 [ext_resource type="Texture2D" uid="uid://dke5j341yv0j7" path="res://Enemy/Civilian/CivilianSprite/Civil_Dead.png" id="2_naktn"]
 [ext_resource type="Texture2D" uid="uid://cr7ua0nkj086t" path="res://Enemy/Civilian/CivilianSprite/Civil_Idle.png" id="3_kc5ah"]
 [ext_resource type="Texture2D" uid="uid://d3tsisyto4g8" path="res://Enemy/Civilian/CivilianSprite/Civil_Run.png" id="4_od7sq"]
@@ -338,6 +339,7 @@ scale = Vector2(2, 2)
 collision_layer = 16
 collision_mask = 6
 script = ExtResource("1_04xq1")
+Orb = ExtResource("2_grp1s")
 
 [node name="CowardSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16.5)

@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
+@export var Orb : PackedScene
+
 #상태 Idle, Run, Stop, Dead
 var condition = "Idle" #default
 var findPlayer = false
 var displacement = 0
+var DropOrb = false
 
 #이동 관련
 var speed = 50.0
@@ -46,6 +49,9 @@ func _physics_process(delta):
 		AS.animation = "Dead"
 		emote.visible = false
 		velocity.x = 0
+		if AS.frame == 4 and !DropOrb:
+			makeOrb()
+			DropOrb = true
 		await get_tree().create_timer(5.0).timeout
 		queue_free()
 	
@@ -91,3 +97,14 @@ func _on_hit_box_area_entered(area):
 	if area.get_parent().name == "Player" and area.name == "HurtBox":
 		print("hit by" + area.get_parent().name + area.name)
 		condition = "Dead"
+		
+func makeOrb():
+	# instantiate a bullet if it has been assigned in the Inspector
+	if !Orb:
+		print("ERROR: Orb scene hasn't been assigned!")
+		return
+	
+	var O = Orb.instantiate()
+
+	$"../../Orb".add_child(O)
+	O.transform = global_transform

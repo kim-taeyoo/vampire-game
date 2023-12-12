@@ -1,8 +1,9 @@
-[gd_scene load_steps=58 format=3 uid="uid://cvnpcnsfb2xqb"]
+[gd_scene load_steps=59 format=3 uid="uid://cvnpcnsfb2xqb"]
 
 [ext_resource type="Script" path="res://Enemy/Archer/Archer.gd" id="1_ty73h"]
 [ext_resource type="PackedScene" uid="uid://3byw86b7y12n" path="res://Enemy/Archer/Arrow/Arrow.tscn" id="2_jikmj"]
 [ext_resource type="Texture2D" uid="uid://c3vmahmlum0oq" path="res://Enemy/Archer/Archer Sprite/Ranger Shoot.png" id="2_tahbr"]
+[ext_resource type="PackedScene" uid="uid://cmxifb78w74h2" path="res://Blood Orb/Orb.tscn" id="3_kogi4"]
 [ext_resource type="Texture2D" uid="uid://bpqix41ti0lq3" path="res://Enemy/Archer/Archer Sprite/Ranger Dead.png" id="3_ognuk"]
 [ext_resource type="Texture2D" uid="uid://dsvi0n65g060m" path="res://Enemy/Archer/Archer Sprite/Ranger Idle.png" id="5_1ado8"]
 [ext_resource type="Texture2D" uid="uid://c4rveodgtuo1k" path="res://Enemy/Archer/Archer Sprite/Ranger Run.png" id="6_shoso"]
@@ -348,6 +349,7 @@ collision_layer = 16
 collision_mask = 6
 script = ExtResource("1_ty73h")
 Arrow = ExtResource("2_jikmj")
+Orb = ExtResource("3_kogi4")
 
 [node name="ArcherSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -17)
