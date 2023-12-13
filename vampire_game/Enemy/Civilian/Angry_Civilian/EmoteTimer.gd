@@ -12,6 +12,6 @@ func resetTimer():
 func _on_timeout():
 	emote.visible = false
 	emote.pause()
-	print("emote end")
+	#print("emote end")
 
 	
