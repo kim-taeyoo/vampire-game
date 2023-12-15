@@ -1,11 +1,17 @@
 extends CharacterBody2D
 
+signal healthChanged
+
 var speed = 200
 var gravity = 1000
 var jump = -450
 #상태 변수
-var health = 3
-var point = 0
+@export var maxHealth = 100
+@onready var currentHealth: int = maxHealth
+var isHit = false
+@onready var hitTimer = $HitBox/HitTimer
+@onready var knockbackTimer = $HitBox/KnockbackTimer
+@onready var damagePopup = $PopupLocation
 
 #상호작용 애니메이션 직후 처리
 var whatAnimation = "None"
@@ -53,7 +59,9 @@ func _physics_process(delta):
 		
 	if not is_on_floor() and not posibleWallJump and not dash.isDashing():
 			velocity.y += gravity * delta
-	if not story.isStoryAnimation and not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg():
+			if is_on_floor():
+				velocity.x = 0
+	if not story.isStoryAnimation and not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg() and knockbackTimer.is_stopped():
 	#중력
 		if not is_on_floor() and not wallCheck.is_colliding():
 #			velocity.y += gravity * delta
@@ -156,8 +164,31 @@ func _physics_process(delta):
 		if wallCheck.is_colliding() and not is_on_floor() and velocity.y >= -1 and velocity.y <= 1:
 			posibleWallJump = false
 			whatAnimation = "Jump"
-			
+		#game over	
+		if currentHealth <= 0:
+			pass
 	move_and_slide()
 
-func _on_area_2d_body_entered(body):
-	pass # Replace with function body.
+func _on_hit_box_body_entered(body):
+	if not isHit:
+		currentHealth -= 5
+		isHit = true
+		ap.play("Hit")
+		damagePopup.popup()
+		hitTimer.start()
+		healthChanged.emit()
+		
+		#knockback
+		knockbackTimer.start()
+		if position.x - body.position.x > 0:
+			velocity.x = 400
+		else:
+			velocity.x = -500
+
+
+func _on_timer_timeout():
+	isHit = false
+
+
+func _on_knockback_timer_timeout():
+	velocity.x = 0

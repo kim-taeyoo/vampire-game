@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://rqkig2xuvbko"]
+[gd_scene load_steps=30 format=3 uid="uid://rqkig2xuvbko"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0w4vw"]
 [ext_resource type="Texture2D" uid="uid://cp5iw0it2jfkk" path="res://Player/run.png" id="1_1ln5s"]
@@ -9,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://heotrqwkpott" path="res://Player/Small dagg attack.png" id="6_t2hqo"]
 [ext_resource type="Texture2D" uid="uid://bgn31cgabmcr5" path="res://Player/Wall Jump.png" id="7_3g00i"]
 [ext_resource type="Script" path="res://Player/BloodSword.gd" id="7_52j7b"]
+[ext_resource type="Texture2D" uid="uid://bn518rg2jxh1o" path="res://Player/Hit.png" id="8_clylg"]
 [ext_resource type="Script" path="res://Player/BloodDagg.gd" id="9_alny3"]
 [ext_resource type="Script" path="res://Player/WallCheck.gd" id="11_mfo1d"]
+[ext_resource type="Script" path="res://Player/PopupLocation.gd" id="13_ajcmv"]
+[ext_resource type="PackedScene" uid="uid://cpo5nnkrau162" path="res://floating_numers.tscn" id="14_fclfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5dkn"]
 size = Vector2(13.5, 13.25)
@@ -531,6 +534,70 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_xrcy1"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_clylg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_n3h5o"]
@@ -1139,6 +1206,7 @@ _data = {
 "Dash": SubResource("Animation_8j2qn"),
 "Dash_Left": SubResource("Animation_21ve5"),
 "Fall": SubResource("Animation_0bukv"),
+"Hit": SubResource("Animation_xrcy1"),
 "Idle": SubResource("Animation_n3h5o"),
 "Jump": SubResource("Animation_3oaqe"),
 "Land": SubResource("Animation_jtkxr"),
@@ -1165,6 +1233,7 @@ shape = SubResource("RectangleShape2D_w5dkn")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HitBox" type="Area2D" parent="."]
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-1, -7)
@@ -1172,6 +1241,14 @@ scale = Vector2(0.72, 0.72)
 shape = SubResource("RectangleShape2D_7c8tp")
 
 [node name="Marker2D" type="Marker2D" parent="HitBox/CollisionShape2D"]
+
+[node name="HitTimer" type="Timer" parent="HitBox"]
+wait_time = 0.3
+one_shot = true
+
+[node name="KnockbackTimer" type="Timer" parent="HitBox"]
+wait_time = 0.1
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -1212,4 +1289,13 @@ script = ExtResource("11_mfo1d")
 rotation = -0.0029543
 polygon = PackedVector2Array(24.5, -10, 12, -5.5, -3.5, -5, -8.5, -10.5, -5, -17, -5, -22, -9, -22, -16, -14, -14.5, -6.5, -12.5, -4, -22.5, -3.5, -23, -7.5, -24.5, -10, -29.5, -9.5, -29.5, -4, -25.5, 0, 13, 0, 26.5, -6.5, 26.5, -9)
 
+[node name="PopupLocation" type="Marker2D" parent="."]
+position = Vector2(0, -18.5)
+script = ExtResource("13_ajcmv")
+damage_node = ExtResource("14_fclfa")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="HitBox/HitTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="HitBox/KnockbackTimer" to="." method="_on_knockback_timer_timeout"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

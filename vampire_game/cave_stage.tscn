@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://cftqnuiopntwe"]
+[gd_scene load_steps=18 format=3 uid="uid://cftqnuiopntwe"]
 
 [ext_resource type="Texture2D" uid="uid://bdas6snh0wl57" path="res://background/map_preview.png" id="3_18lmt"]
 [ext_resource type="PackedScene" uid="uid://bsgjp6thehajm" path="res://Enemy/barrel_knight.tscn" id="4_8sphk"]
 [ext_resource type="Texture2D" uid="uid://cfmax8b1l5vsh" path="res://background/tiles.png" id="4_b05ia"]
 [ext_resource type="Script" path="res://Speech.gd" id="5_plf64"]
 [ext_resource type="PackedScene" uid="uid://rqkig2xuvbko" path="res://Player/player.tscn" id="5_uvu64"]
+[ext_resource type="Script" path="res://Gui/HealthBar.gd" id="6_hfmm1"]
+[ext_resource type="Texture2D" uid="uid://xbld13nb7d45" path="res://Gui/healthBarUnder.png" id="7_c0wir"]
+[ext_resource type="Texture2D" uid="uid://76ijvwc2txny" path="res://Gui/healthBar.png" id="7_p8one"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqqy5"]
 texture = ExtResource("3_18lmt")
@@ -10475,6 +10478,9 @@ tracks/3/keys = {
 "values": [Vector2(0.877697, 0.74959)]
 }
 
+[sub_resource type="Animation" id="Animation_degpe"]
+resource_name = "Game_Start"
+
 [sub_resource type="Animation" id="Animation_tuyqx"]
 resource_name = "Place1_explain"
 length = 4.0
@@ -10578,9 +10584,6 @@ tracks/3/keys = {
 "values": [Vector2(0.877697, 0.74959)]
 }
 
-[sub_resource type="Animation" id="Animation_degpe"]
-resource_name = "Game_Start"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yy6ix"]
 _data = {
 "Basic": SubResource("Animation_5duuk"),
@@ -10602,7 +10605,6 @@ layer_0/tile_data = PackedInt32Array(393216, 196610, 1, 458752, 131074, 2, 39321
 
 [node name="Player" parent="." instance=ExtResource("5_uvu64")]
 position = Vector2(657, 189)
-scale = Vector2(-2, 2)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(0, -29.5)
@@ -10634,6 +10636,30 @@ position = Vector2(1061.5, 157)
 shape = SubResource("RectangleShape2D_01chg")
 
 [node name="Timer" type="Timer" parent="Story"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 27.0
+scale = Vector2(2, 2)
+value = 100.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 19.0
+offset_right = 392.0
+offset_bottom = 110.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("7_c0wir")
+texture_progress = ExtResource("7_p8one")
+script = ExtResource("6_hfmm1")
 
 [connection signal="body_entered" from="Story/Place1" to="Story" method="_on_place_1_body_entered"]
 [connection signal="timeout" from="Story/Timer" to="Story" method="_on_timer_timeout"]
