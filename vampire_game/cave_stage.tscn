@@ -31299,7 +31299,7 @@ position = Vector2(310, 177)
 [node name="Enemy" type="Node" parent="."]
 
 [node name="Knight" parent="Enemy" instance=ExtResource("5_r7812")]
-position = Vector2(631, 165)
+position = Vector2(1520, 300)
 
 [node name="Angry_Civilian" parent="Enemy" instance=ExtResource("5_274p6")]
 position = Vector2(77, 30)
@@ -31308,6 +31308,7 @@ position = Vector2(77, 30)
 position = Vector2(407, 17)
 
 [node name="Archer" parent="Enemy" instance=ExtResource("7_mmp00")]
+position = Vector2(1332, 248)
 
 [node name="Projectile" type="Node" parent="."]
 

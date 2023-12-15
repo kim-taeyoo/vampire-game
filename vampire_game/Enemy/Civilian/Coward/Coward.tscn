@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cspp4uo4ldpjc"]
+[gd_scene load_steps=59 format=3 uid="uid://cspp4uo4ldpjc"]
 
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/Coward.gd" id="1_04xq1"]
 [ext_resource type="Texture2D" uid="uid://cr747l2e6gfe4" path="res://Enemy/Civilian/CivilianSprite/Civil_Shiver.png" id="2_0onms"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/PlayerDetectSensor.gd" id="6_bbkbv"]
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/AlertTimer.gd" id="7_nq47i"]
 [ext_resource type="Texture2D" uid="uid://caa3ho5vukg4" path="res://Emote/Exclamation.png" id="8_nec4h"]
+[ext_resource type="Script" path="res://Enemy/Civilian/Coward/EnemyDetectSensor.gd" id="9_jw4q7"]
 [ext_resource type="Texture2D" uid="uid://bssx0pl4lnrx8" path="res://Emote/Question.png" id="9_k45mb"]
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/EmoteTimer.gd" id="10_fhga6"]
 
@@ -378,6 +379,13 @@ scale = Vector2(2, 2)
 target_position = Vector2(45, 0)
 hit_from_inside = true
 script = ExtResource("6_bbkbv")
+
+[node name="EnemyDetectSensor" type="RayCast2D" parent="Sensor"]
+position = Vector2(0, -8)
+scale = Vector2(2, 2)
+target_position = Vector2(45, 0)
+collision_mask = 16
+script = ExtResource("9_jw4q7")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16
