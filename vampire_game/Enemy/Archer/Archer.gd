@@ -53,6 +53,9 @@ func _physics_process(delta):
 			AS.animation = "Dead"
 			emote.visible = false
 			velocity.x = 0
+			set_collision_layer_value(5,false)
+			set_collision_layer_value(8,true)
+			
 			if AS.frame == 4 and !DropOrb:
 				makeOrb()
 				DropOrb = true

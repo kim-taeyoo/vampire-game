@@ -8,7 +8,7 @@ func _process(delta):
 		if cooldown:
 			print("sunshine damage")
 			cooldown = false
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(2.0).timeout
 			cooldown = true
 
 func _on_body_entered(body):

@@ -65,6 +65,8 @@ func _physics_process(delta):
 			AS.animation = "Dead"
 			emote.visible = false
 			velocity.x = 0
+			set_collision_layer_value(5,false)
+			set_collision_layer_value(8,true)
 			
 			Replace_torch(condition,AS.frame)
 			
@@ -118,8 +120,9 @@ func _on_animated_sprite_2d_animation_looped():
 
 
 func _on_hurt_box_body_entered(body):
-	if body.name == "Player":
-		print(name + " hit " + body.name)
+	#if body.name == "Player":
+		#print(name + " hit " + body.name)
+	pass
 
 
 func _on_hit_box_area_entered(area):

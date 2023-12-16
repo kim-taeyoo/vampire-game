@@ -168,8 +168,8 @@ func _physics_process(delta):
 		if currentHealth <= 0:
 			pass
 	move_and_slide()
-
-func _on_hit_box_body_entered(body):
+	
+func get_damage(body):
 	if not isHit:
 		currentHealth -= 5
 		isHit = true
@@ -184,7 +184,16 @@ func _on_hit_box_body_entered(body):
 			velocity.x = 400
 		else:
 			velocity.x = -500
+		
+		print("hit by " + body.name)
 
+func _on_hit_box_body_entered(body):
+	get_damage(body)
+	
+
+func _on_hit_box_area_entered(area):
+	if area.name != "HitBox":
+		get_damage(area)
 
 func _on_timer_timeout():
 	isHit = false
@@ -192,3 +201,6 @@ func _on_timer_timeout():
 
 func _on_knockback_timer_timeout():
 	velocity.x = 0
+
+
+

@@ -20,4 +20,5 @@ position = Vector2(-0.25, 0.25)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_am6sr")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8cvostsaec47"]
 
-[ext_resource type="Script" path="res://sun_light.gd" id="1_07qu3"]
+[ext_resource type="Script" path="res://Sun_light/sun_light.gd" id="1_07qu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvc5b"]
 size = Vector2(2, 2)
@@ -16,7 +16,7 @@ fill_to = Vector2(1, 0.5)
 
 [node name="SunLight" type="Area2D"]
 rotation = 0.349066
-collision_layer = 128
+collision_layer = 256
 script = ExtResource("1_07qu3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

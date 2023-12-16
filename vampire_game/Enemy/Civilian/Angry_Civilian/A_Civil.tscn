@@ -389,8 +389,9 @@ Orb = ExtResource("2_op7cd")
 [node name="ACivilSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4lxh0")
-animation = &"Dead"
+animation = &"Attack"
 autoplay = "Idle"
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -9.25001)
@@ -423,7 +424,7 @@ script = ExtResource("10_h7txf")
 [node name="PlayerAttackSensor" type="RayCast2D" parent="Sensor"]
 position = Vector2(8, -9)
 scale = Vector2(2, 2)
-target_position = Vector2(9.5, 0)
+target_position = Vector2(8.5, 0)
 hit_from_inside = true
 script = ExtResource("8_hehum")
 
