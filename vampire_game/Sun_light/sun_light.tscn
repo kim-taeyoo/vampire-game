@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8cvostsaec47"]
+
+[ext_resource type="Script" path="res://sun_light.gd" id="1_07qu3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvc5b"]
+size = Vector2(2, 2)
+
+[sub_resource type="Gradient" id="Gradient_ndtru"]
+offsets = PackedFloat32Array(0, 0.318182, 0.4, 0.5, 0.6, 0.688312, 1)
+colors = PackedColorArray(0.196078, 0.196078, 0.196078, 1, 0.937255, 0.937255, 0.937255, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.937255, 0.937255, 0.937255, 1, 0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eyy6t"]
+gradient = SubResource("Gradient_ndtru")
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="SunLight" type="Area2D"]
+rotation = 0.349066
+collision_layer = 128
+script = ExtResource("1_07qu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lvc5b")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-5.96046e-08, 5.96046e-08)
+scale = Vector2(0.03125, 0.03125)
+color = Color(0.972549, 1, 0.745098, 1)
+texture = SubResource("GradientTexture2D_eyy6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
