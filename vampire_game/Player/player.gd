@@ -8,6 +8,7 @@ var jump = -450
 #상태 변수
 @export var maxHealth = 100
 @onready var currentHealth: int = maxHealth
+@onready var hitBox = $HitBox
 var isHit = false
 @onready var hitTimer = $HitBox/HitTimer
 @onready var knockbackTimer = $HitBox/KnockbackTimer
@@ -62,6 +63,8 @@ func _physics_process(delta):
 			if is_on_floor():
 				velocity.x = 0
 	if not story.isStoryAnimation and not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg() and knockbackTimer.is_stopped():
+	#설정
+		
 	#중력
 		if not is_on_floor() and not wallCheck.is_colliding():
 #			velocity.y += gravity * delta
@@ -187,9 +190,9 @@ func get_damage(body):
 		
 		print("hit by " + body.name)
 
-func _on_hit_box_body_entered(body):
-	get_damage(body)
-	
+#func _on_hit_box_body_entered(body):
+#	get_damage(body)
+#
 
 func _on_hit_box_area_entered(area):
 	if area.name != "HitBox":
