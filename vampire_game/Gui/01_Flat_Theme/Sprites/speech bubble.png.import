@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:vampire_game/Gui/01_Flat_Theme/Sprites/speech bubble.png.import
-uid="uid://b3b7s70y2tftf"
+uid="uid://bsxvcuck48dc8"
 path="res://.godot/imported/speech bubble.png-51d223be10a9b1cdc7931168a4cbadbb.ctex"
-========
-uid="uid://dd7qr6war0w6o"
-path="res://.godot/imported/hit and to idle.png-e45a74bd8fc05bd8ab38c29095e0d504.ctex"
->>>>>>>> main:vampire_game/Enemy/knight/Barrel knight/hit and to idle.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:vampire_game/Gui/01_Flat_Theme/Sprites/speech bubble.png.import
 source_file="res://Gui/01_Flat_Theme/Sprites/speech bubble.png"
 dest_files=["res://.godot/imported/speech bubble.png-51d223be10a9b1cdc7931168a4cbadbb.ctex"]
-========
-source_file="res://Enemy/knight/Barrel knight/hit and to idle.png"
-dest_files=["res://.godot/imported/hit and to idle.png-e45a74bd8fc05bd8ab38c29095e0d504.ctex"]
->>>>>>>> main:vampire_game/Enemy/knight/Barrel knight/hit and to idle.png.import
 
 [params]
 

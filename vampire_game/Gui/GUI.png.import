@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:vampire_game/Gui/GUI.png.import
-uid="uid://ddpdvou25eod7"
+uid="uid://cjlp0frkcl8vh"
 path="res://.godot/imported/GUI.png-fb5fe810ef6648f9a2057f57b5344ff4.ctex"
-========
-uid="uid://gypkbfsq21f3"
-path="res://.godot/imported/death.png-42e8ac2b8a5d04af8fb7f29e22a3cec4.ctex"
->>>>>>>> main:vampire_game/Enemy/knight/Barrel knight/death.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:vampire_game/Gui/GUI.png.import
 source_file="res://Gui/GUI.png"
 dest_files=["res://.godot/imported/GUI.png-fb5fe810ef6648f9a2057f57b5344ff4.ctex"]
-========
-source_file="res://Enemy/knight/Barrel knight/death.png"
-dest_files=["res://.godot/imported/death.png-42e8ac2b8a5d04af8fb7f29e22a3cec4.ctex"]
->>>>>>>> main:vampire_game/Enemy/knight/Barrel knight/death.png.import
 
 [params]
 

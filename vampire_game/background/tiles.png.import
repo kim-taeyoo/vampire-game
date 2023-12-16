@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p4u6eyep8g7u"
-path="res://.godot/imported/run.png-f35d617170a7c6db0b0d80676f99279b.ctex"
+uid="uid://dcm70gfah1wuj"
+path="res://.godot/imported/tiles.png-16c3f2fd573b7bcb396474a97b13eee1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/knight/Barrel knight/run.png"
-dest_files=["res://.godot/imported/run.png-f35d617170a7c6db0b0d80676f99279b.ctex"]
+source_file="res://background/tiles.png"
+dest_files=["res://.godot/imported/tiles.png-16c3f2fd573b7bcb396474a97b13eee1.ctex"]
 
 [params]
 

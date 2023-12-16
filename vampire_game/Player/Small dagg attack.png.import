@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p4u6eyep8g7u"
-path="res://.godot/imported/run.png-f35d617170a7c6db0b0d80676f99279b.ctex"
+uid="uid://heotrqwkpott"
+path="res://.godot/imported/Small dagg attack.png-89b267de6fab9495bdd096dba570298c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/knight/Barrel knight/run.png"
-dest_files=["res://.godot/imported/run.png-f35d617170a7c6db0b0d80676f99279b.ctex"]
+source_file="res://Player/Small dagg attack.png"
+dest_files=["res://.godot/imported/Small dagg attack.png-89b267de6fab9495bdd096dba570298c.ctex"]
 
 [params]
 

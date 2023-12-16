@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:vampire_game/Gui/Text_box/tail.png.import
-uid="uid://vtq2rmwh2lyl"
+uid="uid://lwvwndluvv13"
 path="res://.godot/imported/tail.png-a724512f20367baa2a23812a9bb17063.ctex"
-========
-uid="uid://7a3pchspop78"
-path="res://.godot/imported/attacks.png-81024a1b8e7bf991920232454cd84d73.ctex"
->>>>>>>> main:vampire_game/Enemy/knight/Barrel knight/attacks.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:vampire_game/Gui/Text_box/tail.png.import
 source_file="res://Gui/Text_box/tail.png"
 dest_files=["res://.godot/imported/tail.png-a724512f20367baa2a23812a9bb17063.ctex"]
-========
-source_file="res://Enemy/knight/Barrel knight/attacks.png"
-dest_files=["res://.godot/imported/attacks.png-81024a1b8e7bf991920232454cd84d73.ctex"]
->>>>>>>> main:vampire_game/Enemy/knight/Barrel knight/attacks.png.import
 
 [params]
 
