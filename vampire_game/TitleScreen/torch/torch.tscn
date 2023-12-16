@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7uj06y7amssb"]
+
+[ext_resource type="Texture2D" uid="uid://d27bbyu2je62a" path="res://torch/sprite/Torch-5frm.png" id="1_dejr3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skswm"]
+atlas = ExtResource("1_dejr3")
+region = Rect2(0, 0, 15, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umwbb"]
+atlas = ExtResource("1_dejr3")
+region = Rect2(15, 0, 15, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6phdl"]
+atlas = ExtResource("1_dejr3")
+region = Rect2(30, 0, 15, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkbhk"]
+atlas = ExtResource("1_dejr3")
+region = Rect2(45, 0, 15, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahm10"]
+atlas = ExtResource("1_dejr3")
+region = Rect2(60, 0, 15, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pnqvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skswm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umwbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6phdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkbhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahm10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_1vdh2"]
+offsets = PackedFloat32Array(0, 0.62987, 0.727273)
+colors = PackedColorArray(1, 1, 1, 1, 0.20871, 0.20871, 0.20871, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i4rim"]
+gradient = SubResource("Gradient_1vdh2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="torch" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pnqvp")
+autoplay = "default"
+frame_progress = 0.940518
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -9)
+color = Color(1, 0.392157, 0, 1)
+energy = 2.5
+texture = SubResource("GradientTexture2D_i4rim")
