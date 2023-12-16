@@ -7,7 +7,7 @@ var gravity = 1000
 var jump = -450
 #상태 변수
 @export var maxHealth = 100
-@onready var currentHealth: int = maxHealth
+var currentHealth  = 100
 @onready var hitBox = $HitBox
 var isHit = false
 @onready var hitTimer = $HitBox/HitTimer
@@ -48,7 +48,22 @@ var isFall = false
 #스토리관련
 @onready var story = $"../Story"
 
+#피 흡수
+var isAbsorbBlood = false
+@onready var absorbBloodAni = $AbsorbBlood
+@onready var absorbTime = $AbsorbTime
+
 func _physics_process(delta):
+	#피흡수
+	print(currentHealth)
+	if isAbsorbBlood:
+		absorbBloodAni.play("default")
+		if currentHealth < 90:
+			currentHealth += 10
+			healthChanged.emit()
+		else:
+			currentHealth = 100
+			healthChanged.emit()
 	#스토리 진행될때 움직임 멈춤
 	if story.isStoryAnimation:
 		velocity.x = 0
@@ -64,7 +79,8 @@ func _physics_process(delta):
 				velocity.x = 0
 	if not story.isStoryAnimation and not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg() and knockbackTimer.is_stopped():
 	#설정
-		
+		if isAbsorbBlood:
+			isAbsorbBlood = false
 	#중력
 		if not is_on_floor() and not wallCheck.is_colliding():
 #			velocity.y += gravity * delta
@@ -108,9 +124,11 @@ func _physics_process(delta):
 		if Input.is_action_pressed("Left"):
 			sprite.scale.x = abs(sprite.scale.x) * -1
 			wallCheck.scale.x = abs(wallCheck.scale.x) * -1
+			absorbBloodAni.scale.x = abs(absorbBloodAni.scale.x) * -1
 		if Input.is_action_pressed("Right"):
 			sprite.scale.x = abs(sprite.scale.x)
 			wallCheck.scale.x = abs(wallCheck.scale.x)
+			absorbBloodAni.scale.x = abs(absorbBloodAni.scale.x)
 		
 		#상호작용 이후 처리
 		if whatAnimation == "Dash":
@@ -140,6 +158,8 @@ func _physics_process(delta):
 			bloodSword.startBloodSword(bloodSwordDuration)
 			hurtBox.scale.x = saveDirection
 			ap.play("BloodSword")
+			currentHealth -= 3
+			healthChanged.emit()
 			
 		#bloodDagg
 		if Input.is_action_just_pressed("BloodDagg"):
@@ -149,6 +169,8 @@ func _physics_process(delta):
 			bloodSword.startBloodSword(bloodDaggDuration)
 			hurtBox.scale.x = saveDirection
 			ap.play("BloodDagg")
+			currentHealth -= 3
+			healthChanged.emit()
 			
 		#Wall Jump
 		if wallCheck.is_colliding() and (whatAnimation == "Fall" or whatAnimation == "Jump") and not posibleWallJump:
@@ -204,6 +226,3 @@ func _on_timer_timeout():
 
 func _on_knockback_timer_timeout():
 	velocity.x = 0
-
-
-

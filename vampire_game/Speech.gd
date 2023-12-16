@@ -8,6 +8,7 @@ extends Node
 
 var storyNum = 0
 var isStoryAnimation = false
+var save = false
 
 #테스트용
 const startMessage: Array[String] = [
@@ -19,7 +20,7 @@ const startMessage: Array[String] = [
 
 #상호작용
 func _unhandled_input(event):
-	if event.is_action_pressed("advance_dialog") and isStoryAnimation:
+	if event.is_action_pressed("advance_dialog") and isStoryAnimation and not save:
 		if storyNum == 0:
 			storyNum += 1
 			storyPlayer.play("Place1_explain")
@@ -31,11 +32,13 @@ func _unhandled_input(event):
 func _on_place_1_body_entered(body):
 	if body.name == "Player" and storyNum == 0:
 		isStoryAnimation = true
+		save = true
 		storyPlayer.play("Place1_explain")
 		timer.start(2.0)
 
 
 func _on_timer_timeout():
+	save = false
 	storyPlayer.pause()
 
 

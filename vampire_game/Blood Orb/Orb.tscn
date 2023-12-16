@@ -152,7 +152,7 @@ position = Vector2(0, -8)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_ywbgm")
 autoplay = "default"
-frame_progress = 0.107352
+frame_progress = 0.619456
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)

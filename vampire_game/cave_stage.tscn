@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cftqnuiopntwe"]
+[gd_scene load_steps=24 format=3 uid="uid://cftqnuiopntwe"]
 
 [ext_resource type="Texture2D" uid="uid://bdd2ggx5b8s1b" path="res://background/map_preview.png" id="3_18lmt"]
+[ext_resource type="PackedScene" uid="uid://c1cd0pr87e815" path="res://Player/absorb_blood.tscn" id="4_5bynq"]
 [ext_resource type="Texture2D" uid="uid://dcm70gfah1wuj" path="res://background/tiles.png" id="4_b05ia"]
 [ext_resource type="PackedScene" uid="uid://cbhra0nmhwmg3" path="res://Enemy/Civilian/Angry_Civilian/A_Civil.tscn" id="4_ut2l4"]
+[ext_resource type="Script" path="res://Player/absorb_blood.gd" id="5_22wdy"]
 [ext_resource type="PackedScene" uid="uid://cspp4uo4ldpjc" path="res://Enemy/Civilian/Coward/Coward.tscn" id="5_aldpp"]
 [ext_resource type="Script" path="res://Speech.gd" id="5_plf64"]
 [ext_resource type="PackedScene" uid="uid://rqkig2xuvbko" path="res://Player/player.tscn" id="5_uvu64"]
@@ -10619,6 +10621,9 @@ drag_vertical_enabled = true
 drag_top_margin = 0.05
 drag_bottom_margin = 0.05
 
+[node name="AbsorbBlood" parent="Player" instance=ExtResource("4_5bynq")]
+script = ExtResource("5_22wdy")
+
 [node name="Enemy" type="Node" parent="."]
 
 [node name="Angry_Civilian" parent="Enemy" instance=ExtResource("4_ut2l4")]
@@ -10653,13 +10658,15 @@ position = Vector2(1061.5, 157)
 shape = SubResource("RectangleShape2D_01chg")
 
 [node name="Timer" type="Timer" parent="Story"]
+wait_time = 2.0
 
 [node name="EndTimer" type="Timer" parent="Story"]
+wait_time = 2.5
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HealthBar" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar" type="ProgressBar" parent="HealthBar"]
 visible = false
 texture_filter = 1
 offset_right = 40.0
@@ -10667,7 +10674,7 @@ offset_bottom = 27.0
 scale = Vector2(2, 2)
 value = 100.0
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBar"]
 offset_left = 14.0
 offset_top = 19.0
 offset_right = 392.0
@@ -10685,6 +10692,7 @@ script = ExtResource("6_hfmm1")
 position = Vector2(483, 176)
 scale = Vector2(50, 50)
 
+[connection signal="healthChanged" from="Player" to="HealthBar/TextureProgressBar" method="_on_player_health_changed"]
 [connection signal="body_entered" from="Story/Place1" to="Story" method="_on_place_1_body_entered"]
 [connection signal="timeout" from="Story/Timer" to="Story" method="_on_timer_timeout"]
 [connection signal="timeout" from="Story/EndTimer" to="Story" method="_on_end_timer_timeout"]

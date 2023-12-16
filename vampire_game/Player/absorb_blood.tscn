@@ -1,0 +1,81 @@
+[gd_scene load_steps=18 format=3 uid="uid://c1cd0pr87e815"]
+
+[ext_resource type="Texture2D" uid="uid://cid5le8w3qt41" path="res://Player/absorbBlood/FX001.png" id="1_v3y0f"]
+[ext_resource type="Texture2D" uid="uid://cnrs6tp2708ww" path="res://Player/absorbBlood/FX002.png" id="2_7ovw6"]
+[ext_resource type="Texture2D" uid="uid://b7j2lhmd30xu8" path="res://Player/absorbBlood/FX003.png" id="3_yvfq5"]
+[ext_resource type="Texture2D" uid="uid://go31lwv2rpsq" path="res://Player/absorbBlood/FX004.png" id="4_1mkxt"]
+[ext_resource type="Texture2D" uid="uid://dettobrgehsob" path="res://Player/absorbBlood/FX005.png" id="5_lrh7s"]
+[ext_resource type="Texture2D" uid="uid://xhkgpsr8y5f0" path="res://Player/absorbBlood/FX006.png" id="6_avkbw"]
+[ext_resource type="Texture2D" uid="uid://bexa2dnjnkaq3" path="res://Player/absorbBlood/FX007.png" id="7_bph5m"]
+[ext_resource type="Texture2D" uid="uid://xv7i3ked2a54" path="res://Player/absorbBlood/FX008.png" id="8_jg2b3"]
+[ext_resource type="Texture2D" uid="uid://dmfxnjftfy60y" path="res://Player/absorbBlood/FX009.png" id="9_3qoxr"]
+[ext_resource type="Texture2D" uid="uid://cn4jxqvcofman" path="res://Player/absorbBlood/FX010.png" id="10_74y3d"]
+[ext_resource type="Texture2D" uid="uid://dmtviyr5vd3tl" path="res://Player/absorbBlood/FX011.png" id="11_6m26f"]
+[ext_resource type="Texture2D" uid="uid://dq4jgtrm31jku" path="res://Player/absorbBlood/FX012.png" id="12_mshyf"]
+[ext_resource type="Texture2D" uid="uid://1vsw1o0cmhjx" path="res://Player/absorbBlood/FX013.png" id="13_41m5g"]
+[ext_resource type="Texture2D" uid="uid://djbvfjgcjk7al" path="res://Player/absorbBlood/FX014.png" id="14_bh3sl"]
+[ext_resource type="Texture2D" uid="uid://bnjyvhj3ddino" path="res://Player/absorbBlood/FX015.png" id="15_isif3"]
+[ext_resource type="Texture2D" uid="uid://cir31jguc3pne" path="res://Player/absorbBlood/FX016.png" id="16_0sdx0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwobw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_0sdx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_v3y0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7ovw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yvfq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1mkxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lrh7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_avkbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bph5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jg2b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3qoxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_74y3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6m26f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mshyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_41m5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bh3sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_isif3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0sdx0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="AbsorbBlood" type="AnimatedSprite2D"]
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_nwobw")
