@@ -1,0 +1,194 @@
+[gd_scene load_steps=17 format=3 uid="uid://ckp7ajmys7eh4"]
+
+[ext_resource type="Script" path="res://TitleScreen/title.gd" id="1_hb7qt"]
+[ext_resource type="PackedScene" uid="uid://bhef1flilr6a8" path="res://TitleScreen/bg/bg.tscn" id="1_l0abl"]
+[ext_resource type="PackedScene" uid="uid://dlxbtxdc3f5je" path="res://TitleScreen/bat/bat.tscn" id="2_1vms1"]
+[ext_resource type="PackedScene" uid="uid://cftqnuiopntwe" path="res://cave_stage.tscn" id="2_iuydu"]
+[ext_resource type="PackedScene" uid="uid://c7uj06y7amssb" path="res://TitleScreen/torch/torch.tscn" id="3_w3q7s"]
+[ext_resource type="Texture2D" uid="uid://damraw6sn11jk" path="res://TitleScreen/bg/title.png" id="4_qjxmn"]
+[ext_resource type="Texture2D" uid="uid://cr7ua0nkj086t" path="res://Enemy/Civilian/CivilianSprite/Civil_Idle.png" id="5_tqubi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j2yhj"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qcfik"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti6en"]
+atlas = ExtResource("5_tqubi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mlw2"]
+atlas = ExtResource("5_tqubi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7pn0"]
+atlas = ExtResource("5_tqubi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaou8"]
+atlas = ExtResource("5_tqubi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ame27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti6en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mlw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7pn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaou8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_k1e7f"]
+offsets = PackedFloat32Array(0, 0.694805)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x68q8"]
+gradient = SubResource("Gradient_k1e7f")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_hb7qt")
+startGame = ExtResource("2_iuydu")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.5
+blend_mode = 1
+
+[node name="bg" parent="." instance=ExtResource("1_l0abl")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, 1)
+zoom = Vector2(2.7, 2.851)
+
+[node name="bat" type="Node" parent="."]
+
+[node name="bat" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(-52, -96)
+
+[node name="bat2" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(-136, -98)
+
+[node name="bat3" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(-292, -96)
+
+[node name="bat4" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(-231, -96)
+
+[node name="bat5" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(82, -121)
+
+[node name="bat6" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(137, -96)
+
+[node name="bat9" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(104, -139)
+
+[node name="bat10" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(307, -116)
+
+[node name="bat11" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(263, -134)
+
+[node name="bat7" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(189, -108)
+
+[node name="bat8" parent="bat" instance=ExtResource("2_1vms1")]
+position = Vector2(9, -97)
+
+[node name="torch" type="Node" parent="."]
+
+[node name="torch" parent="torch" instance=ExtResource("3_w3q7s")]
+position = Vector2(18, -14)
+
+[node name="torch2" parent="torch" instance=ExtResource("3_w3q7s")]
+position = Vector2(244, 1)
+
+[node name="menu" type="Node" parent="."]
+
+[node name="start" type="Button" parent="menu"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_j2yhj")
+anchors_preset = -1
+anchor_left = -0.172
+anchor_right = -0.172
+offset_left = 23.2
+offset_top = 30.0
+offset_right = 119.2
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Game
+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="option" type="Button" parent="menu"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_j2yhj")
+anchors_preset = -1
+anchor_left = -0.27
+anchor_right = -0.27
+offset_left = 180.0
+offset_top = 68.0
+offset_right = 276.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Option"
+icon_alignment = 1
+expand_icon = true
+
+[node name="credit" type="Button" parent="menu"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_j2yhj")
+anchors_preset = -1
+anchor_left = -0.27
+anchor_right = -0.27
+offset_left = 180.0
+offset_top = 107.0
+offset_right = 276.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credit
+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Sprite2D" type="Sprite2D" parent="menu"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_qcfik")
+position = Vector2(-143, -78)
+scale = Vector2(4, 4)
+texture = ExtResource("4_qjxmn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(52, 96)
+rotation = 3.14159
+scale = Vector2(2, -2)
+sprite_frames = SubResource("SpriteFrames_ame27")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
+position = Vector2(8, 7)
+color = Color(1, 0.545098, 0, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_x68q8")
+
+[connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="vampire_game"
-run/main_scene="res://cave_stage.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+run/main_scene="res://TitleScreen/title.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
