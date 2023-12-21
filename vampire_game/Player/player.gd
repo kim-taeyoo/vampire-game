@@ -69,6 +69,7 @@ func _physics_process(delta):
 			currentHealth = 100
 			healthChanged.emit()
 		emit_signal("getBloodNum")
+		isAbsorbBlood = false
 	#스토리 진행될때 움직임 멈춤
 	if story.isStoryAnimation:
 		velocity.x = 0
@@ -145,7 +146,7 @@ func _physics_process(delta):
 
 		#상호작용 애니메이션	
 		#dash
-		if Input.is_action_just_pressed("Dash"):
+		if Input.is_action_just_pressed("Dash") and getBlood >= 5:
 			velocity.y = 0
 			velocity.x = saveDirection * dashSpeed
 			dash.startDash(dashDuration)
@@ -167,7 +168,7 @@ func _physics_process(delta):
 			healthChanged.emit()
 			
 		#bloodDagg
-		if Input.is_action_just_pressed("BloodDagg"):
+		if Input.is_action_just_pressed("BloodDagg") and getBlood >= 20:
 			velocity.y = 0
 			velocity.x = 0
 			whatAnimation = "BloodDagg"
@@ -178,22 +179,23 @@ func _physics_process(delta):
 			healthChanged.emit()
 			
 		#Wall Jump
-		if wallCheck.is_colliding() and (whatAnimation == "Fall" or whatAnimation == "Jump") and not posibleWallJump:
-			velocity.y = 100
-			posibleWallJump = true
-#			wallCheck.startHangWall(1)
-			ap.play("WallJump")
-			whatAnimation = "WallJump"
-		elif not wallCheck.is_colliding():
-			posibleWallJump = false
-		if wallCheck.is_colliding() and Input.is_action_pressed("Jump") and posibleWallJump:
-			velocity.y = jump
-			posibleWallJump = false
-			ap.play("Jump")
-			whatAnimation = "WallJump"
-		if wallCheck.is_colliding() and not is_on_floor() and velocity.y >= -1 and velocity.y <= 1:
-			posibleWallJump = false
-			whatAnimation = "Jump"
+		if getBlood >= 11:
+			if wallCheck.is_colliding() and (whatAnimation == "Fall" or whatAnimation == "Jump") and not posibleWallJump:
+				velocity.y = 100
+				posibleWallJump = true
+	#			wallCheck.startHangWall(1)
+				ap.play("WallJump")
+				whatAnimation = "WallJump"
+			elif not wallCheck.is_colliding():
+				posibleWallJump = false
+			if wallCheck.is_colliding() and Input.is_action_pressed("Jump") and posibleWallJump:
+				velocity.y = jump
+				posibleWallJump = false
+				ap.play("Jump")
+				whatAnimation = "WallJump"
+			if wallCheck.is_colliding() and not is_on_floor() and velocity.y >= -1 and velocity.y <= 1:
+				posibleWallJump = false
+				whatAnimation = "Jump"
 			
 		if isPlayerinSunLight:
 			if SunLightTimer:

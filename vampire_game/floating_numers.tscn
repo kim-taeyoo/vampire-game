@@ -101,7 +101,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "popup"
 libraries = {
 "": SubResource("AnimationLibrary_aii0p")
 }
-autoplay = "popup"
