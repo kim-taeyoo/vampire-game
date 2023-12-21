@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckp7ajmys7eh4"]
+[gd_scene load_steps=18 format=3 uid="uid://ckp7ajmys7eh4"]
 
 [ext_resource type="Script" path="res://TitleScreen/title.gd" id="1_hb7qt"]
 [ext_resource type="PackedScene" uid="uid://bhef1flilr6a8" path="res://TitleScreen/bg/bg.tscn" id="1_l0abl"]
 [ext_resource type="PackedScene" uid="uid://dlxbtxdc3f5je" path="res://TitleScreen/bat/bat.tscn" id="2_1vms1"]
 [ext_resource type="PackedScene" uid="uid://cftqnuiopntwe" path="res://cave_stage.tscn" id="2_iuydu"]
 [ext_resource type="PackedScene" uid="uid://c7uj06y7amssb" path="res://TitleScreen/torch/torch.tscn" id="3_w3q7s"]
+[ext_resource type="PackedScene" uid="uid://bkmykyi6cusg1" path="res://floating_menu/OptionMenu/OptionMenu.tscn" id="3_wuieq"]
 [ext_resource type="Texture2D" uid="uid://damraw6sn11jk" path="res://TitleScreen/bg/title.png" id="4_qjxmn"]
 [ext_resource type="Texture2D" uid="uid://cr7ua0nkj086t" path="res://Enemy/Civilian/CivilianSprite/Civil_Idle.png" id="5_tqubi"]
 
@@ -62,6 +63,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="Title" type="Node2D"]
 script = ExtResource("1_hb7qt")
 startGame = ExtResource("2_iuydu")
+OptionMenu = ExtResource("3_wuieq")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.5
@@ -191,4 +193,7 @@ color = Color(1, 0.545098, 0, 1)
 energy = 1.5
 texture = SubResource("GradientTexture2D_x68q8")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="menu/option" to="." method="_on_option_pressed"]

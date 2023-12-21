@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkmykyi6cusg1"]
+
+[ext_resource type="Script" path="res://floating_menu/OptionMenu/OptionMenu.gd" id="1_v6uwj"]
+[ext_resource type="Script" path="res://floating_menu/OptionMenu/Master_slider.gd" id="2_i6fo2"]
+[ext_resource type="Texture2D" uid="uid://csoq8tf1dygf8" path="res://Gui/OptionNButton/Option.png" id="2_tnx2p"]
+[ext_resource type="FontFile" uid="uid://spkvm4khsdgf" path="res://Gui/Metroid Prime Hunters.ttf" id="3_gd52r"]
+[ext_resource type="Script" path="res://floating_menu/OptionMenu/BGM_slider.gd" id="3_jlem4"]
+[ext_resource type="Script" path="res://floating_menu/OptionMenu/SFX_slider.gd" id="4_l2g0t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpjik"]
+font = ExtResource("3_gd52r")
+font_size = 100
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_86nef"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2d8xs"]
+font = ExtResource("3_gd52r")
+font_size = 55
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v6uwj")
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -579.5
+offset_top = -389.5
+offset_right = 579.5
+offset_bottom = 389.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tnx2p")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.088
+anchor_right = 1.0
+anchor_bottom = 0.088
+offset_left = 0.5
+offset_top = 8.948
+offset_right = 0.5
+offset_bottom = 145.948
+grow_horizontal = 2
+text = "//Option//"
+label_settings = SubResource("LabelSettings_jpjik")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.869
+anchor_right = 0.869
+offset_left = -76.171
+offset_right = -0.171021
+offset_bottom = 77.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "X"
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.22
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_86nef")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.126
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.25528
+offset_right = 0.800049
+offset_bottom = 0.280029
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Master" type="Label" parent="Panel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_2d8xs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master_slider" type="HSlider" parent="Panel/Panel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.06
+value = 1.0
+script = ExtResource("2_i6fo2")
+
+[node name="BGM" type="Label" parent="Panel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "BackGround Volume"
+label_settings = SubResource("LabelSettings_2d8xs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGM_slider" type="HSlider" parent="Panel/Panel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.06
+value = 1.0
+script = ExtResource("3_jlem4")
+
+[node name="SFX" type="Label" parent="Panel/Panel/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_2d8xs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX_slider" type="HSlider" parent="Panel/Panel/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.06
+value = 1.0
+script = ExtResource("4_l2g0t")
+
+[node name="Control" type="Control" parent="Panel/Panel/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/Title/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="Panel/Panel/VBoxContainer/Master_slider" to="Panel/Panel/VBoxContainer/Master_slider" method="_on_value_changed"]
+[connection signal="value_changed" from="Panel/Panel/VBoxContainer/BGM_slider" to="Panel/Panel/VBoxContainer/BGM_slider" method="_on_value_changed"]
+[connection signal="value_changed" from="Panel/Panel/VBoxContainer/SFX_slider" to="Panel/Panel/VBoxContainer/SFX_slider" method="_on_value_changed"]
