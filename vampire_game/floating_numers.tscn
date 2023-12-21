@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpo5nnkrau162"]
+[gd_scene load_steps=5 format=3 uid="uid://cpo5nnkrau162"]
+
+[ext_resource type="Script" path="res://floating_numers.gd" id="1_4x35i"]
 
 [sub_resource type="Animation" id="Animation_016ek"]
 length = 0.001
@@ -77,6 +79,7 @@ _data = {
 }
 
 [node name="FloatingNumers" type="Marker2D"]
+script = ExtResource("1_4x35i")
 
 [node name="Label" type="Label" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -98,7 +101,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "popup"
 libraries = {
 "": SubResource("AnimationLibrary_aii0p")
 }
+autoplay = "popup"

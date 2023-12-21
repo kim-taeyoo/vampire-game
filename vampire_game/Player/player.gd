@@ -11,6 +11,8 @@ var currentHealth  = 20
 var getBlood = 0
 @onready var hitBox = $HitBox
 var isHit = false
+var isPlayerinSunLight = false
+var SunLightTimer = true
 @onready var hitTimer = $HitBox/HitTimer
 @onready var knockbackTimer = $HitBox/KnockbackTimer
 @onready var damagePopup = $PopupLocation
@@ -192,6 +194,15 @@ func _physics_process(delta):
 		if wallCheck.is_colliding() and not is_on_floor() and velocity.y >= -1 and velocity.y <= 1:
 			posibleWallJump = false
 			whatAnimation = "Jump"
+			
+		if isPlayerinSunLight:
+			if SunLightTimer:
+				get_damage_by_light()
+				print("sunshine damaged Player")
+				SunLightTimer = false
+				await get_tree().create_timer(1.0).timeout
+				SunLightTimer = true
+		
 		#game over	
 		if currentHealth <= 0:
 			pass
@@ -202,7 +213,7 @@ func get_damage(body):
 		currentHealth -= 5
 		isHit = true
 		ap.play("Hit")
-		damagePopup.popup()
+		damagePopup.popup(5)
 		hitTimer.start()
 		healthChanged.emit()
 		
@@ -215,12 +226,18 @@ func get_damage(body):
 		
 		print("hit by " + body.name)
 
+func get_damage_by_light():
+	currentHealth -= 1
+	ap.play("Hit")
+	damagePopup.popup(1)
+	healthChanged.emit()
+
 #func _on_hit_box_body_entered(body):
 #	get_damage(body)
 #
 
 func _on_hit_box_area_entered(area):
-	if area.name != "HitBox":
+	if area.name != "HitBox" and area.name != "SunLight":
 		get_damage(area)
 
 func _on_timer_timeout():
