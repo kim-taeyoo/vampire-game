@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://heotrqwkpott" path="res://Player/Small dagg attack.png" id="6_t2hqo"]
 [ext_resource type="Texture2D" uid="uid://bgn31cgabmcr5" path="res://Player/Wall Jump.png" id="7_3g00i"]
 [ext_resource type="Script" path="res://Player/BloodSword.gd" id="7_52j7b"]
-[ext_resource type="Texture2D" uid="uid://bn518rg2jxh1o" path="res://Player/Hit.png" id="8_clylg"]
+[ext_resource type="Texture2D" uid="uid://dn4pos3o44hel" path="res://Player/Hit.png" id="8_clylg"]
 [ext_resource type="Script" path="res://Player/BloodDagg.gd" id="9_alny3"]
 [ext_resource type="Script" path="res://Player/WallCheck.gd" id="11_mfo1d"]
 [ext_resource type="Script" path="res://Player/PopupLocation.gd" id="13_ajcmv"]
@@ -1299,10 +1299,10 @@ wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_3fy8p")
 }
-autoplay = "Idle"
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("5_tsjco")

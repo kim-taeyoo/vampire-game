@@ -51,7 +51,6 @@ var isFall = false
 #피 흡수
 var isAbsorbBlood = false
 @onready var absorbBloodAni = $AbsorbBlood
-@onready var absorbTime = $AbsorbTime
 
 func _physics_process(delta):
 	#피흡수
