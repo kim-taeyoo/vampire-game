@@ -5,9 +5,10 @@ extends Marker2D
 func _ready():
 	randomize()
 	
-func popup():
+func popup(n):
 	var damage = damage_node.instantiate()
 	damage.position = global_position
+	damage.set_Label(n)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(damage, "position", global_position + get_direction(), 0.75)
