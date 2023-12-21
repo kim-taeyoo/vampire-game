@@ -10913,6 +10913,7 @@ scale = Vector2(61.4795, 1854.99)
 [node name="CaveBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_vu1ps")
 autoplay = true
+bus = &"BGM"
 
 [connection signal="getBloodNum" from="Player" to="Story" method="_on_player_get_blood_num"]
 [connection signal="healthChanged" from="Player" to="HealthBar/TextureProgressBar" method="_on_player_health_changed"]

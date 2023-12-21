@@ -15,28 +15,29 @@ const dashMessage: Array[String] = [
 	"Press the Z button to use the dash.",
 ]
 const wallJumpMessage: Array[String] = [
-	"I've recovered my wallJump ability by absorbing blood.",
-	"I can do wallJump by hanging from the wall and pressing space.",
+	"I've recovered my wall Jump ability by absorbing blood.",
+	"I can do wall Jump by hanging from the wall and pressing space.",
 ]
 #placeMessage
 const startMessage: Array[String] = [
-	"(Press E button)",
+	"(Press E button for next dialogue)",
 	"I'm the last surviving child vampire.",
-	"I ran away to the humans and came deep into the cave..",
+	"I ran away from the humans and came deep into this cave..",
 	"I don't have much HP left.",
-	"Vampires dreamed of coexistence with humans, but they all died of human betrayal.",
-	"I want revenge."
+	"Vampires dreamed coexisting with humans, but they all died by humans' betrayal.",
+	"I want revenge.",
+	"I need to move right now."
 ]
 const place1Ex: Array[String] = [
 	"The sunlight is blocking the road.",
-	"I'm weak now so I can't use my dash abilities to pass through that sunlight.",
-	"There are people who look weak in front of me, so I need to suck blood.",
-	"If press the X button, I consume HP and attacks the blood sword."
+	"I'm too weak now so I can't use my dash abilities to pass through that sunlight.",
+	"There are people who look weak in front of me, so I need to drink their blood.",
+	"Press the X button,then I'll consume HP and attack with the blood sword."
 ]
 const place2Ex: Array[String] = [
 	"I have to climb a cliff to move forward.",
 	"But I'm still weak.",
-	"There's a strong looking knight but I need more blood to move forward.",
+	"There are some knights look strong, but I need to drink more blood to move forward.",
 ]
 const place3Ex: Array[String] = [
 	"I have to climb a cliff to move forward.",
