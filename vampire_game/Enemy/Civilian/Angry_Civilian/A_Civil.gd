@@ -24,6 +24,11 @@ var facing_right = true
 
 @onready var Torch = $Torch
 
+@onready var attckSfx = $Sound/Attack
+@onready var deathSfx = $Sound/Death
+var checkattck = true
+var checkdeath = true
+
 func _physics_process(delta):
 	
 	# 중력추가
@@ -59,6 +64,11 @@ func _physics_process(delta):
 			hurtBox.disabled = true
 			if AS.frame == 4 or AS.frame == 5:
 				hurtBox.disabled = false
+				if !attckSfx.playing and checkattck:
+					attckSfx.play(0)
+					checkattck = false
+			if AS.frame == 7:
+				checkattck = true
 			velocity.x = 0
 		
 		"Dead":
@@ -73,6 +83,9 @@ func _physics_process(delta):
 			if AS.frame == 4 and !DropOrb:
 				makeOrb()
 				DropOrb = true
+			if AS.frame == 8 and !deathSfx.playing and checkdeath:
+				deathSfx.play(0)
+				checkdeath = false
 			await get_tree().create_timer(5.0).timeout
 			queue_free()
 	

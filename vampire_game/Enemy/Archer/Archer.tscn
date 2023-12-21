@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cvnpcnsfb2xqb"]
+[gd_scene load_steps=62 format=3 uid="uid://cvnpcnsfb2xqb"]
 
 [ext_resource type="Script" path="res://Enemy/Archer/Archer.gd" id="1_ty73h"]
 [ext_resource type="PackedScene" uid="uid://3byw86b7y12n" path="res://Enemy/Archer/Arrow/Arrow.tscn" id="2_jikmj"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://Enemy/Archer/EnemyDetectSensor.gd" id="11_lqe3h"]
 [ext_resource type="Texture2D" uid="uid://bssx0pl4lnrx8" path="res://Emote/Question.png" id="11_uwh4p"]
 [ext_resource type="Script" path="res://Enemy/Archer/EmoteTimer.gd" id="13_1kffx"]
+[ext_resource type="AudioStream" uid="uid://0ojbkwj3dvn1" path="res://Sound/sfx/Archer_attack.wav" id="16_87s4h"]
+[ext_resource type="AudioStream" uid="uid://b5bvahheofaiy" path="res://Sound/sfx/Archer_death.wav" id="17_gggoi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11m7p"]
 atlas = ExtResource("2_tahbr")
@@ -356,7 +358,7 @@ Orb = ExtResource("3_kogi4")
 position = Vector2(2, -16.8)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_lmfd3")
-animation = &"Idle"
+animation = &"Dead"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -423,6 +425,18 @@ script = ExtResource("13_1kffx")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(7, -13)
 gizmo_extents = 0.0
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("16_87s4h")
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("17_gggoi")
+max_distance = 500.0
+bus = &"SFX"
 
 [connection signal="animation_looped" from="ArcherSprite" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

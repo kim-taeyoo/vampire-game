@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://du77oq0eh7dgd"
+path="res://.godot/imported/Player_bloodsword (2).wav-cc42a451a300f9cc6efefb96a657e638.sample"
+
+[deps]
+
+source_file="res://Sound/sfx/Player_bloodsword (2).wav"
+dest_files=["res://.godot/imported/Player_bloodsword (2).wav-cc42a451a300f9cc6efefb96a657e638.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

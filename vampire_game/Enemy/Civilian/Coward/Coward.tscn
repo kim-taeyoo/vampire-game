@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cspp4uo4ldpjc"]
+[gd_scene load_steps=60 format=3 uid="uid://cspp4uo4ldpjc"]
 
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/Coward.gd" id="1_04xq1"]
 [ext_resource type="Texture2D" uid="uid://cr747l2e6gfe4" path="res://Enemy/Civilian/CivilianSprite/Civil_Shiver.png" id="2_0onms"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/EnemyDetectSensor.gd" id="9_jw4q7"]
 [ext_resource type="Texture2D" uid="uid://bssx0pl4lnrx8" path="res://Emote/Question.png" id="9_k45mb"]
 [ext_resource type="Script" path="res://Enemy/Civilian/Coward/EmoteTimer.gd" id="10_fhga6"]
+[ext_resource type="AudioStream" uid="uid://bwafpe1ese44u" path="res://Sound/sfx/Civil_death.wav" id="14_yqpgh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3b3ri"]
 atlas = ExtResource("2_naktn")
@@ -419,6 +420,13 @@ color = Color(0.980392, 0.686275, 0.266667, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_gfmvd")
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("14_yqpgh")
+max_distance = 500.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]

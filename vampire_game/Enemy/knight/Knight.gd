@@ -22,6 +22,11 @@ var facing_right = true
 
 @onready var hurtBox = $HurtBox/CollisionShape2D
 
+@onready var attckSfx = $Sound/Attack
+@onready var deathSfx = $Sound/Death
+var checkattck = true
+var checkdeath = true
+
 func _physics_process(delta):
 	# 중력추가
 	if not is_on_floor():
@@ -47,6 +52,11 @@ func _physics_process(delta):
 			hurtBox.disabled = true
 			if AS.frame == 4:
 				hurtBox.disabled = false
+				if !attckSfx.playing and checkattck:
+					attckSfx.play(0)
+					checkattck = false
+			if AS.frame == 5:
+				checkattck = true
 			velocity.x = 0
 		
 		"Dead":
@@ -58,6 +68,9 @@ func _physics_process(delta):
 			if AS.frame == 4 and !DropOrb:
 				makeOrb()
 				DropOrb = true
+			if AS.frame == 5 and !deathSfx.playing and checkdeath:
+				deathSfx.play(0)
+				checkdeath = false
 			await get_tree().create_timer(5.0).timeout
 			queue_free()
 			

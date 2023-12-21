@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cbhra0nmhwmg3"]
+[gd_scene load_steps=67 format=3 uid="uid://cbhra0nmhwmg3"]
 
 [ext_resource type="Script" path="res://Enemy/Civilian/Angry_Civilian/A_Civil.gd" id="1_kjag7"]
 [ext_resource type="Texture2D" uid="uid://bf6ti576jfx5c" path="res://Enemy/Civilian/CivilianSprite/Civil_Attack.png" id="2_kacai"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://caa3ho5vukg4" path="res://Emote/Exclamation.png" id="11_wr65n"]
 [ext_resource type="Script" path="res://Enemy/Civilian/Angry_Civilian/EmoteTimer.gd" id="12_2np36"]
 [ext_resource type="Texture2D" uid="uid://bssx0pl4lnrx8" path="res://Emote/Question.png" id="12_f2jil"]
+[ext_resource type="AudioStream" uid="uid://b5chkcm1atxis" path="res://Sound/sfx/Civil_attack.wav" id="15_04yje"]
+[ext_resource type="AudioStream" uid="uid://bwafpe1ese44u" path="res://Sound/sfx/Civil_death.wav" id="16_ql8rb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67fts"]
 atlas = ExtResource("2_kacai")
@@ -389,9 +391,8 @@ Orb = ExtResource("2_op7cd")
 [node name="ACivilSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4lxh0")
-animation = &"Attack"
+animation = &"Dead"
 autoplay = "Idle"
-frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -9.25001)
@@ -468,6 +469,18 @@ color = Color(0.980392, 0.686275, 0.266667, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_gwpvw")
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("15_04yje")
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("16_ql8rb")
+max_distance = 500.0
+bus = &"SFX"
 
 [connection signal="animation_looped" from="ACivilSprite" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
