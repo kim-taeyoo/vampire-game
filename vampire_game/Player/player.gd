@@ -7,13 +7,16 @@ var gravity = 1000
 var jump = -450
 #상태 변수
 @export var maxHealth = 100
-var currentHealth  = 100
+var currentHealth  = 20
+var getBlood = 0
 @onready var hitBox = $HitBox
 var isHit = false
 @onready var hitTimer = $HitBox/HitTimer
 @onready var knockbackTimer = $HitBox/KnockbackTimer
 @onready var damagePopup = $PopupLocation
 
+#레벨? 관련
+signal getBloodNum
 #상호작용 애니메이션 직후 처리
 var whatAnimation = "None"
 
@@ -54,15 +57,16 @@ var isAbsorbBlood = false
 
 func _physics_process(delta):
 	#피흡수
-	print(currentHealth)
 	if isAbsorbBlood:
 		absorbBloodAni.play("default")
+		getBlood += 1
 		if currentHealth < 90:
 			currentHealth += 10
 			healthChanged.emit()
 		else:
 			currentHealth = 100
 			healthChanged.emit()
+		emit_signal("getBloodNum")
 	#스토리 진행될때 움직임 멈춤
 	if story.isStoryAnimation:
 		velocity.x = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckp7ajmys7eh4"]
+[gd_scene load_steps=19 format=3 uid="uid://ckp7ajmys7eh4"]
 
 [ext_resource type="Script" path="res://TitleScreen/title.gd" id="1_hb7qt"]
 [ext_resource type="PackedScene" uid="uid://bhef1flilr6a8" path="res://TitleScreen/bg/bg.tscn" id="1_l0abl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkmykyi6cusg1" path="res://floating_menu/OptionMenu/OptionMenu.tscn" id="3_wuieq"]
 [ext_resource type="Texture2D" uid="uid://damraw6sn11jk" path="res://TitleScreen/bg/title.png" id="4_qjxmn"]
 [ext_resource type="Texture2D" uid="uid://cr7ua0nkj086t" path="res://Enemy/Civilian/CivilianSprite/Civil_Idle.png" id="5_tqubi"]
+[ext_resource type="AudioStream" uid="uid://bd5ersjef2k6h" path="res://Sound/Title.mp3" id="9_bitgc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j2yhj"]
 light_mode = 1
@@ -194,6 +195,10 @@ energy = 1.5
 texture = SubResource("GradientTexture2D_x68q8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TitleBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bitgc")
+autoplay = true
 
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menu/option" to="." method="_on_option_pressed"]
