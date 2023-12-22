@@ -36,10 +36,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_sssgt")
 region_rect = Rect2(36, 36, 1192, 792)
-patch_margin_left = 90
-patch_margin_top = 90
-patch_margin_right = 90
-patch_margin_bottom = 90
+patch_margin_left = 233
+patch_margin_top = 233
+patch_margin_right = 233
+patch_margin_bottom = 233
 script = ExtResource("2_7j7cm")
 
 [node name="Title" type="Label" parent="."]
