@@ -11,14 +11,22 @@ extends Node
 var storyNum = 0
 var isStoryAnimation = false
 var isCameraMove = false
+
 #abilityMessage
 const dashMessage: Array[String] = [
 	"I've recovered my dash ability by absorbing blood.",
-	"Press the Z button to use the dash.",
+	"Press the Z button to use the dash."
 ]
 const wallJumpMessage: Array[String] = [
 	"I've recovered my wall Jump ability by absorbing blood.",
-	"I can do wall Jump by hanging from the wall and pressing space.",
+	"I can do wall Jump by hanging from the wall and pressing space."
+]
+const DaggMessage: Array[String] = [
+	"I've recovered my ability to attack Dagg by absorbing enough blood.",
+	"Now I've recovered all my abilities.",
+	"Let's break the rock and go to the castle and get revenge on the humans.",
+	"The dagg attack can be used in the air.",
+	"Press the C button,then I'll consume HP and dagg attack."
 ]
 #placeMessage
 const startMessage: Array[String] = [
@@ -39,19 +47,25 @@ const place1Ex: Array[String] = [
 const place2Ex: Array[String] = [
 	"I have to climb a cliff to move forward.",
 	"But I'm still weak.",
-	"There are some knights look strong, but I need to drink more blood to move forward.",
+	"There are some knights look strong, but I need to drink more blood to move forward."
 ]
 const place3Ex: Array[String] = [
-	"I have to climb a cliff to move forward.",
-	"But I'm still weak.",
-	"There's a strong looking knight but I need more blood to move forward.",
+	"The road to go is blocked by a big stone.",
+	"I lack the power to use the Dagg attack ability to attack in the air and break that rock.",
+	"I see strong enemies such as Archer and Knight.",
+	 "But I have to kill them and drink blood to be strong."
+]
+const castleEx: Array[String] = [
+	"I finally infiltrated the castle.",
+	"I'll kill all the human in the castle."
 ]
 func _ready():
 	ExLabel.visible = false
 	if get_parent().get_name() == "CaveStage":
-#		DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
+		DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
 		storyNum = 0
 	else:
+		DialogManager.start_dialog(player.global_position, castleEx, speech_sound)
 		storyNum = 4	
 
 #상호작용
@@ -125,6 +139,8 @@ func _on_story_player_animation_finished(anim_name):
 		DialogManager.start_dialog(player.global_position, place1Ex, speech_sound)
 	elif storyNum == 2:
 		DialogManager.start_dialog(player.global_position, place2Ex, speech_sound)
+	elif storyNum == 3:
+		DialogManager.start_dialog(player.global_position, place3Ex, speech_sound)
 
 
 func _on_player_get_blood_num():
@@ -132,3 +148,5 @@ func _on_player_get_blood_num():
 		DialogManager.start_dialog(player.global_position, dashMessage, speech_sound)
 	elif player.getBlood == 11:
 		DialogManager.start_dialog(player.global_position, wallJumpMessage, speech_sound)
+	elif player.getBlood == 20:
+		DialogManager.start_dialog(player.global_position, DaggMessage, speech_sound)

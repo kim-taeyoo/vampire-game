@@ -26,6 +26,8 @@ var whatAnimation = "None"
 const dashSpeed = 550
 const dashDuration = 0.6
 @onready var dash = $Dash
+@onready var dashCooldownTimer = $Dash/DashCooldown
+var isDash = true
 var saveDirection = 1
 
 #bloodSword
@@ -53,6 +55,17 @@ var isFall = false
 #스토리관련
 @onready var story = $"../Story"
 
+#SFX
+@onready var walkSound = $Sound/Walk
+@onready var hitSound = $Sound/Hit
+@onready var jumpSound = $Sound/Jump
+@onready var sword1Sound = $Sound/SwordAtk1
+@onready var sword2Sound = $Sound/SwordAtk2
+@onready var swordSoundTimer = $Sound/swordSoundTimer
+@onready var daggSound = $Sound/DaggAtk
+@onready var dashSound = $Sound/Dash
+@onready var absorbSound = $Sound/absor
+
 #피 흡수
 var isAbsorbBlood = false
 @onready var absorbBloodAni = $AbsorbBlood
@@ -69,6 +82,11 @@ func _physics_process(delta):
 	#피흡수
 	if isAbsorbBlood:
 		absorbBloodAni.play("default")
+		if not absorbSound.playing:
+			absorbSound.play()
+		else:
+			absorbSound.stop()
+			absorbSound.play()
 		getBlood += 1
 		if currentHealth < 90:
 			currentHealth += 10
@@ -95,11 +113,22 @@ func _physics_process(delta):
 	#설정
 		if isAbsorbBlood:
 			isAbsorbBlood = false
+		if sword1Sound.playing:
+			sword1Sound.stop()
+		if sword2Sound.playing:
+			sword2Sound.stop()
+		if daggSound.playing:
+			daggSound.stop()
+		if dashSound.playing:
+			dashSound.stop()
+			
 	#중력
 		if not is_on_floor() and not wallCheck.is_colliding():
 #			velocity.y += gravity * delta
 			#fall animation
 			if velocity.y > 0:
+				if jumpSound.playing:
+					jumpSound.stop()
 				ap.play("Fall")
 				whatAnimation = "Fall"
 				wallCheck.enabled = true
@@ -118,6 +147,8 @@ func _physics_process(delta):
 		#점프
 		if Input.is_action_pressed("Jump") and is_on_floor():
 			velocity.y = jump
+			if not jumpSound.playing:
+					jumpSound.play()
 		#move
 		var direction = Input.get_axis("Left", "Right")
 		if direction:
@@ -127,6 +158,8 @@ func _physics_process(delta):
 				ap.play("Run")
 				whatAnimation = "Run"
 				wallCheck.enabled = false
+				if not walkSound.playing:
+					walkSound.play()
 		else: 
 			velocity.x = move_toward(velocity.x, 0, speed)
 			if is_on_floor():
@@ -154,15 +187,19 @@ func _physics_process(delta):
 
 		#상호작용 애니메이션	
 		#dash
-		if Input.is_action_just_pressed("Dash") and getBlood >= 5:
+		if Input.is_action_just_pressed("Dash") and getBlood >= 5 and isDash:
 			velocity.y = 0
 			velocity.x = saveDirection * dashSpeed
 			dash.startDash(dashDuration)
 			whatAnimation = "Dash"
+			if not dashSound.playing:
+				dashSound.play()
 			if saveDirection == 1:
 				ap.play("Dash")
 			elif saveDirection == -1:
 				ap.play("Dash_Left")
+			dashCooldownTimer.start()
+			isDash = false
 				
 		#bloodSword
 		if Input.is_action_just_pressed("BloodSword") and is_on_floor():
@@ -172,6 +209,9 @@ func _physics_process(delta):
 			bloodSword.startBloodSword(bloodSwordDuration)
 			hurtBox.scale.x = saveDirection
 			ap.play("BloodSword")
+			if not sword1Sound.playing:
+				sword1Sound.play()
+			swordSoundTimer.start()
 			currentHealth -= 3
 			healthChanged.emit()
 			
@@ -183,6 +223,8 @@ func _physics_process(delta):
 			bloodSword.startBloodSword(bloodDaggDuration)
 			hurtBox.scale.x = saveDirection
 			ap.play("BloodDagg")
+			if not daggSound.playing:
+				daggSound.play()
 			currentHealth -= 3
 			healthChanged.emit()
 			
@@ -226,10 +268,11 @@ func get_damage(body, dmageNum: int):
 		damagePopup.popup(dmageNum)
 		hitTimer.start()
 		healthChanged.emit()
+		if not hitSound.playing:
+			hitSound.play()
 		
 		#knockback
 		knockbackTimer.start()
-		print(body.position.x)
 		if position.x - body.position.x > 0:
 			velocity.x = 400
 		else:
@@ -248,23 +291,35 @@ func get_damage_by_light():
 #
 
 func _on_hit_box_area_entered(area):
-	var areaParent = area.get_parent()
+	var areaParent
+	if area.name == "Arrow":
+		areaParent = area
+	else:
+		areaParent = area.get_parent()
 	if area.name != "HitBox" and area.name != "SunLight":
-		get_damage(areaParent, 5)
-		print(currentHealth)
-
+		if area.name == "CivHurtBox":
+			get_damage(areaParent, 5)
+		elif area.name == "KnHurtBox":
+			get_damage(areaParent, 15)
+		elif area.name == "Arrow":
+			get_damage(areaParent, 10)
+		else:
+			pass
 func _on_timer_timeout():
 	isHit = false
-
-
+	if hitSound.playing:
+		hitSound.stop()
+	
 func _on_knockback_timer_timeout():
 	velocity.x = 0
-
-
-func _on_hit_box_body_entered(body):
-	print(body.name)
-
 
 func _on_spiked_ball_hit_spiked(area):
 	var areaParent = area.get_parent()
 	get_damage(areaParent, 5)
+
+func _on_sword_sound_timer_timeout():
+	if not sword2Sound.playing:
+			sword2Sound.play()
+			
+func _on_dash_cooldown_timeout():
+	isDash = true

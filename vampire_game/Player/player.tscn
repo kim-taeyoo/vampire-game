@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://rqkig2xuvbko"]
+[gd_scene load_steps=38 format=3 uid="uid://rqkig2xuvbko"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0w4vw"]
 [ext_resource type="Texture2D" uid="uid://cp5iw0it2jfkk" path="res://Player/run.png" id="1_1ln5s"]
@@ -14,6 +14,14 @@
 [ext_resource type="Script" path="res://Player/WallCheck.gd" id="11_mfo1d"]
 [ext_resource type="Script" path="res://Player/PopupLocation.gd" id="13_ajcmv"]
 [ext_resource type="PackedScene" uid="uid://cpo5nnkrau162" path="res://floating_numers.tscn" id="14_fclfa"]
+[ext_resource type="AudioStream" uid="uid://cdgbl3dqp3et" path="res://Player/SFX/human_walk_3.wav" id="15_ghnbr"]
+[ext_resource type="AudioStream" uid="uid://df8q201lqtqj" path="res://Player/SFX/human_damage_2.wav" id="16_bvifo"]
+[ext_resource type="AudioStream" uid="uid://bp3hb5wlex62r" path="res://Player/SFX/human_jump.wav" id="17_0adkn"]
+[ext_resource type="AudioStream" uid="uid://oico6xf6udof" path="res://Player/SFX/atk_sword_1.wav" id="18_ffxgs"]
+[ext_resource type="AudioStream" uid="uid://b0tcelseey6p8" path="res://Player/SFX/atk_sword_2.wav" id="19_jtxi6"]
+[ext_resource type="AudioStream" uid="uid://c6rw10vneqady" path="res://Player/SFX/atk_Dagg.wav" id="20_21ohi"]
+[ext_resource type="AudioStream" uid="uid://b83satp06phqj" path="res://Player/SFX/dash.wav" id="21_gmxuu"]
+[ext_resource type="AudioStream" uid="uid://bx825k2u1258l" path="res://Player/SFX/abst.wav" id="22_w3i0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5dkn"]
 size = Vector2(13.5, 13.25)
@@ -1289,7 +1297,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
-collision_mask = 526
+collision_mask = 2574
 script = ExtResource("1_0w4vw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -1333,6 +1341,10 @@ script = ExtResource("5_tsjco")
 [node name="DashTimer" type="Timer" parent="Dash"]
 one_shot = true
 
+[node name="DashCooldown" type="Timer" parent="Dash"]
+wait_time = 1.2
+one_shot = true
+
 [node name="BloodSword" type="Node2D" parent="."]
 script = ExtResource("7_52j7b")
 
@@ -1365,9 +1377,48 @@ position = Vector2(0, -18.5)
 script = ExtResource("13_ajcmv")
 damage_node = ExtResource("14_fclfa")
 
+[node name="Sound" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("15_ghnbr")
+volume_db = 7.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("16_bvifo")
+volume_db = 7.0
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("17_0adkn")
+volume_db = 7.0
+
+[node name="SwordAtk1" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("18_ffxgs")
+volume_db = 9.0
+
+[node name="SwordAtk2" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("19_jtxi6")
+volume_db = 9.0
+
+[node name="DaggAtk" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("20_21ohi")
+volume_db = 9.0
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("21_gmxuu")
+volume_db = 9.0
+
+[node name="swordSoundTimer" type="Timer" parent="Sound"]
+wait_time = 0.4
+one_shot = true
+
+[node name="absor" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("22_w3i0g")
+volume_db = 8.0
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="HitBox/HitTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="HitBox/KnockbackTimer" to="." method="_on_knockback_timer_timeout"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="Dash/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="Sound/swordSoundTimer" to="." method="_on_sword_sound_timer_timeout"]

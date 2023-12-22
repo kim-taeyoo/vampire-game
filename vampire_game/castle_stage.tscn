@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c3l0y3nfgb6r5"]
+[gd_scene load_steps=31 format=3 uid="uid://c3l0y3nfgb6r5"]
 
 [ext_resource type="Texture2D" uid="uid://be6u8tck0gpfb" path="res://background/Tile-Sets (64-64).png" id="1_5sbto"]
 [ext_resource type="Texture2D" uid="uid://bev6bt64ceqoi" path="res://map_light/light-effect-27759.png" id="2_f7ql6"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cbhra0nmhwmg3" path="res://Enemy/Civilian/Angry_Civilian/A_Civil.tscn" id="11_1fib7"]
 [ext_resource type="PackedScene" uid="uid://b00jxpy5etudc" path="res://Enemy/knight/Knight.tscn" id="13_aslgl"]
 [ext_resource type="PackedScene" uid="uid://blua7ixdukry7" path="res://SpikedBall/spiked_ball.tscn" id="13_opt83"]
+[ext_resource type="PackedScene" uid="uid://cvnpcnsfb2xqb" path="res://Enemy/Archer/Archer.tscn" id="15_x72ix"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hcn65"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -1088,63 +1089,516 @@ metadata/_edit_use_anchors_ = true
 [node name="Enemy" type="Node" parent="."]
 
 [node name="Angry_Civilian" parent="Enemy" instance=ExtResource("11_1fib7")]
+position = Vector2(5606, 2548)
 scale = Vector2(4, 4)
 
-[node name="Arvher" type="Node" parent="Enemy"]
-
-[node name="Knight" type="Node" parent="Enemy"]
-
-[node name="Knight" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
+[node name="Knight2" parent="Enemy" instance=ExtResource("13_aslgl")]
 position = Vector2(3622, 2693)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight2" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
+[node name="Knight3" parent="Enemy" instance=ExtResource("13_aslgl")]
 position = Vector2(4104, 2693)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight3" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
+[node name="Knight4" parent="Enemy" instance=ExtResource("13_aslgl")]
 position = Vector2(4132, 2437)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight4" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
+[node name="Knight5" parent="Enemy" instance=ExtResource("13_aslgl")]
 position = Vector2(3107, 2242)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight5" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
+[node name="Knight6" parent="Enemy" instance=ExtResource("13_aslgl")]
 position = Vector2(3011, 2684)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight6" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
+[node name="Knight7" parent="Enemy" instance=ExtResource("13_aslgl")]
 position = Vector2(3175, 1713)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight7" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
-position = Vector2(4707, 1763)
+[node name="Knight8" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(4858, 1777)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight8" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
+[node name="Knight9" parent="Enemy" instance=ExtResource("13_aslgl")]
 position = Vector2(4891, 2633)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight9" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
-position = Vector2(4707, 2633)
+[node name="Knight10" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(4707, 2536)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight10" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
-position = Vector2(5818, 2233)
+[node name="Knight15" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(4842, 2242)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight11" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
-position = Vector2(5931, 1911)
+[node name="Knight16" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(6021, 2233)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight12" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
-position = Vector2(3790, 2100)
+[node name="Knight17" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(5900, 1904)
 scale = Vector2(2.5, 2.5)
 
-[node name="Knight13" parent="Enemy/Knight" instance=ExtResource("13_aslgl")]
-position = Vector2(4373, 1755)
+[node name="Knight18" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(4373, 1777)
 scale = Vector2(2.5, 2.5)
+
+[node name="Knight19" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(3572, 1842)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight20" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(5792, 2223)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight21" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(3865, 3093)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight22" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(3398, 3123)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight23" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(3532, 3388)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight24" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(4323, 3336)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight25" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(4886, 3558)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight26" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(5071, 3739)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight27" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(5304, 3974)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight28" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(4050, 3998)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight29" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(3502, 3998)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight30" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(5716, 3107)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight31" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(5872, 3676)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight32" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(6061, 3998)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight33" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(2158, 3350)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight34" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(2320, 3568)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight35" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(2427, 3989)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight36" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7883, 3865)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight37" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7828, 3272)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight38" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7983, 2673)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight39" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(9350, 2643)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight40" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(9530, 2875)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight41" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(9622, 3538)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight42" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(9626, 3312)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight43" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(8978, 3948)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight44" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(8767, 3666)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight45" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(10136, 3899)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight46" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(10760, 3143)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight47" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(8289, 3260)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight48" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(8168, 2947)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight49" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7378, 3010)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight50" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7418, 2857)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight51" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7462, 2848)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight52" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7446, 4014)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight53" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7923, 4014)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight54" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7812, 3865)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight55" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(7762, 3600)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight56" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(9397, 5259)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight57" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(10074, 5370)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight58" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(10204, 4837)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight59" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(11644, 4806)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight60" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(11812, 4973)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight61" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(11581, 5813)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight62" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(10710, 5813)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight63" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(13055, 4973)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight64" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(10480, 5496)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight65" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(9933, 5813)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight66" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12934, 5376)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight67" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12707, 5410)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight68" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12747, 3532)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight69" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(11913, 3546)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight70" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(11691, 3336)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight71" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12081, 2837)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight72" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12877, 2762)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight73" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12787, 2948)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight74" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(13041, 3185)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight75" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12301, 3024)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight76" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(12232, 2659)
+scale = Vector2(2.5, 2.5)
+
+[node name="Knight77" parent="Enemy" instance=ExtResource("13_aslgl")]
+position = Vector2(11212, 5139)
+scale = Vector2(2.5, 2.5)
+
+[node name="Archer" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3458, 2231)
+
+[node name="Archer2" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3376, 1715)
+
+[node name="Archer3" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3532, 1683)
+
+[node name="Archer4" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3891, 2624)
+
+[node name="Archer5" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3389, 2631)
+
+[node name="Archer6" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4323, 2615)
+
+[node name="Archer7" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4723, 1733)
+
+[node name="Archer8" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4557, 1746)
+
+[node name="Archer9" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4413, 2202)
+
+[node name="Archer10" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3612, 2024)
+
+[node name="Archer11" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(5636, 1974)
+
+[node name="Archer12" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4976, 3608)
+
+[node name="Archer13" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(5377, 3608)
+
+[node name="Archer14" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4998, 3210)
+
+[node name="Archer15" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(5160, 3217)
+
+[node name="Archer16" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4037, 3091)
+
+[node name="Archer17" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4218, 3082)
+
+[node name="Archer18" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3123, 3371)
+
+[node name="Archer19" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(2870, 3371)
+
+[node name="Archer20" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3389, 3371)
+
+[node name="Archer21" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3135, 3143)
+
+[node name="Archer22" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(2786, 3119)
+
+[node name="Archer23" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3093, 3867)
+
+[node name="Archer24" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(2555, 3874)
+
+[node name="Archer25" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(3063, 3998)
+
+[node name="Archer26" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4842, 3998)
+
+[node name="Archer27" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4490, 3982)
+
+[node name="Archer28" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(5198, 3990)
+
+[node name="Archer29" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(4898, 3748)
+
+[node name="Archer30" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(7611, 3304)
+
+[node name="Archer31" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(8089, 3296)
+
+[node name="Archer32" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(7790, 2731)
+
+[node name="Archer33" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(8289, 2705)
+
+[node name="Archer34" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(8534, 3848)
+
+[node name="Archer35" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9427, 3551)
+
+[node name="Archer36" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9465, 3345)
+
+[node name="Archer37" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9465, 2640)
+
+[node name="Archer38" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9707, 2633)
+
+[node name="Archer39" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(7139, 2705)
+
+[node name="Archer40" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(7649, 3599)
+
+[node name="Archer41" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(7633, 3948)
+
+[node name="Archer42" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(8572, 3989)
+
+[node name="Archer43" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(8940, 3965)
+
+[node name="Archer44" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9560, 3948)
+
+[node name="Archer45" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9933, 3989)
+
+[node name="Archer46" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(10420, 3477)
+
+[node name="Archer47" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(10166, 3041)
+
+[node name="Archer48" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9057, 2971)
+
+[node name="Archer49" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(8311, 2947)
+
+[node name="Archer50" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9861, 5386)
+
+[node name="Archer51" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(9487, 5259)
+
+[node name="Archer52" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(10385, 4846)
+
+[node name="Archer53" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(10888, 5386)
+
+[node name="Archer54" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11130, 5813)
+
+[node name="Archer55" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(10442, 5813)
+
+[node name="Archer56" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11739, 5795)
+
+[node name="Archer57" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11570, 5019)
+
+[node name="Archer58" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11489, 4796)
+
+[node name="Archer59" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12409, 5139)
+
+[node name="Archer60" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11621, 5348)
+
+[node name="Archer61" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12501, 3496)
+
+[node name="Archer62" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12651, 3582)
+
+[node name="Archer63" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11819, 3363)
+
+[node name="Archer64" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11761, 3520)
+
+[node name="Archer65" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11913, 3044)
+
+[node name="Archer66" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12431, 3031)
+
+[node name="Archer67" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12360, 2857)
+
+[node name="Archer68" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12787, 2768)
+
+[node name="Archer69" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12287, 2837)
+
+[node name="Archer70" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(12962, 2977)
+
+[node name="Archer71" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11352, 2728)
+
+[node name="Archer72" parent="Enemy" instance=ExtResource("15_x72ix")]
+position = Vector2(11130, 2713)
+
+[node name="Projectile" type="Node" parent="."]
+
+[node name="Orb" type="Node" parent="."]
 
 [node name="SpikedBall" type="Node" parent="."]
 
@@ -1184,6 +1638,7 @@ position = Vector2(5993, 2790)
 [node name="SpikedBall12" parent="SpikedBall" instance=ExtResource("13_opt83")]
 position = Vector2(5863, 2640)
 
+[connection signal="healthChanged" from="Player" to="HealthBar/TextureProgressBar" method="_on_player_health_changed"]
 [connection signal="animation_finished" from="Story/StoryPlayer" to="Story" method="_on_story_player_animation_finished"]
 [connection signal="body_entered" from="Story/Place1" to="Story" method="_on_place_1_body_entered"]
 [connection signal="body_entered" from="Story/Place2" to="Story" method="_on_place_1_body_entered"]

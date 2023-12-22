@@ -15,7 +15,7 @@ script = ExtResource("1_pfhb4")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_s7cw3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ArrowBox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.25, 0.25)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_am6sr")

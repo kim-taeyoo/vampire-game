@@ -430,6 +430,7 @@ gizmo_extents = 0.0
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("16_87s4h")
+volume_db = 6.0
 max_distance = 500.0
 bus = &"SFX"
 

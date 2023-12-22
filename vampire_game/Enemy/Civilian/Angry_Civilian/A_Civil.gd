@@ -20,7 +20,7 @@ var facing_right = true
 @onready var emoteTimer = $Emote/EmoteTimer
 @onready var alertTimer = $AlertTimer
 
-@onready var hurtBox = $HurtBox/CollisionShape2D
+@onready var hurtBox = $CivHurtBox/CollisionShape2D
 
 @onready var Torch = $Torch
 

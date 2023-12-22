@@ -442,10 +442,10 @@ wait_time = 15.0
 one_shot = true
 script = ExtResource("9_pj2l0")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="CivHurtBox" type="Area2D" parent="."]
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CivHurtBox"]
 position = Vector2(8.5, -9)
 shape = SubResource("RectangleShape2D_rxwrr")
 disabled = true
@@ -485,5 +485,5 @@ bus = &"SFX"
 [connection signal="animation_looped" from="ACivilSprite" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="AlertTimer" to="AlertTimer" method="_on_timeout"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="CivHurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="Emote/EmoteTimer" to="Emote/EmoteTimer" method="_on_timeout"]

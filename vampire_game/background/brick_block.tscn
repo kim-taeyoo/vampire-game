@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://22un4762h8bm"]
+
+[ext_resource type="Script" path="res://background/brick_block.gd" id="1_jr6ks"]
+[ext_resource type="Texture2D" uid="uid://dntbj6eiaxuk5" path="res://background/brick.png" id="2_tinpf"]
+
+[node name="BrickBlock" type="RigidBody2D"]
+collision_layer = 2048
+collision_mask = 2063
+mass = 2.0
+gravity_scale = 2.0
+script = ExtResource("1_jr6ks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tinpf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 0.00771227
+polygon = PackedVector2Array(-7, -7, -8, 8, 7, 8, 8, -7)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+rotation = 0.00771227
+polygon = PackedVector2Array(-8.06146, -7.93806, -8.93032, 9.06914, 8.06917, 8.93803, 8.93803, -8.06917)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
