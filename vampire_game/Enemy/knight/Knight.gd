@@ -28,6 +28,9 @@ var checkattck = true
 var checkdeath = true
 
 func _physics_process(delta):
+	
+	hurtBox.disabled = true
+	
 	# 중력추가
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -49,7 +52,6 @@ func _physics_process(delta):
 		
 		"Attack":
 			AS.animation = "Attack"
-			hurtBox.disabled = true
 			if AS.frame == 4:
 				hurtBox.disabled = false
 				if !attckSfx.playing and checkattck:

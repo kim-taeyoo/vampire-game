@@ -31,6 +31,8 @@ var checkdeath = true
 
 func _physics_process(delta):
 	
+	hurtBox.disabled = true
+	
 	# 중력추가
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -61,7 +63,6 @@ func _physics_process(delta):
 			
 			Replace_torch(condition,AS.frame)
 			
-			hurtBox.disabled = true
 			if AS.frame == 4 or AS.frame == 5:
 				hurtBox.disabled = false
 				if !attckSfx.playing and checkattck:
