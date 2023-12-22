@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkmykyi6cusg1"]
+[gd_scene load_steps=8 format=3 uid="uid://bkmykyi6cusg1"]
 
-[ext_resource type="Script" path="res://Gui/floating_menu/OptionMenu/OptionMenu.gd" id="1_v6uwj"]
 [ext_resource type="PackedScene" uid="uid://c1moas1kokim8" path="res://Gui/floating_menu/menuPanel.tscn" id="2_70jbr"]
 [ext_resource type="Script" path="res://Gui/floating_menu/OptionMenu/Master_slider.gd" id="2_i6fo2"]
 [ext_resource type="FontFile" uid="uid://spkvm4khsdgf" path="res://Gui/Metroid Prime Hunters.ttf" id="3_gd52r"]
@@ -20,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_v6uwj")
 
 [node name="Panel2" parent="." instance=ExtResource("2_70jbr")]
 layout_mode = 1

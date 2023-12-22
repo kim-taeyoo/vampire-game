@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1moas1kokim8"]
+[gd_scene load_steps=12 format=3 uid="uid://c1moas1kokim8"]
 
 [ext_resource type="Texture2D" uid="uid://db1ec6i2aq2tb" path="res://Gui/floating_menu/menuPanel.png" id="1_sssgt"]
+[ext_resource type="Script" path="res://Gui/floating_menu/menuPanel.gd" id="2_7j7cm"]
 [ext_resource type="FontFile" uid="uid://spkvm4khsdgf" path="res://Gui/Metroid Prime Hunters.ttf" id="2_iu5gb"]
 [ext_resource type="Texture2D" uid="uid://ctg18ypfca7op" path="res://Gui/Button/x_button/x_button_normal.png" id="3_13pa7"]
 [ext_resource type="Texture2D" uid="uid://bi843yclkwlfd" path="res://Gui/Button/x_button/x_button_on.png" id="4_ph23h"]
@@ -21,7 +22,7 @@ texture = ExtResource("5_8n0qw")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsgay"]
 
-[node name="Panel" type="NinePatchRect"]
+[node name="Floating_panel" type="NinePatchRect"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,6 +40,7 @@ patch_margin_left = 90
 patch_margin_top = 90
 patch_margin_right = 90
 patch_margin_bottom = 90
+script = ExtResource("2_7j7cm")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -70,3 +72,5 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_emet0")
 theme_override_styles/hover = SubResource("StyleBoxTexture_f632w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k3be3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hsgay")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
