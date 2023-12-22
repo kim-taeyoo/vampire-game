@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1moas1kokim8"]
+
+[ext_resource type="Texture2D" uid="uid://db1ec6i2aq2tb" path="res://Gui/floating_menu/menuPanel.png" id="1_sssgt"]
+[ext_resource type="Script" path="res://Gui/floating_menu/menuPanel.gd" id="2_7j7cm"]
+[ext_resource type="FontFile" uid="uid://spkvm4khsdgf" path="res://Gui/Metroid Prime Hunters.ttf" id="2_iu5gb"]
+[ext_resource type="Texture2D" uid="uid://ctg18ypfca7op" path="res://Gui/Button/x_button/x_button_normal.png" id="3_13pa7"]
+[ext_resource type="Texture2D" uid="uid://bi843yclkwlfd" path="res://Gui/Button/x_button/x_button_on.png" id="4_ph23h"]
+[ext_resource type="Texture2D" uid="uid://dxm4gb8nocu28" path="res://Gui/Button/x_button/x_button_press.png" id="5_8n0qw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpjik"]
+font = ExtResource("2_iu5gb")
+font_size = 100
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_emet0"]
+texture = ExtResource("3_13pa7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f632w"]
+texture = ExtResource("4_ph23h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3be3"]
+texture = ExtResource("5_8n0qw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsgay"]
+
+[node name="Floating_panel" type="NinePatchRect"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -598.5
+offset_top = -423.5
+offset_right = 598.5
+offset_bottom = 423.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sssgt")
+region_rect = Rect2(36, 36, 1192, 792)
+patch_margin_left = 233
+patch_margin_top = 233
+patch_margin_right = 233
+patch_margin_bottom = 233
+script = ExtResource("2_7j7cm")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.088
+anchor_right = 1.0
+anchor_bottom = 0.088
+offset_left = 0.5
+offset_top = 8.948
+offset_right = 0.5
+offset_bottom = 145.948
+grow_horizontal = 2
+text = "//Title//"
+label_settings = SubResource("LabelSettings_jpjik")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.5
+offset_top = 91.5
+offset_right = -97.5
+offset_bottom = 235.5
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_emet0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f632w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k3be3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hsgay")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

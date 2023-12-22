@@ -1,0 +1,129 @@
+[gd_scene load_steps=27 format=3 uid="uid://oe5u1o6l6scc"]
+
+[ext_resource type="Script" path="res://Gui/floating_menu/PauseMenu/PauseMenu.gd" id="1_j0gdt"]
+[ext_resource type="PackedScene" uid="uid://c1moas1kokim8" path="res://Gui/floating_menu/menuPanel.tscn" id="1_wy57a"]
+[ext_resource type="Texture2D" uid="uid://f4sjtnth8tis" path="res://Gui/Button/back/back_normal.png" id="2_y77cp"]
+[ext_resource type="PackedScene" uid="uid://bkmykyi6cusg1" path="res://Gui/floating_menu/OptionMenu/OptionMenu.tscn" id="3_2kwy1"]
+[ext_resource type="Texture2D" uid="uid://cft0hc8dv8jy8" path="res://Gui/Button/back/back_on.png" id="3_lbu8h"]
+[ext_resource type="Texture2D" uid="uid://c47symm2hg3lq" path="res://Gui/Button/back/back_press.png" id="4_p2hye"]
+[ext_resource type="Texture2D" uid="uid://bwcel6bi0rsu6" path="res://Gui/Button/option/option_normal.png" id="5_mfne8"]
+[ext_resource type="Texture2D" uid="uid://btbmpay4cc574" path="res://Gui/Button/option/option_on.png" id="6_5rikg"]
+[ext_resource type="Texture2D" uid="uid://bkg1sw07m5xjq" path="res://Gui/Button/option/option_press.png" id="7_gq3a2"]
+[ext_resource type="Texture2D" uid="uid://d2q4alcvup44i" path="res://Gui/Button/exit/exit_normal.png" id="8_86cg8"]
+[ext_resource type="Texture2D" uid="uid://cn4konx5y5a0n" path="res://Gui/Button/exit/exit_on.png" id="9_srwnd"]
+[ext_resource type="Texture2D" uid="uid://bad0cd6mjiny3" path="res://Gui/Button/exit/exit_press.png" id="10_wmtdo"]
+[ext_resource type="AudioStream" uid="uid://d3rjedrtif1re" path="res://Sound/sfx/Button-clicked.wav" id="12_g5u1m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jwrbk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8at5s"]
+texture = ExtResource("2_y77cp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iv6d1"]
+texture = ExtResource("3_lbu8h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cqhx"]
+texture = ExtResource("4_p2hye")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ft0kp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4238"]
+texture = ExtResource("5_mfne8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dg64g"]
+texture = ExtResource("6_5rikg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdkiq"]
+texture = ExtResource("7_gq3a2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4dyh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ho50"]
+texture = ExtResource("8_86cg8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4yjpa"]
+texture = ExtResource("9_srwnd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdd36"]
+texture = ExtResource("10_wmtdo")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a12sf"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j0gdt")
+OptionMenu = ExtResource("3_2kwy1")
+
+[node name="Floating_panel" parent="." instance=ExtResource("1_wy57a")]
+layout_mode = 1
+offset_left = -395.0
+offset_right = 395.0
+
+[node name="Title" parent="Floating_panel" index="0"]
+visible = false
+
+[node name="Button" parent="Floating_panel" index="1"]
+visible = false
+
+[node name="Panel" type="Panel" parent="Floating_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.15
+anchor_right = 0.85
+anchor_bottom = 0.85
+offset_right = 0.5
+offset_bottom = 0.0499878
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jwrbk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Floating_panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Back" type="Button" parent="Floating_panel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_8at5s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iv6d1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8cqhx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ft0kp")
+
+[node name="Option" type="Button" parent="Floating_panel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_j4238")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dg64g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wdkiq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p4dyh")
+
+[node name="Exit" type="Button" parent="Floating_panel/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_2ho50")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4yjpa")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gdd36")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a12sf")
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_g5u1m")
+bus = &"SFX"
+
+[connection signal="pressed" from="Floating_panel/Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Floating_panel/Panel/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="Floating_panel/Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="Floating_panel"]

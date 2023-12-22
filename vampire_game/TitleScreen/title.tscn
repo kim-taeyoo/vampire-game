@@ -1,17 +1,61 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckp7ajmys7eh4"]
+[gd_scene load_steps=42 format=3 uid="uid://ckp7ajmys7eh4"]
 
 [ext_resource type="Script" path="res://TitleScreen/title.gd" id="1_hb7qt"]
 [ext_resource type="PackedScene" uid="uid://bhef1flilr6a8" path="res://TitleScreen/bg/bg.tscn" id="1_l0abl"]
 [ext_resource type="PackedScene" uid="uid://dlxbtxdc3f5je" path="res://TitleScreen/bat/bat.tscn" id="2_1vms1"]
 [ext_resource type="PackedScene" uid="uid://cftqnuiopntwe" path="res://cave_stage.tscn" id="2_iuydu"]
 [ext_resource type="PackedScene" uid="uid://c7uj06y7amssb" path="res://TitleScreen/torch/torch.tscn" id="3_w3q7s"]
-[ext_resource type="PackedScene" uid="uid://bkmykyi6cusg1" path="res://floating_menu/OptionMenu/OptionMenu.tscn" id="3_wuieq"]
+[ext_resource type="PackedScene" uid="uid://bkmykyi6cusg1" path="res://Gui/floating_menu/OptionMenu/OptionMenu.tscn" id="3_wuieq"]
+[ext_resource type="PackedScene" uid="uid://dc02t6fgefai4" path="res://Gui/floating_menu/CreditWindow/CreditWindow.tscn" id="4_6xrcr"]
 [ext_resource type="Texture2D" uid="uid://damraw6sn11jk" path="res://TitleScreen/bg/title.png" id="4_qjxmn"]
 [ext_resource type="Texture2D" uid="uid://cr7ua0nkj086t" path="res://Enemy/Civilian/CivilianSprite/Civil_Idle.png" id="5_tqubi"]
+[ext_resource type="Texture2D" uid="uid://bi6k34joswfs6" path="res://Gui/Button/start/start_normal.png" id="7_3u26q"]
+[ext_resource type="Texture2D" uid="uid://bwcel6bi0rsu6" path="res://Gui/Button/option/option_normal.png" id="7_m4ie6"]
+[ext_resource type="Texture2D" uid="uid://dnlw2qj8j66pe" path="res://Gui/Button/start/start_on.png" id="8_cs6nq"]
+[ext_resource type="Texture2D" uid="uid://btbmpay4cc574" path="res://Gui/Button/option/option_on.png" id="8_g43y6"]
 [ext_resource type="AudioStream" uid="uid://bd5ersjef2k6h" path="res://Sound/Title.mp3" id="9_bitgc"]
+[ext_resource type="Texture2D" uid="uid://ch472xpertlgq" path="res://Gui/Button/start/start_press.png" id="9_f68gg"]
+[ext_resource type="Texture2D" uid="uid://bkg1sw07m5xjq" path="res://Gui/Button/option/option_press.png" id="9_tt0kp"]
+[ext_resource type="Texture2D" uid="uid://bngo3pxql5a05" path="res://Gui/Button/credit/credit_normal.png" id="13_julh8"]
+[ext_resource type="Texture2D" uid="uid://bhaw4hc4lcla8" path="res://Gui/Button/credit/credit_on.png" id="14_mfp8x"]
+[ext_resource type="Texture2D" uid="uid://tiurgcbrd1gb" path="res://Gui/Button/credit/credit_press.png" id="15_supwt"]
+[ext_resource type="AudioStream" uid="uid://d3rjedrtif1re" path="res://Sound/sfx/Button-clicked.wav" id="19_uwqfv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j2yhj"]
 light_mode = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xvynk"]
+texture = ExtResource("7_3u26q")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oce5k"]
+texture = ExtResource("8_cs6nq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0awb4"]
+texture = ExtResource("9_f68gg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssrfo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w1fkc"]
+texture = ExtResource("7_m4ie6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7p4sn"]
+texture = ExtResource("8_g43y6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qo8ia"]
+texture = ExtResource("9_tt0kp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u6v0a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5nuv7"]
+texture = ExtResource("13_julh8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sagx7"]
+texture = ExtResource("14_mfp8x")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sgstk"]
+texture = ExtResource("15_supwt")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hctyp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qcfik"]
 light_mode = 1
@@ -65,6 +109,7 @@ fill_from = Vector2(0.5, 0.5)
 script = ExtResource("1_hb7qt")
 startGame = ExtResource("2_iuydu")
 OptionMenu = ExtResource("3_wuieq")
+Credits = ExtResource("4_6xrcr")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.5
@@ -129,15 +174,15 @@ anchors_preset = -1
 anchor_left = -0.172
 anchor_right = -0.172
 offset_left = 23.2
-offset_top = 30.0
+offset_top = 27.0
 offset_right = 119.2
-offset_bottom = 61.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Start Game
-"
-icon_alignment = 1
-expand_icon = true
+theme_override_styles/normal = SubResource("StyleBoxTexture_xvynk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oce5k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0awb4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ssrfo")
 
 [node name="option" type="Button" parent="menu"]
 light_mask = 2
@@ -147,14 +192,15 @@ anchors_preset = -1
 anchor_left = -0.27
 anchor_right = -0.27
 offset_left = 180.0
-offset_top = 68.0
+offset_top = 66.0
 offset_right = 276.0
-offset_bottom = 99.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Option"
-icon_alignment = 1
-expand_icon = true
+theme_override_styles/normal = SubResource("StyleBoxTexture_w1fkc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7p4sn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qo8ia")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u6v0a")
 
 [node name="credit" type="Button" parent="menu"]
 light_mask = 2
@@ -166,13 +212,13 @@ anchor_right = -0.27
 offset_left = 180.0
 offset_top = 107.0
 offset_right = 276.0
-offset_bottom = 138.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Credit
-"
-icon_alignment = 1
-expand_icon = true
+theme_override_styles/normal = SubResource("StyleBoxTexture_5nuv7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sagx7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sgstk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hctyp")
 
 [node name="Sprite2D" type="Sprite2D" parent="menu"]
 texture_filter = 1
@@ -201,5 +247,10 @@ stream = ExtResource("9_bitgc")
 autoplay = true
 bus = &"BGM"
 
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_uwqfv")
+bus = &"SFX"
+
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="menu/option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="menu/credit" to="." method="_on_credit_pressed"]
