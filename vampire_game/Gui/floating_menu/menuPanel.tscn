@@ -23,6 +23,7 @@ texture = ExtResource("5_8n0qw")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsgay"]
 
 [node name="Floating_panel" type="NinePatchRect"]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -1,7 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://oe5u1o6l6scc"]
+[gd_scene load_steps=27 format=3 uid="uid://oe5u1o6l6scc"]
 
+[ext_resource type="Script" path="res://Gui/floating_menu/PauseMenu/PauseMenu.gd" id="1_j0gdt"]
 [ext_resource type="PackedScene" uid="uid://c1moas1kokim8" path="res://Gui/floating_menu/menuPanel.tscn" id="1_wy57a"]
 [ext_resource type="Texture2D" uid="uid://f4sjtnth8tis" path="res://Gui/Button/back/back_normal.png" id="2_y77cp"]
+[ext_resource type="PackedScene" uid="uid://bkmykyi6cusg1" path="res://Gui/floating_menu/OptionMenu/OptionMenu.tscn" id="3_2kwy1"]
 [ext_resource type="Texture2D" uid="uid://cft0hc8dv8jy8" path="res://Gui/Button/back/back_on.png" id="3_lbu8h"]
 [ext_resource type="Texture2D" uid="uid://c47symm2hg3lq" path="res://Gui/Button/back/back_press.png" id="4_p2hye"]
 [ext_resource type="Texture2D" uid="uid://bwcel6bi0rsu6" path="res://Gui/Button/option/option_normal.png" id="5_mfne8"]
@@ -10,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d2q4alcvup44i" path="res://Gui/Button/exit/exit_normal.png" id="8_86cg8"]
 [ext_resource type="Texture2D" uid="uid://cn4konx5y5a0n" path="res://Gui/Button/exit/exit_on.png" id="9_srwnd"]
 [ext_resource type="Texture2D" uid="uid://bad0cd6mjiny3" path="res://Gui/Button/exit/exit_press.png" id="10_wmtdo"]
+[ext_resource type="AudioStream" uid="uid://d3rjedrtif1re" path="res://Sound/sfx/Button-clicked.wav" id="12_g5u1m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jwrbk"]
 
@@ -47,12 +50,15 @@ texture = ExtResource("10_wmtdo")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a12sf"]
 
 [node name="PauseMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j0gdt")
+OptionMenu = ExtResource("3_2kwy1")
 
 [node name="Floating_panel" parent="." instance=ExtResource("1_wy57a")]
 layout_mode = 1
@@ -111,5 +117,13 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_2ho50")
 theme_override_styles/hover = SubResource("StyleBoxTexture_4yjpa")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_gdd36")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a12sf")
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_g5u1m")
+bus = &"SFX"
+
+[connection signal="pressed" from="Floating_panel/Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Floating_panel/Panel/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="Floating_panel/Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 
 [editable path="Floating_panel"]

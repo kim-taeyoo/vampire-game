@@ -49,3 +49,9 @@ func _unhandled_input(event):
 			return
 		
 		_show_text_box()
+
+func _back_to_title():
+	if is_dialog_active:
+		text_box.queue_free()
+		is_dialog_active = false
+		current_line_index = 0
