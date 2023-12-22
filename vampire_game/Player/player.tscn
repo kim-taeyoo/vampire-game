@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://heotrqwkpott" path="res://Player/Small dagg attack.png" id="6_t2hqo"]
 [ext_resource type="Texture2D" uid="uid://bgn31cgabmcr5" path="res://Player/Wall Jump.png" id="7_3g00i"]
 [ext_resource type="Script" path="res://Player/BloodSword.gd" id="7_52j7b"]
-[ext_resource type="Texture2D" uid="uid://bn518rg2jxh1o" path="res://Player/Hit.png" id="8_clylg"]
+[ext_resource type="Texture2D" uid="uid://dn4pos3o44hel" path="res://Player/Hit.png" id="8_clylg"]
 [ext_resource type="Script" path="res://Player/BloodDagg.gd" id="9_alny3"]
 [ext_resource type="Script" path="res://Player/WallCheck.gd" id="11_mfo1d"]
 [ext_resource type="Script" path="res://Player/PopupLocation.gd" id="13_ajcmv"]
@@ -22,7 +22,6 @@ size = Vector2(13.5, 13.25)
 
 [sub_resource type="Animation" id="Animation_fsx88"]
 resource_name = "BloodDagg"
-length = 1.2
 step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -79,10 +78,10 @@ tracks/4/path = NodePath("Sprite2D:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.02),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -119,6 +118,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(0, -7), Vector2(18, -7), Vector2(20, -7), Vector2(0, -7)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HurtBox/CollisionPolygon2D:polygon")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(), PackedVector2Array(1.55613, -18.9955, -3.95715, -14.5118, 7.53099, -10.4778, 8.49996, 0.0251115, 32.025, -8.40543, 25.0486, -16.4261, 7.56349, -21.4777), PackedVector2Array(1.55613, -18.9955, -3.95715, -14.5118, 7.53099, -10.4778, 8.49996, 0.0251115, 33.5146, -4.90101, 25.0486, -16.4261, 7.56349, -21.4777), PackedVector2Array(1.55613, -18.9955, -3.95715, -14.5118, 7.53099, -10.4778, 8.49996, 0.0251115, 33.5146, -4.90101, 25.0486, -16.4261, 7.56349, -21.4777), PackedVector2Array(1.55613, -18.9955, -3.95715, -14.5118, 7.53099, -10.4778, 8.49996, 0.0251115, 34.0043, -1.39955, 25.0486, -16.4261, 7.56349, -21.4777), PackedVector2Array(1.55613, -18.9955, -3.95715, -14.5118, -5.9852, -5.0177, -5.49998, -0.0162486, 20.5014, -0.439435, 14.5428, -14.4571, 7.56349, -21.4777), PackedVector2Array(1.0517, -17.497, -3.95715, -14.5118, -5.9852, -5.0177, -5.49998, -0.0162486, 8.50144, -0.474886, 9.53836, -12.9719, 8.05167, -17.4763), PackedVector2Array(1.0517, -17.497, -3.95715, -14.5118, -5.9852, -5.0177, -5.49998, -0.0162486, 5.49998, 0.0162486, 5.52804, -9.48371, 5.05463, -18.4851)]
 }
 
 [sub_resource type="Animation" id="Animation_mtsn2"]
@@ -1278,7 +1289,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
-collision_mask = 14
+collision_mask = 526
 script = ExtResource("1_0w4vw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -1311,10 +1322,10 @@ wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_3fy8p")
 }
-autoplay = "Idle"
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("5_tsjco")

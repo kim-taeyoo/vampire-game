@@ -6,6 +6,8 @@ extends Node
 @onready var timer = $Timer
 @onready var ExLabel = $interactEx
 
+@export var CastleStage: PackedScene
+
 var storyNum = 0
 var isStoryAnimation = false
 var isCameraMove = false
@@ -46,7 +48,11 @@ const place3Ex: Array[String] = [
 ]
 func _ready():
 	ExLabel.visible = false
-	DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
+	if get_parent().get_name() == "CaveStage":
+#		DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
+		storyNum = 0
+	else:
+		storyNum = 4	
 
 #상호작용
 func _unhandled_input(event):
@@ -58,9 +64,13 @@ func _unhandled_input(event):
 			elif storyNum == 2:
 				isCameraMove = true
 				storyPlayer.play("place2_explain")
+			elif storyNum == 3:
+				isCameraMove = true
+				storyPlayer.play("place3_explain")
 	
 #장소1
 func _on_place_1_body_entered(body):
+	print(body.name)
 	if body.name == "Player" and storyNum == 0:
 		storyNum += 1
 		isStoryAnimation = true
@@ -68,15 +78,37 @@ func _on_place_1_body_entered(body):
 		ExLabel.visible = true
 		storyPlayer.play("Place1_explain")
 		timer.start(2.0)
-	elif body.name == "Player" and storyNum == 1:
+	
+func _on_place_2_body_entered(body):
+	if body.name == "Player" and storyNum == 1:
 		storyNum += 1
 		isStoryAnimation = true
 		isCameraMove = true
 		ExLabel.visible = true
 		storyPlayer.play("place2_explain")
 		timer.start(2.0)
+		
 
-
+func _on_place_3_body_entered(body):
+	if body.name == "Player" and storyNum == 2:
+		storyNum += 1
+		isStoryAnimation = true
+		isCameraMove = true
+		ExLabel.visible = true
+		storyPlayer.play("place3_explain")
+		timer.start(2.0)
+		
+func _on_place_4_body_entered(body):
+	if body.name == "Player" and storyNum == 3:
+#		storyNum += 1
+#		isStoryAnimation = true
+#		isCameraMove = true
+#		ExLabel.visible = true
+#		storyPlayer.play("place3_explain")
+#		timer.start(2.0)
+		get_tree().change_scene_to_packed(CastleStage)
+		
+	
 func _on_timer_timeout():
 	print("timer")
 	isCameraMove = false

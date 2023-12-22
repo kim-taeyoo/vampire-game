@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cftqnuiopntwe"]
+[gd_scene load_steps=29 format=3 uid="uid://cftqnuiopntwe"]
 
 [ext_resource type="Texture2D" uid="uid://bdd2ggx5b8s1b" path="res://background/map_preview.png" id="3_18lmt"]
 [ext_resource type="PackedScene" uid="uid://c1cd0pr87e815" path="res://Player/absorb_blood.tscn" id="4_5bynq"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b00jxpy5etudc" path="res://Enemy/knight/Knight.tscn" id="7_0x3wx"]
 [ext_resource type="Texture2D" uid="uid://xbld13nb7d45" path="res://Gui/healthBarUnder.png" id="7_c0wir"]
 [ext_resource type="Texture2D" uid="uid://76ijvwc2txny" path="res://Gui/healthBar.png" id="7_p8one"]
+[ext_resource type="PackedScene" uid="uid://c3l0y3nfgb6r5" path="res://castle_stage.tscn" id="11_sqkh2"]
 [ext_resource type="FontFile" uid="uid://dryx13n35d08b" path="res://Gui/Text_box/Pixel12x10.ttf" id="11_tjxnd"]
 [ext_resource type="PackedScene" uid="uid://c8cvostsaec47" path="res://Sun_light/sun_light.tscn" id="12_rkx1q"]
 [ext_resource type="AudioStream" uid="uid://di0x73wgjalo4" path="res://Sound/cave.mp3" id="15_vu1ps"]
@@ -10739,6 +10740,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Story/interactEx:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2677, -201)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yy6ix"]
 _data = {
@@ -10751,6 +10764,8 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_01chg"]
 size = Vector2(49, 265)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bub1m"]
 
 [node name="CaveStage" type="Node2D"]
 
@@ -10846,6 +10861,7 @@ position = Vector2(6309, 310)
 
 [node name="Story" type="Node" parent="."]
 script = ExtResource("5_plf64")
+CastleStage = ExtResource("11_sqkh2")
 
 [node name="StoryPlayer" type="AnimationPlayer" parent="Story"]
 root_node = NodePath("../..")
@@ -10857,16 +10873,6 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Story/Place1"]
 position = Vector2(1061.5, 157)
-shape = SubResource("RectangleShape2D_01chg")
-
-[node name="Place2" type="Area2D" parent="Story"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Story/Place2"]
-position = Vector2(2653, 419)
-shape = SubResource("RectangleShape2D_01chg")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Story/Place2"]
-position = Vector2(5047, -432)
 shape = SubResource("RectangleShape2D_01chg")
 
 [node name="Timer" type="Timer" parent="Story"]
@@ -10881,6 +10887,31 @@ offset_bottom = -36.0
 theme_override_fonts/font = ExtResource("11_tjxnd")
 theme_override_font_sizes/font_size = 20
 text = "Press R button to change the camera to its original position"
+metadata/_edit_use_anchors_ = true
+
+[node name="Place2" type="Area2D" parent="Story"]
+position = Vector2(-2400, 817)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Story/Place2"]
+position = Vector2(5053, -430)
+scale = Vector2(2.36, 13.44)
+shape = SubResource("RectangleShape2D_bub1m")
+
+[node name="Place3" type="Area2D" parent="Story"]
+position = Vector2(-12, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Story/Place3"]
+position = Vector2(5053, -430)
+scale = Vector2(2.36, 13.44)
+shape = SubResource("RectangleShape2D_bub1m")
+
+[node name="Place4" type="Area2D" parent="Story"]
+position = Vector2(3181, -599)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Story/Place4"]
+position = Vector2(5053, -430)
+scale = Vector2(2.36, 13.44)
+shape = SubResource("RectangleShape2D_bub1m")
 
 [node name="HealthBar" type="CanvasLayer" parent="."]
 
@@ -10905,6 +10936,7 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("7_c0wir")
 texture_progress = ExtResource("7_p8one")
 script = ExtResource("6_hfmm1")
+metadata/_edit_use_anchors_ = true
 
 [node name="SunLight" parent="." instance=ExtResource("12_rkx1q")]
 position = Vector2(2202, 314)
@@ -10919,5 +10951,7 @@ bus = &"BGM"
 [connection signal="healthChanged" from="Player" to="HealthBar/TextureProgressBar" method="_on_player_health_changed"]
 [connection signal="animation_finished" from="Story/StoryPlayer" to="Story" method="_on_story_player_animation_finished"]
 [connection signal="body_entered" from="Story/Place1" to="Story" method="_on_place_1_body_entered"]
-[connection signal="body_entered" from="Story/Place2" to="Story" method="_on_place_1_body_entered"]
 [connection signal="timeout" from="Story/Timer" to="Story" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Story/Place2" to="Story" method="_on_place_2_body_entered"]
+[connection signal="body_entered" from="Story/Place3" to="Story" method="_on_place_3_body_entered"]
+[connection signal="body_entered" from="Story/Place4" to="Story" method="_on_place_4_body_entered"]

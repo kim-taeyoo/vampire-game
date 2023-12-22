@@ -118,7 +118,7 @@ func shoot():
 	
 	var s = Arrow.instantiate()
 
-	$"../../Projectile".add_child(s)
+ 	$"../../Projectile".add_child(s)
 	s.transform = $Marker2D.global_transform
 
 func _on_animated_sprite_2d_animation_looped():

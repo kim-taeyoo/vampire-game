@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://blua7ixdukry7"]
+
+[ext_resource type="Script" path="res://SpikedBall/spiked_ball.gd" id="1_cgobc"]
+[ext_resource type="Texture2D" uid="uid://6ru6b5gpforo" path="res://SpikedBall/Spiked Ball.png" id="1_fkych"]
+[ext_resource type="PackedScene" uid="uid://rqkig2xuvbko" path="res://Player/player.tscn" id="2_wcqpi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_phvbr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58n4g"]
+
+[node name="SpikedBall" type="StaticBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 512
+script = ExtResource("1_cgobc")
+Player = ExtResource("2_wcqpi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fkych")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_phvbr")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(1.48, 1.48)
+shape = SubResource("CircleShape2D_58n4g")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

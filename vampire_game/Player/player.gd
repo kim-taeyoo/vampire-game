@@ -35,7 +35,7 @@ const bloodSwordDuration = 1.05
 
 #bloodDagg
 const bloodDaggMove = 30
-const bloodDaggDuration = 1.1
+const bloodDaggDuration = 1
 @onready var bloodDagg = $BloodDagg
 
 #Wall Jump
@@ -56,7 +56,15 @@ var isFall = false
 #피 흡수
 var isAbsorbBlood = false
 @onready var absorbBloodAni = $AbsorbBlood
-
+#스테이지 별 초기설정
+func _ready():
+	if get_parent().get_name() == "CaveStage":
+		getBlood = 0
+		currentHealth  = 20
+	else:
+		getBlood = 20
+		currentHealth  = 100
+		
 func _physics_process(delta):
 	#피흡수
 	if isAbsorbBlood:
@@ -210,28 +218,29 @@ func _physics_process(delta):
 			pass
 	move_and_slide()
 	
-func get_damage(body):
+func get_damage(body, dmageNum: int):
 	if not isHit:
 		currentHealth -= 5
 		isHit = true
 		ap.play("Hit")
-		damagePopup.popup(5)
+		damagePopup.popup(dmageNum)
 		hitTimer.start()
 		healthChanged.emit()
 		
 		#knockback
 		knockbackTimer.start()
+		print(body.position.x)
 		if position.x - body.position.x > 0:
 			velocity.x = 400
 		else:
-			velocity.x = -500
+			velocity.x = -400
 		
 		print("hit by " + body.name)
 
 func get_damage_by_light():
-	currentHealth -= 1
+	currentHealth -= 50
 	ap.play("Hit")
-	damagePopup.popup(1)
+	damagePopup.popup(50)
 	healthChanged.emit()
 
 #func _on_hit_box_body_entered(body):
@@ -239,8 +248,10 @@ func get_damage_by_light():
 #
 
 func _on_hit_box_area_entered(area):
+	var areaParent = area.get_parent()
 	if area.name != "HitBox" and area.name != "SunLight":
-		get_damage(area)
+		get_damage(areaParent, 5)
+		print(currentHealth)
 
 func _on_timer_timeout():
 	isHit = false
@@ -248,3 +259,12 @@ func _on_timer_timeout():
 
 func _on_knockback_timer_timeout():
 	velocity.x = 0
+
+
+func _on_hit_box_body_entered(body):
+	print(body.name)
+
+
+func _on_spiked_ball_hit_spiked(area):
+	var areaParent = area.get_parent()
+	get_damage(areaParent, 5)
