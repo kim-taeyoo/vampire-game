@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://c1moas1kokim8"]
 
-[ext_resource type="Texture2D" uid="uid://db1ec6i2aq2tb" path="res://Gui/floating_menu/menuPanel.png" id="1_g8yxn"]
+[ext_resource type="Texture2D" uid="uid://db1ec6i2aq2tb" path="res://Gui/floating_menu/menuPanel.png" id="1_sssgt"]
 [ext_resource type="FontFile" uid="uid://spkvm4khsdgf" path="res://Gui/Metroid Prime Hunters.ttf" id="2_iu5gb"]
-[ext_resource type="Texture2D" uid="uid://ctg18ypfca7op" path="res://Gui/Button/x_button_normal.png" id="3_13pa7"]
-[ext_resource type="Texture2D" uid="uid://bi843yclkwlfd" path="res://Gui/Button/x_button_on.png" id="4_ph23h"]
-[ext_resource type="Texture2D" uid="uid://dxm4gb8nocu28" path="res://Gui/Button/x_button_press.png" id="5_8n0qw"]
+[ext_resource type="Texture2D" uid="uid://ctg18ypfca7op" path="res://Gui/Button/x_button/x_button_normal.png" id="3_13pa7"]
+[ext_resource type="Texture2D" uid="uid://bi843yclkwlfd" path="res://Gui/Button/x_button/x_button_on.png" id="4_ph23h"]
+[ext_resource type="Texture2D" uid="uid://dxm4gb8nocu28" path="res://Gui/Button/x_button/x_button_press.png" id="5_8n0qw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpjik"]
 font = ExtResource("2_iu5gb")
@@ -33,7 +33,7 @@ offset_right = 598.5
 offset_bottom = 423.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_g8yxn")
+texture = ExtResource("1_sssgt")
 region_rect = Rect2(36, 36, 1192, 792)
 patch_margin_left = 90
 patch_margin_top = 90
