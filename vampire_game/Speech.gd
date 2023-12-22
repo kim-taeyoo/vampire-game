@@ -22,11 +22,13 @@ const wallJumpMessage: Array[String] = [
 	"I can do wall Jump by hanging from the wall and pressing space."
 ]
 const DaggMessage: Array[String] = [
-	"I've recovered my ability to attack Dagg by absorbing enough blood.",
-	"Now I've recovered all my abilities.",
-	"Let's break the rock and go to the castle and get revenge on the humans.",
+	"I've recovered my Dagg attack ability by absorbing enough blood.",
 	"The dagg attack can be used in the air.",
-	"Press the C button,then I'll consume HP and dagg attack."
+	"Press the C button,then I'll consume HP and Dagg attack.",
+	"... Oh.",
+	"Now I've recovered all my abilities.",
+	"It's time to break that rock and go to the castle.",
+	"Time for revenge."
 ]
 #placeMessage
 const startMessage: Array[String] = [
@@ -50,10 +52,10 @@ const place2Ex: Array[String] = [
 	"There are some knights look strong, but I need to drink more blood to move forward."
 ]
 const place3Ex: Array[String] = [
-	"The road to go is blocked by a big stone.",
-	"I lack the power to use the Dagg attack ability to attack in the air and break that rock.",
-	"I see strong enemies such as Archer and Knight.",
-	 "But I have to kill them and drink blood to be strong."
+	"The road is blocked by a big stone.",
+	"I don't have enough power to use the Dagg attack ability to attack in the air and break that rock.",
+	"Ah, I find strong enemies such as Archer and Knight.",
+	"I have to kill them and drink blood to be stronger."
 ]
 const castleEx: Array[String] = [
 	"I finally infiltrated the castle.",

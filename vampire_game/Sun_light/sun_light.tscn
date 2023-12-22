@@ -26,6 +26,7 @@ shape = SubResource("RectangleShape2D_lvc5b")
 position = Vector2(-5.96046e-08, 5.96046e-08)
 scale = Vector2(0.03125, 0.03125)
 color = Color(1, 1, 0.905882, 1)
+energy = 3.0
 texture = SubResource("GradientTexture2D_eyy6t")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

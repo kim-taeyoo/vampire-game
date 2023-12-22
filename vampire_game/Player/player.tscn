@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://heotrqwkpott" path="res://Player/Small dagg attack.png" id="6_t2hqo"]
 [ext_resource type="Texture2D" uid="uid://bgn31cgabmcr5" path="res://Player/Wall Jump.png" id="7_3g00i"]
 [ext_resource type="Script" path="res://Player/BloodSword.gd" id="7_52j7b"]
-[ext_resource type="Texture2D" uid="uid://dn4pos3o44hel" path="res://Player/Hit.png" id="8_clylg"]
+[ext_resource type="Texture2D" uid="uid://bn518rg2jxh1o" path="res://Player/Hit.png" id="8_clylg"]
 [ext_resource type="Script" path="res://Player/BloodDagg.gd" id="9_alny3"]
 [ext_resource type="Script" path="res://Player/WallCheck.gd" id="11_mfo1d"]
 [ext_resource type="Script" path="res://Player/PopupLocation.gd" id="13_ajcmv"]
@@ -1330,10 +1330,10 @@ wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_3fy8p")
 }
+autoplay = "Idle"
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("5_tsjco")
@@ -1383,30 +1383,37 @@ scale = Vector2(0.5, 0.5)
 [node name="Walk" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("15_ghnbr")
 volume_db = 7.0
+bus = &"SFX"
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("16_bvifo")
 volume_db = 7.0
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("17_0adkn")
 volume_db = 7.0
+bus = &"SFX"
 
 [node name="SwordAtk1" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("18_ffxgs")
 volume_db = 9.0
+bus = &"SFX"
 
 [node name="SwordAtk2" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("19_jtxi6")
 volume_db = 9.0
+bus = &"SFX"
 
 [node name="DaggAtk" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("20_21ohi")
 volume_db = 9.0
+bus = &"SFX"
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("21_gmxuu")
 volume_db = 9.0
+bus = &"SFX"
 
 [node name="swordSoundTimer" type="Timer" parent="Sound"]
 wait_time = 0.4
@@ -1415,6 +1422,7 @@ one_shot = true
 [node name="absor" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("22_w3i0g")
 volume_db = 8.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_body_entered"]
