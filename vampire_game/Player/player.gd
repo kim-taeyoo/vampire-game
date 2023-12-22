@@ -229,9 +229,9 @@ func get_damage(body):
 		print("hit by " + body.name)
 
 func get_damage_by_light():
-	currentHealth -= 1
+	currentHealth -= 50
 	ap.play("Hit")
-	damagePopup.popup(1)
+	damagePopup.popup(50)
 	healthChanged.emit()
 
 #func _on_hit_box_body_entered(body):
