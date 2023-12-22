@@ -2,6 +2,7 @@ extends Node2D
 
 @export var startGame: PackedScene
 @export var OptionMenu: PackedScene
+@export var Credits: PackedScene
 
 @onready var clickSound = $ButtonClick
 
@@ -14,4 +15,6 @@ func _on_option_pressed():
 	clickSound.play(0)
 
 func _on_credit_pressed():
+	var M = Credits.instantiate()
+	$CanvasLayer.add_child(M)
 	clickSound.play(0)
