@@ -12,6 +12,7 @@ var getBlood = 0
 @onready var hitBox = $HitBox
 @onready var Player = $"."
 var isHit = false
+var isDead = false
 var isPlayerinSunLight = false
 var SunLightTimer = true
 @onready var hitTimer = $HitBox/HitTimer
@@ -261,7 +262,8 @@ func _physics_process(delta):
 				SunLightTimer = true
 		
 		#player dead	
-		if currentHealth <= 0:
+		if currentHealth <= 0 and not isDead:
+			isDead = true
 			ap.stop()
 			if sword1Sound.playing:
 				sword1Sound.stop()

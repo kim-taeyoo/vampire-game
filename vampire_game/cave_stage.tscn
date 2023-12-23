@@ -11095,6 +11095,12 @@ position = Vector2(7233, -854)
 [node name="SpikedBall8" parent="SpikedBall" instance=ExtResource("20_bwhkd")]
 position = Vector2(5184, 23)
 
+[node name="SpikedBall9" parent="SpikedBall" instance=ExtResource("20_bwhkd")]
+position = Vector2(5087, 366)
+
+[node name="SpikedBall10" parent="SpikedBall" instance=ExtResource("20_bwhkd")]
+position = Vector2(5087, -246)
+
 [node name="BrickWall" type="Node" parent="."]
 
 [node name="BrickWall" parent="BrickWall" instance=ExtResource("21_erjrq")]
@@ -11123,3 +11129,5 @@ texture = ExtResource("22_kwj4b")
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall6" to="Player" method="_on_spiked_ball_hit_spiked"]
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall7" to="Player" method="_on_spiked_ball_hit_spiked"]
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall8" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall9" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall10" to="Player" method="_on_spiked_ball_hit_spiked"]

@@ -1634,7 +1634,34 @@ position = Vector2(7016, 3678)
 position = Vector2(6887, 3580)
 
 [node name="SpikedBall10" parent="SpikedBall" instance=ExtResource("13_opt83")]
-position = Vector2(7016, 3497)
+position = Vector2(6442, 2829)
+
+[node name="SpikedBall13" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(6310, 3401)
+
+[node name="SpikedBall14" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(5482, 3182)
+
+[node name="SpikedBall16" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(7177, 3311)
+
+[node name="SpikedBall17" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(8783, 3377)
+
+[node name="SpikedBall18" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(10987, 3024)
+
+[node name="SpikedBall19" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(10987, 2905)
+
+[node name="SpikedBall20" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(10987, 2807)
+
+[node name="SpikedBall21" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(11560, 3084)
+
+[node name="SpikedBall15" parent="SpikedBall" instance=ExtResource("13_opt83")]
+position = Vector2(4490, 3501)
 
 [node name="SpikedBall11" parent="SpikedBall" instance=ExtResource("13_opt83")]
 position = Vector2(5993, 2790)
@@ -1657,5 +1684,14 @@ position = Vector2(5863, 2640)
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall8" to="Player" method="_on_spiked_ball_hit_spiked"]
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall9" to="Player" method="_on_spiked_ball_hit_spiked"]
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall10" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall13" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall14" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall16" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall17" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall18" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall19" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall20" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall21" to="Player" method="_on_spiked_ball_hit_spiked"]
+[connection signal="hit_Spiked" from="SpikedBall/SpikedBall15" to="Player" method="_on_spiked_ball_hit_spiked"]
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall11" to="Player" method="_on_spiked_ball_hit_spiked"]
 [connection signal="hit_Spiked" from="SpikedBall/SpikedBall12" to="Player" method="_on_spiked_ball_hit_spiked"]
