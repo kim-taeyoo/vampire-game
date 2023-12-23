@@ -10,6 +10,7 @@ var jump = -450
 var currentHealth  = 20
 var getBlood = 0
 @onready var hitBox = $HitBox
+@onready var Player = $"."
 var isHit = false
 var isPlayerinSunLight = false
 var SunLightTimer = true
@@ -44,6 +45,9 @@ const bloodDaggDuration = 1
 @onready var wallCheck = $WallCheck
 var posibleWallJump = false
 
+#Dead
+@onready var dead = $Dead
+
 #애니메이션
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -65,6 +69,7 @@ var isFall = false
 @onready var daggSound = $Sound/DaggAtk
 @onready var dashSound = $Sound/Dash
 @onready var absorbSound = $Sound/absor
+@onready var deadSound = $Sound/Dead
 
 #피 흡수
 var isAbsorbBlood = false
@@ -109,7 +114,7 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 			if is_on_floor():
 				velocity.x = 0
-	if not story.isStoryAnimation and not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg() and knockbackTimer.is_stopped():
+	if not story.isStoryAnimation and not dash.isDashing() and not bloodSword.isBloodSword() and not bloodDagg.isBloodDagg() and knockbackTimer.is_stopped() and not whatAnimation == "Dead":
 	#설정
 		if isAbsorbBlood:
 			isAbsorbBlood = false
@@ -255,9 +260,36 @@ func _physics_process(delta):
 				await get_tree().create_timer(1.0).timeout
 				SunLightTimer = true
 		
-		#game over	
+		#player dead	
 		if currentHealth <= 0:
-			pass
+			ap.stop()
+			if sword1Sound.playing:
+				sword1Sound.stop()
+			if sword2Sound.playing:
+				sword2Sound.stop()
+			if walkSound.playing:
+				walkSound.stop()
+			if hitSound.playing:
+				hitSound.stop()
+			if jumpSound.playing:
+				jumpSound.stop()
+			if daggSound.playing:
+				daggSound.stop()
+			if absorbSound.playing:
+				absorbSound.stop()
+			if dashSound.playing:
+				dashSound.stop()
+			velocity.x = 0
+			Player.set_collision_layer_value(1, false)
+			Player.set_collision_layer_value(13, true)
+			whatAnimation = "Dead"
+			dead.startDead(1.5)
+			if saveDirection == 1:
+				ap.play("Dead")
+			elif saveDirection == -1:
+				ap.play("Dead_left")
+			if not deadSound.playing:
+				deadSound.play()
 	move_and_slide()
 	
 func get_damage(body, dmageNum: int):
@@ -318,7 +350,7 @@ func _on_spiked_ball_hit_spiked(area):
 	get_damage(areaParent, 5)
 
 func _on_sword_sound_timer_timeout():
-	if not sword2Sound.playing:
+	if not sword2Sound.playing and not whatAnimation == "Dead":
 			sword2Sound.play()
 			
 func _on_dash_cooldown_timeout():

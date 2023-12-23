@@ -12,7 +12,7 @@ config_version=5
 
 config/name="vampire_game"
 run/main_scene="res://TitleScreen/title.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -89,6 +89,8 @@ pause={
 2d_physics/layer_9="SunLight"
 2d_physics/layer_10="SpikedBall"
 2d_physics/layer_11="Candle"
+2d_physics/layer_12="BrickWall"
+2d_physics/layer_13="DeadPlayer"
 
 [rendering]
 

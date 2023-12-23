@@ -6,45 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dntbj6eiaxuk5" path="res://background/brick.png" id="2_sa358"]
 [ext_resource type="AudioStream" uid="uid://b82ckxhsdnr83" path="res://background/brickSound.mp3" id="5_3k7ra"]
 
-[sub_resource type="Animation" id="Animation_4a83s"]
-resource_name = "Wall"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_o1j4h")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionPolygon2D:polygon")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(-63, -31, -66, 32, 63, 32, 63, -30)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/CollisionPolygon2D:polygon")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(-66.2525, -32.49, -67.7435, 33.5234, 65.2603, 33.4977, 64.759, -31.5004)]
-}
-
 [sub_resource type="Animation" id="Animation_8oi17"]
 resource_name = "Brick"
 tracks/0/type = "value"
@@ -121,6 +82,45 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [PackedVector2Array(-66.2525, -32.49, -65.7358, 34.508, 66.2371, 30.4901, 64.7513, -32.5003)]
+}
+
+[sub_resource type="Animation" id="Animation_4a83s"]
+resource_name = "Wall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o1j4h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-63, -31, -66, 32, 63, 32, 63, -30)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionPolygon2D:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-66.2525, -32.49, -67.7435, 33.5234, 65.2603, 33.4977, 64.759, -31.5004)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sqata"]
