@@ -1692,4 +1692,5 @@ bus = &"SFX"
 [connection signal="timeout" from="HitBox/HitTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="HitBox/KnockbackTimer" to="." method="_on_knockback_timer_timeout"]
 [connection signal="timeout" from="Dash/DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="Dead/DeadTimer" to="." method="_on_dead_timer_timeout"]
 [connection signal="timeout" from="Sound/swordSoundTimer" to="." method="_on_sword_sound_timer_timeout"]

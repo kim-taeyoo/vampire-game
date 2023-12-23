@@ -358,3 +358,7 @@ func _on_sword_sound_timer_timeout():
 			
 func _on_dash_cooldown_timeout():
 	isDash = true
+
+
+func _on_dead_timer_timeout():
+	EndingScene.show_game_over()

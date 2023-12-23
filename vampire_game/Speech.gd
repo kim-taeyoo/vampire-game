@@ -73,7 +73,7 @@ func _ready():
 		DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
 		storyNum = 0
 	else:
-		#DialogManager.start_dialog(player.global_position, castleEx, speech_sound)
+		DialogManager.start_dialog(player.global_position, castleEx, speech_sound)
 		storyNum = 4	
 
 #상호작용
