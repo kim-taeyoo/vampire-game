@@ -1,6 +1,7 @@
 #Kimtaeyu
 extends Node
 
+signal DialogueEnd
 
 @onready var text_box_scene = preload("res://Gui/Text_box/text_box.tscn")
 
@@ -45,6 +46,7 @@ func _unhandled_input(event):
 		if current_line_index >= dialog_lines.size():
 			is_dialog_active = false
 			current_line_index = 0
+			emit_signal("DialogueEnd")
 			return
 		
 		_show_text_box()

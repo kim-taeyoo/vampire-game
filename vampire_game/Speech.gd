@@ -62,13 +62,18 @@ const castleEx: Array[String] = [
 	"I finally infiltrated the castle.",
 	"I'll kill all the human in the castle."
 ]
+const gameClear: Array[String] = [
+	"I can't feel the presence of people anymore.",
+	". . .",
+	"Finally..."
+]
 func _ready():
 	ExLabel.visible = false
 	if get_parent().get_name() == "CaveStage":
 		DialogManager.start_dialog(player.global_position, startMessage, speech_sound)
 		storyNum = 0
 	else:
-		DialogManager.start_dialog(player.global_position, castleEx, speech_sound)
+		#DialogManager.start_dialog(player.global_position, castleEx, speech_sound)
 		storyNum = 4	
 
 #상호작용
@@ -123,7 +128,7 @@ func _on_place_4_body_entered(body):
 #		ExLabel.visible = true
 #		storyPlayer.play("place3_explain")
 #		timer.start(2.0)
-		get_tree().change_scene_to_packed(CastleStage)
+		SceneTransition.change_scene_to_packed(CastleStage)
 		
 	
 func _on_timer_timeout():
@@ -153,3 +158,7 @@ func _on_player_get_blood_num():
 		DialogManager.start_dialog(player.global_position, wallJumpMessage, speech_sound)
 	elif player.getBlood == 20:
 		DialogManager.start_dialog(player.global_position, DaggMessage, speech_sound)
+
+
+func _on_castle_stage_gameclear():
+	DialogManager.start_dialog(player.global_position, gameClear, speech_sound)

@@ -8,7 +8,7 @@ extends Node2D
 @onready var clickSound = $ButtonClick
 
 func _on_start_pressed():
-	get_tree().change_scene_to_packed(startGame)
+	SceneTransition.change_scene_to_packed(startGame)
 
 func _on_option_pressed():
 	var M = OptionMenu.instantiate()
