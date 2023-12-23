@@ -1,3 +1,4 @@
+#Kimtaeyu
 extends Marker2D
 
 @export var damage_node : PackedScene

@@ -1,3 +1,4 @@
+#Kimtaeyu
 extends StaticBody2D
 
 @export var Player : PackedScene
