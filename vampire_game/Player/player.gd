@@ -265,6 +265,8 @@ func _physics_process(delta):
 		#player dead	
 		if currentHealth <= 0 and not isDead:
 			isDead = true
+			Player.set_collision_layer_value(1, false)
+			Player.set_collision_layer_value(13, true)
 			ap.stop()
 			if sword1Sound.playing:
 				sword1Sound.stop()
@@ -283,8 +285,6 @@ func _physics_process(delta):
 			if dashSound.playing:
 				dashSound.stop()
 			velocity.x = 0
-			Player.set_collision_layer_value(1, false)
-			Player.set_collision_layer_value(13, true)
 			whatAnimation = "Dead"
 			dead.startDead(1.5)
 			if saveDirection == 1:
@@ -331,7 +331,7 @@ func _on_hit_box_area_entered(area):
 		areaParent = area
 	else:
 		areaParent = area.get_parent()
-	if area.name != "HitBox" and area.name != "SunLight":
+	if area.name != "HitBox" and area.name != "SunLight" and not whatAnimation == "Dead":
 		if area.name == "CivHurtBox":
 			get_damage(areaParent, 5)
 		elif area.name == "KnHurtBox":
