@@ -1,4 +1,5 @@
-#KeunWoongjae
+#Make Scene and node Configuration: KimTaeyu
+#Code below: KeunWoongjae
 extends Node2D
 
 @export var pauseMenu: PackedScene
