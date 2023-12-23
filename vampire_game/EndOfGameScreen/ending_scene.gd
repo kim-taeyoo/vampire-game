@@ -18,4 +18,5 @@ func show_game_over():
 func _on_button_pressed():
 	SceneTransition.change_scene_to_file("res://TitleScreen/title.tscn")
 	visible = false
+	AP.play("RESET")
 	$Button.disabled = true
