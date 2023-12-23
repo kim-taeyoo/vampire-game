@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ckp7ajmys7eh4"]
+[gd_scene load_steps=43 format=3 uid="uid://ckp7ajmys7eh4"]
 
 [ext_resource type="Script" path="res://TitleScreen/title.gd" id="1_hb7qt"]
 [ext_resource type="PackedScene" uid="uid://bhef1flilr6a8" path="res://TitleScreen/bg/bg.tscn" id="1_l0abl"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://bhaw4hc4lcla8" path="res://Gui/Button/credit/credit_on.png" id="14_mfp8x"]
 [ext_resource type="Texture2D" uid="uid://tiurgcbrd1gb" path="res://Gui/Button/credit/credit_press.png" id="15_supwt"]
 [ext_resource type="AudioStream" uid="uid://d3rjedrtif1re" path="res://Sound/sfx/Button-clicked.wav" id="19_uwqfv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsq6f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j2yhj"]
 light_mode = 1
@@ -166,35 +168,42 @@ position = Vector2(244, 1)
 
 [node name="menu" type="Node" parent="."]
 
-[node name="start" type="Button" parent="menu"]
+[node name="Panel" type="Panel" parent="menu"]
+anchors_preset = -1
+anchor_left = -0.184
+anchor_top = -0.172
+anchor_right = 0.184
+anchor_bottom = 0.172
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fsq6f")
+
+[node name="start" type="Button" parent="menu/Panel"]
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_j2yhj")
+layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.172
-anchor_right = -0.172
-offset_left = 23.2
-offset_top = 27.0
-offset_right = 119.2
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.25
+anchor_bottom = 0.6
+grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_xvynk")
 theme_override_styles/hover = SubResource("StyleBoxTexture_oce5k")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0awb4")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ssrfo")
 
-[node name="option" type="Button" parent="menu"]
+[node name="option" type="Button" parent="menu/Panel"]
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_j2yhj")
+layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.27
-anchor_right = -0.27
-offset_left = 180.0
-offset_top = 66.0
-offset_right = 276.0
-offset_bottom = 103.0
+anchor_left = 0.1
+anchor_top = 0.65
+anchor_right = 0.25
+anchor_bottom = 0.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_w1fkc")
@@ -202,17 +211,16 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_7p4sn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_qo8ia")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u6v0a")
 
-[node name="credit" type="Button" parent="menu"]
+[node name="credit" type="Button" parent="menu/Panel"]
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_j2yhj")
+layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.27
-anchor_right = -0.27
-offset_left = 180.0
-offset_top = 107.0
-offset_right = 276.0
-offset_bottom = 144.0
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.25
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_5nuv7")
@@ -251,6 +259,6 @@ bus = &"BGM"
 stream = ExtResource("19_uwqfv")
 bus = &"SFX"
 
-[connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="menu/option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="menu/credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="menu/Panel/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="menu/Panel/option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="menu/Panel/credit" to="." method="_on_credit_pressed"]
