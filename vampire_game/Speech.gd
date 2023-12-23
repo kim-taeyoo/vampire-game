@@ -54,7 +54,8 @@ const place2Ex: Array[String] = [
 ]
 const place3Ex: Array[String] = [
 	"The road is blocked by a big stone.",
-	"I don't have enough power to use the Dagg attack ability to attack in the air and break that rock.",
+	"I don't have enough power to use the Dagg attack ability.",
+	"Therefore, I can't attack in the air and break that rock.",
 	"Ah, I find strong enemies such as Archer and Knight.",
 	"I have to kill them and drink blood to be stronger."
 ]
